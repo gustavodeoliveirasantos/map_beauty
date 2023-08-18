@@ -63,6 +63,7 @@ flutter:
     - assets/brand_images/bruna_tavares_logo.jpg
     - assets/brand_images/eudora_logo.jpg
     - assets/brand_images/mari_maria_logo.jpg
+    - assets/brands.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

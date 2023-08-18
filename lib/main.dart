@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mapbeauty/findation/findation.dart';
 
 import 'modules/core/app_bootstrap.dart';
 import 'modules/core/utils/app_routes.dart';
@@ -18,6 +19,8 @@ class MapBeautyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Findation.loadData();
+
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,

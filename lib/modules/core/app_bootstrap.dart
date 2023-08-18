@@ -3,9 +3,9 @@ import 'package:mapbeauty/modules/core/utils/app_routes.dart';
 
 class AppBootstrap {
   static initializeApp() async {
-    await Firebase.initializeApp(
-        //  options: DefaultFirebaseOptions.currentPlatform,
-        );
+    // await Firebase.initializeApp(
+    //     //  options: DefaultFirebaseOptions.currentPlatform,
+    //     );
     // Ideal time to initialize
 // await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
 // //...
