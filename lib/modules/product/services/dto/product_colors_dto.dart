@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:mapbeauty/modules/make_up_search/data/models/color_type_dto.dart';
+import 'package:mapbeauty/modules/product/services/dto/color_type_dto.dart';
 
 class ProductColorsDTO {
   final String id;

@@ -1,5 +1,5 @@
-import 'package:mapbeauty/modules/make_up_search/domain/models/product_colors.dart';
-import 'package:mapbeauty/modules/make_up_search/domain/models/product_type.dart';
+import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
+import 'package:mapbeauty/modules/product/domain/models/product_type.dart';
 
 import 'brand.dart';
 

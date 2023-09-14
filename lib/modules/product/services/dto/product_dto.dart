@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:mapbeauty/modules/make_up_search/data/models/product_colors_dto.dart';
-import 'package:mapbeauty/modules/make_up_search/data/models/product_type_dto.dart';
+import 'package:mapbeauty/modules/product/services/dto/product_colors_dto.dart';
+import 'package:mapbeauty/modules/product/services/dto/product_type_dto.dart';
 
 import 'brand_dto.dart';
 

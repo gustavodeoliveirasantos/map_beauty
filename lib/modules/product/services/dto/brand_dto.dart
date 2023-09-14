@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:mapbeauty/modules/make_up_search/data/models/product_dto.dart';
+import 'package:mapbeauty/modules/product/services/dto/product_dto.dart';
 
 class BrandDTO {
   final String id;

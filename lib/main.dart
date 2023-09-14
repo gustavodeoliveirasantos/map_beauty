@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mapbeauty/findation/findation.dart';
+import 'package:provider/provider.dart';
+import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
 
 import 'modules/core/app_bootstrap.dart';
 import 'modules/core/utils/app_routes.dart';
@@ -19,18 +20,21 @@ class MapBeautyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Findation.loadData();
-
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
-        useMaterial3: true,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ProductViewModel()),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
+          useMaterial3: true,
+        ),
+        initialRoute: initialRoute,
+        onGenerateRoute: (settings) => AppRoutes.onGenerateRoute(settings),
+        onGenerateInitialRoutes: (initialRoute) => AppRoutes.generateInitialRoute(initialRoute),
       ),
-      initialRoute: initialRoute,
-      onGenerateRoute: (settings) => AppRoutes.onGenerateRoute(settings),
-      onGenerateInitialRoutes: (initialRoute) => AppRoutes.generateInitialRoute(initialRoute),
     );
   }
 }

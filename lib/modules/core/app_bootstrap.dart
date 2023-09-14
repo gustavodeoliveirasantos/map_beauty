@@ -12,6 +12,9 @@ class AppBootstrap {
 // }
   }
 
+  static loadFindationData() {
+    // Findation.loadData();
+  }
   static String getInitialRoute() {
     return AppRoutes.home;
   }
