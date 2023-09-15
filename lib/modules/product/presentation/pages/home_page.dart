@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mapbeauty/modules/core/utils/app_routes.dart';
+import 'package:mapbeauty/modules/product/presentation/pages/products_page.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -32,8 +34,10 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
-  void goToProductsPage(String brandId) async {
-    final product = await Provider.of<ProductViewModel>(context, listen: false).loadProducts(brandId);
+  void goToProductsPage(Brand brand) async {
+    final products = await Provider.of<ProductViewModel>(context, listen: false).loadProducts(brand.id);
+
+    if (mounted) Navigator.of(context).pushNamed(AppRoutes.products, arguments: ProductsPageArgs(brand, products));
   }
 
   @override
@@ -46,6 +50,7 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
+            Text("1. Selecione a Marca"),
             const SearchBar(hintText: "Pesquisar", leading: Icon(Icons.search)),
             const SizedBox(height: 20),
             Expanded(
@@ -65,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 }
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () => goToProductsPage(brand),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),

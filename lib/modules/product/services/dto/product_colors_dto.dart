@@ -3,13 +3,13 @@ import 'package:mapbeauty/modules/product/services/dto/color_type_dto.dart';
 
 class ProductColorsDTO {
   final String id;
-  final String brandColor;
-  final ColorTypeDTO color;
+  final String brandColorName;
+  final ColorTypeDTO colorType;
   final String buyUrl;
   const ProductColorsDTO({
     required this.id,
-    required this.brandColor,
-    required this.color,
+    required this.brandColorName,
+    required this.colorType,
     required this.buyUrl,
   });
 
@@ -21,8 +21,8 @@ class ProductColorsDTO {
   }) {
     return ProductColorsDTO(
       id: id ?? this.id,
-      brandColor: brandColor ?? this.brandColor,
-      color: color ?? this.color,
+      brandColorName: brandColor ?? this.brandColorName,
+      colorType: color ?? this.colorType,
       buyUrl: buyUrl ?? this.buyUrl,
     );
   }
@@ -30,8 +30,8 @@ class ProductColorsDTO {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'brandColor': brandColor,
-      'color': color.toMap(),
+      'brandColor': brandColorName,
+      'color': colorType.toMap(),
       'buyUrl': buyUrl,
     };
   }
@@ -39,8 +39,8 @@ class ProductColorsDTO {
   factory ProductColorsDTO.fromMap(Map<String, dynamic> map) {
     return ProductColorsDTO(
       id: (map["id"] ?? '') as String,
-      brandColor: (map["brandColor"] ?? '') as String,
-      color: ColorTypeDTO.fromMap((map["color"] ?? Map<String, dynamic>.from({})) as Map<String, dynamic>),
+      brandColorName: (map["brandColor"] ?? '') as String,
+      colorType: ColorTypeDTO.fromMap((map["color"] ?? Map<String, dynamic>.from({})) as Map<String, dynamic>),
       buyUrl: (map["buyUrl"] ?? '') as String,
     );
   }
@@ -51,18 +51,18 @@ class ProductColorsDTO {
 
   @override
   String toString() {
-    return 'ProductColorsDTO(id: $id, brandColor: $brandColor, color: $color, buyUrl: $buyUrl)';
+    return 'ProductColorsDTO(id: $id, brandColor: $brandColorName, color: $colorType, buyUrl: $buyUrl)';
   }
 
   @override
   bool operator ==(covariant ProductColorsDTO other) {
     if (identical(this, other)) return true;
 
-    return other.id == id && other.brandColor == brandColor && other.color == color && other.buyUrl == buyUrl;
+    return other.id == id && other.brandColorName == brandColorName && other.colorType == colorType && other.buyUrl == buyUrl;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ brandColor.hashCode ^ color.hashCode ^ buyUrl.hashCode;
+    return id.hashCode ^ brandColorName.hashCode ^ colorType.hashCode ^ buyUrl.hashCode;
   }
 }

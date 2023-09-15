@@ -10,10 +10,9 @@ import '../../domain/models/product.dart';
 class ProductViewModel extends BaseViewModel {
   late final LoadBrandsUseCase _loadBrandsUseCase = LoadBrandsUseCaseImpl();
   late final LoadProductsUseCase _loadProductsUseCase = LoadProductsUseCaseImpl();
-  // late final LoadSimilarProductsUseCase _loadSimilarProductsUseCase = LoadSimilarProductsUseCaseImpl();
+  late final LoadSimilarProductsUseCase _loadSimilarProductsUseCase = LoadSimilarProductsUseCaseImpl();
 
   Future<List<Brand>> loadBrands() async {
-    final a = await _loadBrandsUseCase.execute();
     return _loadBrandsUseCase.execute();
   }
 
@@ -21,8 +20,8 @@ class ProductViewModel extends BaseViewModel {
     return _loadProductsUseCase.execute(brandId);
   }
 
-  // Future<List<Product>> LoadSimilarProductsUseCase(Product product, ColorType colorType) {
-  //   final input = LoadSimilarProductsInput(product: product, colorType: colorType);
-  //   return _loadSimilarProductsUseCase.execute(input);
-  // }
+  Future<List<Product>> loadSimilarProductsUseCase(Product product, ColorType colorType) {
+    final input = LoadSimilarProductsInput(product: product, colorType: colorType);
+    return _loadSimilarProductsUseCase.execute(input);
+  }
 }

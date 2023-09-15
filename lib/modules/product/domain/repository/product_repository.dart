@@ -44,7 +44,7 @@ class ProductRepositoryImpl implements ProductRepository {
       final brand = BrandAdapter().adapt(brandDTO);
       for (final productDTO in brandDTO.products) {
         for (final productColorDTO in productDTO.productColors) {
-          if (colorType.id == productColorDTO.id) {
+          if (colorType.id == productColorDTO.colorType.id) {
             list.add(
               ProductAdapter().adapt(ProductAdapterInput(dto: productDTO, brand: brand)),
             );

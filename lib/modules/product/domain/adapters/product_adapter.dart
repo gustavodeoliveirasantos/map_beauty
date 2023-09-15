@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:mapbeauty/modules/core/domain/adapter.dart';
+import 'package:mapbeauty/modules/core/utils/extensions.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_type.dart';
 
 import '../../services/dto/product_dto.dart';
@@ -26,12 +27,14 @@ class ProductAdapter implements Adapter<Product, ProductAdapterInput> {
       id: input.dto.id,
       name: input.dto.name,
       brand: input.brand,
+      imageUrl: input.dto.imageUrl,
+      pageUrl: input.dto.pageUrl,
       productType: ProductType(id: input.dto.productType.id, type: input.dto.productType.type),
       productColors: input.dto.productColors.map((e) {
         return ProductColors(
           e.id,
-          e.brandColor,
-          ColorType(id: e.color.id, color: e.color.color, hexCode: e.color.hexCode),
+          e.brandColorName,
+          ColorType(id: e.colorType.id, colorName: e.colorType.colorName, color: HexColor(e.colorType.hexCode)),
           e.buyUrl,
         );
       }).toList(),

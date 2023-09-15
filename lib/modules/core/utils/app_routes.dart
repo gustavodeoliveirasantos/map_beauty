@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mapbeauty/modules/notifications/pages/notifications_page.dart';
+import 'package:mapbeauty/modules/product/presentation/pages/colors_page.dart';
+import 'package:mapbeauty/modules/product/presentation/pages/product_colors_comparison_result.dart';
 import 'package:mapbeauty/modules/product/presentation/pages/products_page.dart';
 
 import '../../product/domain/models/product.dart';
@@ -11,7 +13,9 @@ class AppRoutes {
   static const login = 'login';
   static const notifications = 'notifications';
   static const home = '/';
-  static const productsPage = "products";
+  static const products = "products";
+  static const productsColorComparisonResult = "productsColorComparisonResult";
+  static const colors = "colors";
 
   static List<Route> generateInitialRoute(String initialRouteName) {
     List<MaterialPageRoute> routes = [];
@@ -35,9 +39,15 @@ class AppRoutes {
       page = HomePage();
     } else if (settings.name == AppRoutes.notifications) {
       page = NotificationsPage();
-    } else if (settings.name == AppRoutes.productsPage) {
-      var args = settings.arguments as List<Product>;
-      page = ProductsPage(products: args);
+    } else if (settings.name == AppRoutes.products) {
+      var args = settings.arguments as ProductsPageArgs;
+      page = ProductsPage(args: args);
+    } else if (settings.name == AppRoutes.colors) {
+      var product = settings.arguments as Product;
+      page = ColorsPage(product: product);
+    } else if (settings.name == AppRoutes.productsColorComparisonResult) {
+      var args = settings.arguments as ProductsColorComparisonResultArgs;
+      page = ProductsColorComparisonResult(args: args);
     }
     // else if (settings.name == AppRoutes.login) {
     //   page = LoginPage();

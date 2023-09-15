@@ -3,11 +3,11 @@ import 'dart:convert';
 
 class ColorTypeDTO {
   final String id;
-  final String color;
+  final String colorName;
   final String hexCode;
   const ColorTypeDTO({
     required this.id,
-    required this.color,
+    required this.colorName,
     required this.hexCode,
   });
 
@@ -18,7 +18,7 @@ class ColorTypeDTO {
   }) {
     return ColorTypeDTO(
       id: id ?? this.id,
-      color: color ?? this.color,
+      colorName: color ?? this.colorName,
       hexCode: hexCode ?? this.hexCode,
     );
   }
@@ -26,7 +26,7 @@ class ColorTypeDTO {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'color': color,
+      'color': colorName,
       'hexCode': hexCode,
     };
   }
@@ -34,7 +34,7 @@ class ColorTypeDTO {
   factory ColorTypeDTO.fromMap(Map<String, dynamic> map) {
     return ColorTypeDTO(
       id: (map["id"] ?? '') as String,
-      color: (map["color"] ?? '') as String,
+      colorName: (map["color"] ?? '') as String,
       hexCode: (map["hexCode"] ?? '') as String,
     );
   }
@@ -44,15 +44,15 @@ class ColorTypeDTO {
   factory ColorTypeDTO.fromJson(String source) => ColorTypeDTO.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'ColorDTO(id: $id, color: $color, hexCode: $hexCode)';
+  String toString() => 'ColorDTO(id: $id, color: $colorName, hexCode: $hexCode)';
 
   @override
   bool operator ==(covariant ColorTypeDTO other) {
     if (identical(this, other)) return true;
 
-    return other.id == id && other.color == color && other.hexCode == hexCode;
+    return other.id == id && other.colorName == colorName && other.hexCode == hexCode;
   }
 
   @override
-  int get hashCode => id.hashCode ^ color.hashCode ^ hexCode.hashCode;
+  int get hashCode => id.hashCode ^ colorName.hashCode ^ hexCode.hashCode;
 }
