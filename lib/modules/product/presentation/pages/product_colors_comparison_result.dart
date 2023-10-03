@@ -51,7 +51,7 @@ class _ProductsColorComparisonResultState extends State<ProductsColorComparisonR
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("resultados")),
+      appBar: AppBar(title: const Text("resultados")),
       body: isLoading
           ? const Center(
               child: CircularProgressIndicator(
@@ -69,14 +69,14 @@ class _ProductsColorComparisonResultState extends State<ProductsColorComparisonR
                     //   tileColor: Colors.amber,
                     leading: Container(
                       color: Colors.blue,
-                      child: Text("Imagem aqui"),
                       height: 80,
                       width: 80,
+                      child: const Text("Imagem aqui"),
                     ),
-                    title: Text("${product.name}"),
+                    title: Text(product.name),
                     subtitle: Text("${product.brand.name}"),
                     trailing: TextButton(
-                      child: Text("Comprar"),
+                      child: const Text("Comprar"),
                       onPressed: () => openProductPage(product),
                     ),
                     //   onTap: () => openProductPage(product),
@@ -84,9 +84,9 @@ class _ProductsColorComparisonResultState extends State<ProductsColorComparisonR
                 );
               },
               separatorBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: const Divider(height: 0.5),
+                return const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Divider(height: 0.5),
                 );
               },
             ),

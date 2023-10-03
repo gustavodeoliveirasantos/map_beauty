@@ -21,8 +21,8 @@ class ProductColorsDTO {
   }) {
     return ProductColorsDTO(
       id: id ?? this.id,
-      brandColorName: brandColor ?? this.brandColorName,
-      colorType: color ?? this.colorType,
+      brandColorName: brandColor ?? brandColorName,
+      colorType: color ?? colorType,
       buyUrl: buyUrl ?? this.buyUrl,
     );
   }

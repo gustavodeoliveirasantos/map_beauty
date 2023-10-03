@@ -11,10 +11,10 @@ const productUrlTest =
     "https://www.amazon.com.br/Líquido-Dior-Addict-Tattoo-Natural/dp/B071KQ9X38/ref=sr_1_3_sspa?crid=2TNK668WA96TB&keywords=batom&qid=1694800477&sprefix=batom%2Caps%2C187&sr=8-3-spons&ufe=app_do%3Aamzn1.fos.db68964d-7c0e-4bb2-a95c-e5cb9e32eb12&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1";
 
 final colorsDummy = [
-  ColorTypeDTO(id: "1", colorName: "MAP BS 01", hexCode: "#f1d9d9"),
-  ColorTypeDTO(id: "2", colorName: "MAP BS 02", hexCode: "#e5a1a1"),
-  ColorTypeDTO(id: "3", colorName: "MAP BS 03", hexCode: "#ba7c7c"),
-  ColorTypeDTO(id: "4", colorName: "MAP BS 04", hexCode: "#805a5a"),
+  const ColorTypeDTO(id: "1", colorName: "MAP BS 01", hexCode: "#f1d9d9"),
+  const ColorTypeDTO(id: "2", colorName: "MAP BS 02", hexCode: "#e5a1a1"),
+  const ColorTypeDTO(id: "3", colorName: "MAP BS 03", hexCode: "#ba7c7c"),
+  const ColorTypeDTO(id: "4", colorName: "MAP BS 04", hexCode: "#805a5a"),
 ];
 
 final productTypesDummy = [

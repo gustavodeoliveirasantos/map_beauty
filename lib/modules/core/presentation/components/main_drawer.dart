@@ -14,7 +14,7 @@ class MainDrawerWidget extends StatelessWidget {
   }
 
   Future<void> _openInstagram() async {
-    const urlString = 'https://instagram.com/mylife_apps?igshid=OGQ5ZDc2ODk2ZA==';
+    const urlString = 'https://www.instagram.com/_map.beauty/';
     final uri = Uri.parse(urlString);
 
     if (!await launchUrl(uri)) {
@@ -22,7 +22,7 @@ class MainDrawerWidget extends StatelessWidget {
     }
   }
 
-  void shareMyQuotes() {
+  void shareMapBeauty() {
     //TODO adicionar possibilidade de dar Share no MAP Beauty
     //TODO: Alterar URLDs
 
@@ -97,23 +97,23 @@ App Store: apps.apple.com/pt/app/my-quotes/id6448951931''';
                   },
                   title: const Text('Feedback / Entre em contato'),
                 ),
-                ListTile(
-                  leading: Icon(
-                    Icons.notifications_active,
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-                  onTap: () {
-                    Navigator.of(context).popAndPushNamed(AppRoutes.notifications);
-                  },
-                  title: const Text('Notificações'),
-                ),
+                // ListTile(
+                //   leading: Icon(
+                //     Icons.notifications_active,
+                //     color: Theme.of(context).colorScheme.secondary,
+                //   ),
+                //   onTap: () {
+                //     Navigator.of(context).popAndPushNamed(AppRoutes.notifications);
+                //   },
+                //   title: const Text('Notificações'),
+                // ),
                 ListTile(
                   leading: Icon(
                     Platform.isIOS ? Icons.ios_share : Icons.share,
                     color: Theme.of(context).colorScheme.secondary,
                   ),
-                  onTap: shareMyQuotes,
-                  title: const Text('Compartilhar MAP Beauty'),
+                  onTap: shareMapBeauty,
+                  title: const Text('Compartilhar MAP Beauty '),
                 ),
                 const SizedBox(
                   height: 20,

@@ -1,4 +1,4 @@
-package br.com.mapbeauty.mapbeauty
+package br.com.mapbeauty.app
 
 import io.flutter.embedding.android.FlutterActivity
 

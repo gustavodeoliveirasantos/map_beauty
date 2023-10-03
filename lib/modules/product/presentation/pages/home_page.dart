@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mapbeauty/modules/core/utils/app_routes.dart';
+import 'package:mapbeauty/modules/product/presentation/components/stepper_widget.dart';
+import 'package:mapbeauty/modules/product/presentation/pages/brands_page.dart';
 import 'package:mapbeauty/modules/product/presentation/pages/products_page.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
 import 'package:provider/provider.dart';
@@ -16,28 +18,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Brand>? brands;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      loadBrands();
-    });
-
-    super.initState();
-  }
-
-  void loadBrands() async {
-    Future.delayed(Duration(seconds: 3));
-    brands = await Provider.of<ProductViewModel>(context, listen: false).loadBrands();
-    setState(() {});
-  }
+  PageController pageController = PageController(
+    initialPage: 0,
+    viewportFraction: 1,
+    keepPage: true,
+  );
+  int pageIndex = 0;
 
   void goToProductsPage(Brand brand) async {
     final products = await Provider.of<ProductViewModel>(context, listen: false).loadProducts(brand.id);
 
     if (mounted) Navigator.of(context).pushNamed(AppRoutes.products, arguments: ProductsPageArgs(brand, products));
+
+    setState(() {
+      pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.decelerate);
+      pageIndex = 1;
+    });
   }
 
   @override
@@ -50,48 +46,17 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
-            Text("1. Selecione a Marca"),
+            StepperWidget(currentIndex: pageIndex),
             const SearchBar(hintText: "Pesquisar", leading: Icon(Icons.search)),
             const SizedBox(height: 20),
             Expanded(
-                child: GridView.builder(
-              itemCount: brands?.length,
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: size.width / 3,
-                childAspectRatio: 1,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
-              ),
-              itemBuilder: (context, index) {
-                final brand = brands?[index];
-                if (brand == null) {
-                  return Container(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.black12),
-                  );
-                }
-                return GestureDetector(
-                  onTap: () => goToProductsPage(brand),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      //   color: Colors.black,
-                      border: Border.all(),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12.0),
-                        child: Image.asset(
-                          brand.imageUrl,
-                          fit: BoxFit.cover,
-                          height: double.infinity,
-                          width: double.infinity,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
+                child: PageView(
+              physics: NeverScrollableScrollPhysics(),
+              controller: pageController,
+              children: [
+                BrandsPage(onBrandSelected: goToProductsPage),
+                BrandsPage(onBrandSelected: goToProductsPage),
+              ],
             ))
           ],
         ),

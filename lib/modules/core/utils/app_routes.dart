@@ -38,7 +38,7 @@ class AppRoutes {
       // var args = (settings.arguments ?? true) as bool;
       page = HomePage();
     } else if (settings.name == AppRoutes.notifications) {
-      page = NotificationsPage();
+      page = const NotificationsPage();
     } else if (settings.name == AppRoutes.products) {
       var args = settings.arguments as ProductsPageArgs;
       page = ProductsPage(args: args);

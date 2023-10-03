@@ -13,12 +13,12 @@ class ColorTypeDTO {
 
   ColorTypeDTO copyWith({
     String? id,
-    String? color,
+    String? colorName,
     String? hexCode,
   }) {
     return ColorTypeDTO(
       id: id ?? this.id,
-      colorName: color ?? this.colorName,
+      colorName: colorName ?? this.colorName,
       hexCode: hexCode ?? this.hexCode,
     );
   }
@@ -26,7 +26,7 @@ class ColorTypeDTO {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'color': colorName,
+      'colorName': colorName,
       'hexCode': hexCode,
     };
   }
@@ -34,7 +34,7 @@ class ColorTypeDTO {
   factory ColorTypeDTO.fromMap(Map<String, dynamic> map) {
     return ColorTypeDTO(
       id: (map["id"] ?? '') as String,
-      colorName: (map["color"] ?? '') as String,
+      colorName: (map["colorName"] ?? '') as String,
       hexCode: (map["hexCode"] ?? '') as String,
     );
   }
@@ -44,7 +44,7 @@ class ColorTypeDTO {
   factory ColorTypeDTO.fromJson(String source) => ColorTypeDTO.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'ColorDTO(id: $id, color: $colorName, hexCode: $hexCode)';
+  String toString() => 'ColorTypeDTO(id: $id, colorName: $colorName, hexCode: $hexCode)';
 
   @override
   bool operator ==(covariant ColorTypeDTO other) {

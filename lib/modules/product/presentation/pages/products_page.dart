@@ -30,63 +30,59 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(title: const Text("MAP Beauty")),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          children: [
-            const Text("2. Selecione o Produto"),
-            const SearchBar(hintText: "Pesquisar", leading: Icon(Icons.search)),
-            const SizedBox(height: 20),
-            Expanded(
-                child: GridView.builder(
-              itemCount: widget.args.products.length,
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: size.width / 3,
-                childAspectRatio: 0.9,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
-              ),
-              itemBuilder: (context, index) {
-                final product = widget.args.products[index];
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        children: [
+          const SearchBar(hintText: "Pesquisar", leading: Icon(Icons.search)),
+          const SizedBox(height: 20),
+          Expanded(
+              child: GridView.builder(
+            itemCount: widget.args.products.length,
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: size.width / 3,
+              childAspectRatio: 0.9,
+              mainAxisSpacing: 20,
+              crossAxisSpacing: 20,
+            ),
+            itemBuilder: (context, index) {
+              final product = widget.args.products[index];
 
-                return GestureDetector(
-                  onTap: () => goToColorsPage(product),
-                  child: Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          //   color: Colors.black,
-                          border: Border.all(),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: product.imageUrl == null
-                              ? Container(
-                                  height: 80,
-                                  color: Colors.amber,
-                                )
-                              : ClipRRect(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  child: Image.asset(
-                                    product.imageUrl!,
-                                    fit: BoxFit.cover,
-                                    height: double.infinity,
-                                    width: double.infinity,
-                                  ),
-                                ),
-                        ),
+              return GestureDetector(
+                onTap: () => goToColorsPage(product),
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        //   color: Colors.black,
+                        border: Border.all(),
                       ),
-                      Text(product.name),
-                    ],
-                  ),
-                );
-              },
-            ))
-          ],
-        ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: product.imageUrl == null
+                            ? Container(
+                                height: 80,
+                                color: Colors.amber,
+                              )
+                            : ClipRRect(
+                                borderRadius: BorderRadius.circular(12.0),
+                                child: Image.asset(
+                                  product.imageUrl!,
+                                  fit: BoxFit.cover,
+                                  height: double.infinity,
+                                  width: double.infinity,
+                                ),
+                              ),
+                      ),
+                    ),
+                    Text(product.name),
+                  ],
+                ),
+              );
+            },
+          ))
+        ],
       ),
     );
   }

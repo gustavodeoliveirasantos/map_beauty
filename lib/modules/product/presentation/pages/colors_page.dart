@@ -29,7 +29,6 @@ class _ColorsPageState extends State<ColorsPage> {
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
-            const Text("3. Selecione a Cor"),
             // const SearchBar(hintText: "Pesquisar", leading: Icon(Icons.search)),
             const SizedBox(height: 20),
             Expanded(
