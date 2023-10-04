@@ -15,6 +15,10 @@ final colorsDummy = [
   const ColorTypeDTO(id: "2", colorName: "MAP BS 02", hexCode: "#e5a1a1"),
   const ColorTypeDTO(id: "3", colorName: "MAP BS 03", hexCode: "#ba7c7c"),
   const ColorTypeDTO(id: "4", colorName: "MAP BS 04", hexCode: "#805a5a"),
+  const ColorTypeDTO(id: "5", colorName: "MAP BS 05", hexCode: "#aaaaaa"),
+  const ColorTypeDTO(id: "6", colorName: "MAP BS 06", hexCode: "#bbbbbb"),
+  const ColorTypeDTO(id: "7", colorName: "MAP BS 07", hexCode: "#cccccc"),
+  const ColorTypeDTO(id: "8", colorName: "MAP BS 08", hexCode: "#dddddd"),
 ];
 
 final productTypesDummy = [
@@ -31,10 +35,10 @@ final someProducts = [
     ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
   ProductDTO(id: Utils.uuid(), name: "BT Skin 2", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
   ]),
   ProductDTO(id: Utils.uuid(), name: "BT Skin 3", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
     ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
@@ -43,10 +47,10 @@ final someProducts = [
     ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
   ProductDTO(id: Utils.uuid(), name: "BT Skin 4", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
   ]),
   ProductDTO(id: Utils.uuid(), name: "BT Skin 5", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
     ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
@@ -55,10 +59,10 @@ final someProducts = [
     ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
   ProductDTO(id: Utils.uuid(), name: "BT Skin 6", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
   ]),
   ProductDTO(id: Utils.uuid(), name: "BT Skin 7", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
     ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
@@ -67,10 +71,10 @@ final someProducts = [
     ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
   ProductDTO(id: Utils.uuid(), name: "BT Skin 8", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
   ]),
   ProductDTO(id: Utils.uuid(), name: "BT Skin 9", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
     ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
@@ -79,10 +83,10 @@ final someProducts = [
     ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
   ProductDTO(id: Utils.uuid(), name: "BT Skin 10", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
   ]),
   ProductDTO(id: Utils.uuid(), name: "BT Skin 11", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
     ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
@@ -103,10 +107,10 @@ final someProducts = [
     ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
   ProductDTO(id: Utils.uuid(), name: "BT Skin 14", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
   ]),
   ProductDTO(id: Utils.uuid(), name: "BT Skin 15", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
     ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),

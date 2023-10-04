@@ -7,10 +7,10 @@ import 'package:mapbeauty/modules/product/domain/models/product.dart';
 import '../../domain/models/brand.dart';
 
 class ProductsPageArgs {
-  final Brand brand;
-  final List<Product> products;
-
-  ProductsPageArgs(this.brand, this.products);
+  // final Brand? brand;
+  final List<Product>? products;
+  final Function(Product?) onProductSelected;
+  ProductsPageArgs({required this.products, required this.onProductSelected});
 }
 
 class ProductsPage extends StatefulWidget {
@@ -23,10 +23,6 @@ class ProductsPage extends StatefulWidget {
 }
 
 class _ProductsPageState extends State<ProductsPage> {
-  void goToColorsPage(Product product) {
-    Navigator.of(context).pushNamed(AppRoutes.colors, arguments: product);
-  }
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -34,22 +30,20 @@ class _ProductsPageState extends State<ProductsPage> {
       padding: const EdgeInsets.all(12.0),
       child: Column(
         children: [
-          const SearchBar(hintText: "Pesquisar", leading: Icon(Icons.search)),
-          const SizedBox(height: 20),
           Expanded(
               child: GridView.builder(
-            itemCount: widget.args.products.length,
+            itemCount: widget.args.products?.length,
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: size.width / 3,
-              childAspectRatio: 0.9,
+              maxCrossAxisExtent: size.width / 2,
+              childAspectRatio: 1,
               mainAxisSpacing: 20,
               crossAxisSpacing: 20,
             ),
             itemBuilder: (context, index) {
-              final product = widget.args.products[index];
+              final product = widget.args.products?[index];
 
               return GestureDetector(
-                onTap: () => goToColorsPage(product),
+                onTap: () => widget.args.onProductSelected(product),
                 child: Column(
                   children: [
                     Container(
@@ -60,7 +54,7 @@ class _ProductsPageState extends State<ProductsPage> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: product.imageUrl == null
+                        child: product?.imageUrl == null
                             ? Container(
                                 height: 80,
                                 color: Colors.amber,
@@ -68,7 +62,7 @@ class _ProductsPageState extends State<ProductsPage> {
                             : ClipRRect(
                                 borderRadius: BorderRadius.circular(12.0),
                                 child: Image.asset(
-                                  product.imageUrl!,
+                                  product?.imageUrl! ?? "",
                                   fit: BoxFit.cover,
                                   height: double.infinity,
                                   width: double.infinity,
@@ -76,7 +70,7 @@ class _ProductsPageState extends State<ProductsPage> {
                               ),
                       ),
                     ),
-                    Text(product.name),
+                    Text(product?.name ?? ""),
                   ],
                 ),
               );

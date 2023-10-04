@@ -39,12 +39,14 @@ class AppRoutes {
       page = HomePage();
     } else if (settings.name == AppRoutes.notifications) {
       page = const NotificationsPage();
-    } else if (settings.name == AppRoutes.products) {
-      var args = settings.arguments as ProductsPageArgs;
-      page = ProductsPage(args: args);
-    } else if (settings.name == AppRoutes.colors) {
-      var product = settings.arguments as Product;
-      page = ColorsPage(product: product);
+      // }
+
+      // else if (settings.name == AppRoutes.products) {
+      //   var args = settings.arguments as ProductsPageArgs;
+      //   page = ProductsPage(args: args);
+      // } else if (settings.name == AppRoutes.colors) {
+      //   // var product = settings.arguments as Product;
+      //   // page = ColorsPage(product: product);
     } else if (settings.name == AppRoutes.productsColorComparisonResult) {
       var args = settings.arguments as ProductsColorComparisonResultArgs;
       page = ProductsColorComparisonResult(args: args);
