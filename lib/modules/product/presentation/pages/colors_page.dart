@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:mapbeauty/modules/core/utils/app_routes.dart';
 
 import 'package:mapbeauty/modules/product/domain/models/product.dart';
+import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
 import 'package:mapbeauty/modules/product/presentation/pages/product_colors_comparison_result.dart';
 
 import '../../domain/models/color_type.dart';
 
 class ColorsPage extends StatefulWidget {
   final Product? product;
-  final Function(Product, ColorType) onColorSelected;
+  final Function(Product, ProductColor) onColorSelected;
   const ColorsPage({super.key, required this.product, required this.onColorSelected});
 
   @override
@@ -40,7 +41,10 @@ class _ColorsPageState extends State<ColorsPage> {
               final productColor = widget.product?.productColors[index];
 
               return GestureDetector(
-                onTap: () => widget.onColorSelected(widget.product!, productColor!.colorType),
+                onTap: () => widget.onColorSelected(
+                  widget.product!,
+                  productColor!,
+                ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,7 +55,7 @@ class _ColorsPageState extends State<ColorsPage> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: productColor?.colorType.color ?? Colors.white, // HexColor.fromHex(productColor.colorType.color),
-                        border: Border.all(),
+                        border: Border.all(width: 0.3),
                       ),
                     ),
                     Text(productColor?.brandColorName ?? ""),

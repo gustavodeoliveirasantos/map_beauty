@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -8,9 +9,9 @@ import '../../domain/models/product.dart';
 
 class ProductsColorComparisonResultArgs {
   final Product product;
-  final ColorType colorType;
+  final ProductColor productColor;
 
-  ProductsColorComparisonResultArgs(this.product, this.colorType);
+  ProductsColorComparisonResultArgs(this.product, this.productColor);
 }
 
 class ProductsColorComparisonResult extends StatefulWidget {
@@ -32,7 +33,7 @@ class _ProductsColorComparisonResultState extends State<ProductsColorComparisonR
     final viewModel = Provider.of<ProductViewModel>(context, listen: false);
     isLoading = true;
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      products = await viewModel.loadSimilarProductsUseCase(widget.args.product, widget.args.colorType);
+      products = await viewModel.loadSimilarProductsUseCase(widget.args.product, widget.args.productColor.colorType);
       setState(() {
         isLoading = false;
       });
@@ -73,7 +74,21 @@ class _ProductsColorComparisonResultState extends State<ProductsColorComparisonR
                       width: 80,
                       child: const Text("Imagem aqui"),
                     ),
-                    title: Text(product.name),
+                    title: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Cor: ProductColor", //Adicionar cor equivalente
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          product.name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
                     subtitle: Text("${product.brand.name}"),
                     trailing: TextButton(
                       child: const Text("Comprar"),

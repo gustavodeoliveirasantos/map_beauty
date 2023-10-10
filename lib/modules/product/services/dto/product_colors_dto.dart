@@ -1,25 +1,25 @@
 import 'dart:convert';
 import 'package:mapbeauty/modules/product/services/dto/color_type_dto.dart';
 
-class ProductColorsDTO {
+class ProductColorDTO {
   final String id;
   final String brandColorName;
   final ColorTypeDTO colorType;
   final String buyUrl;
-  const ProductColorsDTO({
+  const ProductColorDTO({
     required this.id,
     required this.brandColorName,
     required this.colorType,
     required this.buyUrl,
   });
 
-  ProductColorsDTO copyWith({
+  ProductColorDTO copyWith({
     String? id,
     String? brandColor,
     ColorTypeDTO? color,
     String? buyUrl,
   }) {
-    return ProductColorsDTO(
+    return ProductColorDTO(
       id: id ?? this.id,
       brandColorName: brandColor ?? brandColorName,
       colorType: color ?? colorType,
@@ -36,8 +36,8 @@ class ProductColorsDTO {
     };
   }
 
-  factory ProductColorsDTO.fromMap(Map<String, dynamic> map) {
-    return ProductColorsDTO(
+  factory ProductColorDTO.fromMap(Map<String, dynamic> map) {
+    return ProductColorDTO(
       id: (map["id"] ?? '') as String,
       brandColorName: (map["brandColor"] ?? '') as String,
       colorType: ColorTypeDTO.fromMap((map["color"] ?? Map<String, dynamic>.from({})) as Map<String, dynamic>),
@@ -47,7 +47,7 @@ class ProductColorsDTO {
 
   String toJson() => json.encode(toMap());
 
-  factory ProductColorsDTO.fromJson(String source) => ProductColorsDTO.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ProductColorDTO.fromJson(String source) => ProductColorDTO.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -55,7 +55,7 @@ class ProductColorsDTO {
   }
 
   @override
-  bool operator ==(covariant ProductColorsDTO other) {
+  bool operator ==(covariant ProductColorDTO other) {
     if (identical(this, other)) return true;
 
     return other.id == id && other.brandColorName == brandColorName && other.colorType == colorType && other.buyUrl == buyUrl;

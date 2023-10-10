@@ -56,7 +56,7 @@ class _BrandsPageState extends State<BrandsPage> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               //   color: Colors.black,
-              border: Border.all(),
+              border: Border.all(width: 0.3),
             ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),

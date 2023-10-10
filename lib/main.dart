@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
@@ -10,7 +12,18 @@ void main() {
   AppBootstrap.initializeApp();
   String initialRoute = AppBootstrap.getInitialRoute();
 
-  runApp(MapBeautyApp(initialRoute: initialRoute));
+  runApp(DevicePreview(
+    enabled: !kReleaseMode && kIsWeb,
+    tools: const [
+      ...DevicePreview.defaultTools,
+      // const CustomPlugin(),
+    ],
+    builder: (context) {
+      return MapBeautyApp(initialRoute: initialRoute);
+    },
+  ));
+
+  // runApp(MapBeautyApp(initialRoute: initialRoute));
 }
 
 class MapBeautyApp extends StatelessWidget {

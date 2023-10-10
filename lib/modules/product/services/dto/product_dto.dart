@@ -14,7 +14,7 @@ class ProductDTO {
   final ProductTypeDTO productType;
   final String? imageUrl;
   final String pageUrl;
-  final List<ProductColorsDTO> productColors;
+  final List<ProductColorDTO> productColors;
   const ProductDTO({
     required this.id,
     required this.name,
@@ -30,7 +30,7 @@ class ProductDTO {
     ProductTypeDTO? productType,
     String? imageUrl,
     String? pageUrl,
-    List<ProductColorsDTO>? productColors,
+    List<ProductColorDTO>? productColors,
   }) {
     return ProductDTO(
       id: id ?? this.id,
@@ -62,9 +62,9 @@ class ProductDTO {
       productType: ProductTypeDTO.fromMap((map["productType"] ?? Map<String, dynamic>.from({})) as Map<String, dynamic>),
       imageUrl: map['imageUrl'] != null ? map["imageUrl"] ?? '' as String : null,
       pageUrl: (map["pageUrl"] ?? '') as String,
-      productColors: List<ProductColorsDTO>.from(
-        ((map['productColors'] ?? const <ProductColorsDTO>[]) as List).map<ProductColorsDTO>((x) {
-          return ProductColorsDTO.fromMap((x ?? Map<String, dynamic>.from({})) as Map<String, dynamic>);
+      productColors: List<ProductColorDTO>.from(
+        ((map['productColors'] ?? const <ProductColorDTO>[]) as List).map<ProductColorDTO>((x) {
+          return ProductColorDTO.fromMap((x ?? Map<String, dynamic>.from({})) as Map<String, dynamic>);
         }),
       ),
     );

@@ -28,95 +28,101 @@ final productTypesDummy = [
 ];
 
 final someProducts = [
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 1", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(
+      id: Utils.uuid(),
+      name: "BT Skin 1 lalala hdhdue aiuasdu iduah asdoi sjdiasdj aoijas adsoijisadji s",
+      productType: productTypesDummy[2],
+      imageUrl: ProductsImagesAssets.p1,
+      pageUrl: productUrlTest,
+      productColors: [
+        ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
+        ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
+        ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
+        ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+      ]),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 2", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p2, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 2", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 3", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p3, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 3", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 4", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p4, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 4", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 5", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p5, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 5", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 6", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p6, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 6", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 7", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p1, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 7", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 8", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p2, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 8", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 9", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p3, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 9", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 10", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p4, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 10", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 11", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p5, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 11", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 12", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p6, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 12", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 13", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p1, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 13", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 14", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p2, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 14", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
-  ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 15", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorsDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 15", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p3, pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
   ]),
 ];
 
@@ -128,75 +134,75 @@ final productsDummy = [
     products: someProducts,
   ),
   BrandDTO(id: Utils.uuid(), name: "Eudora 1", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
+    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p1, pageUrl: productUrlTest, productColors: [
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
     ]),
   ]),
   BrandDTO(id: Utils.uuid(), name: "Eudora 2", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "C1", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "C2", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "C3", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
+    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p2, pageUrl: productUrlTest, productColors: [
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "C1", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "C2", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "C3", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
     ]),
   ]),
   BrandDTO(id: Utils.uuid(), name: "Eudora 3", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
+    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p3, pageUrl: productUrlTest, productColors: [
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
     ]),
   ]),
   BrandDTO(id: Utils.uuid(), name: "Eudora 4", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
+    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p4, pageUrl: productUrlTest, productColors: [
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
     ]),
   ]),
   BrandDTO(id: Utils.uuid(), name: "Eudora 5", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
+    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p5, pageUrl: productUrlTest, productColors: [
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
     ]),
   ]),
   BrandDTO(id: Utils.uuid(), name: "Eudora 6", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
+    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p6, pageUrl: productUrlTest, productColors: [
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
     ]),
   ]),
   BrandDTO(id: Utils.uuid(), name: "Eudora 7", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
+    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p1, pageUrl: productUrlTest, productColors: [
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
     ]),
   ]),
   BrandDTO(id: Utils.uuid(), name: "Eudora 8", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
+    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p2, pageUrl: productUrlTest, productColors: [
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
     ]),
   ]),
   BrandDTO(id: Utils.uuid(), name: "Eudora 9", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], pageUrl: productUrlTest, productColors: [
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorsDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
+    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p3, pageUrl: productUrlTest, productColors: [
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
+      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
     ]),
   ]),
 

@@ -15,24 +15,30 @@ class StepperItemWidget extends StatelessWidget {
     required this.onTap,
   }) : super(key: key);
 
-  TextStyle getTextStyppeFromState() {
+  TextStyle getTextStyppeFromState(BuildContext context) {
     Color color;
+    FontWeight fontWeight;
+
     switch (state) {
       case StepState.complete: //Já passei por ele
         color = Colors.black;
+        fontWeight = FontWeight.normal;
         break;
       case StepState.editing: //Atual
-        color = Colors.blue;
+        color = Theme.of(context).colorScheme.primary;
+        fontWeight = FontWeight.bold;
         break;
       case StepState.disabled:
-        color = Colors.yellow;
+        color = Colors.grey;
+        fontWeight = FontWeight.normal;
         break;
       default:
         color = Colors.grey;
+        fontWeight = FontWeight.normal;
         break;
     }
 
-    return TextStyle(color: color);
+    return TextStyle(color: color, fontWeight: fontWeight);
   }
 
   @override
@@ -40,17 +46,26 @@ class StepperItemWidget extends StatelessWidget {
     return Flexible(
       flex: 3,
       child: InkWell(
+        borderRadius: BorderRadius.circular(20),
         onTap: () {
           if (state != StepState.disabled) onTap();
         },
-        child: Column(
-          children: [
-            CircleAvatar(maxRadius: 16, child: Text("${step}")),
-            Text(
-              title,
-              style: getTextStyppeFromState(),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              CircleAvatar(
+                  maxRadius: 16,
+                  child: Text(
+                    "${step}",
+                    style: getTextStyppeFromState(context),
+                  )),
+              Text(
+                title,
+                style: getTextStyppeFromState(context),
+              ),
+            ],
+          ),
         ),
       ),
     );

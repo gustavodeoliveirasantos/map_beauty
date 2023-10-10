@@ -43,6 +43,7 @@ dependencies:
   share_plus: ^6.3.1
   in_app_review: ^2.0.6
   fluttericon: ^2.0.0
+  device_preview: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +73,13 @@ flutter:
     - assets/brand_images/eudora_logo.jpg
     - assets/brand_images/mari_maria_logo.jpg
     - assets/brands.json
+    - assets/product_images/eudora_base_protetor_stick_glam_skin_protect.jpeg
+    - assets/product_images/eudora_base_serum_glam_nano_lifting.jpeg
+    - assets/product_images/eudora_base_soul_ultra_matte.jpeg
+    - assets/product_images/eudora_glam_skin_perfection.jpg
+    - assets/product_images/eudora_niina_secrets_daily_tint_cream.jpeg
+    - assets/product_images/eudora_niina_secrets_hidra_glow.jpeg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

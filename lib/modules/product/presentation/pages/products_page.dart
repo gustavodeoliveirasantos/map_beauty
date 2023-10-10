@@ -7,10 +7,14 @@ import 'package:mapbeauty/modules/product/domain/models/product.dart';
 import '../../domain/models/brand.dart';
 
 class ProductsPageArgs {
-  // final Brand? brand;
+  final Brand? brand;
   final List<Product>? products;
   final Function(Product?) onProductSelected;
-  ProductsPageArgs({required this.products, required this.onProductSelected});
+  ProductsPageArgs({
+    required this.brand,
+    required this.products,
+    required this.onProductSelected,
+  });
 }
 
 class ProductsPage extends StatefulWidget {
@@ -26,58 +30,69 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Column(
-        children: [
-          Expanded(
-              child: GridView.builder(
-            itemCount: widget.args.products?.length,
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: size.width / 2,
-              childAspectRatio: 1,
-              mainAxisSpacing: 20,
-              crossAxisSpacing: 20,
-            ),
-            itemBuilder: (context, index) {
-              final product = widget.args.products?[index];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          widget.args.brand?.name ?? "",
+          textAlign: TextAlign.start,
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        ),
+        const SizedBox(height: 10),
+        Expanded(
+            child: GridView.builder(
+          itemCount: widget.args.products?.length,
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 200,
+            childAspectRatio: 0.75,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 20,
+          ),
+          itemBuilder: (context, index) {
+            final product = widget.args.products?[index];
 
-              return GestureDetector(
-                onTap: () => widget.args.onProductSelected(product),
-                child: Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        //   color: Colors.black,
-                        border: Border.all(),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: product?.imageUrl == null
-                            ? Container(
-                                height: 80,
-                                color: Colors.amber,
-                              )
-                            : ClipRRect(
-                                borderRadius: BorderRadius.circular(12.0),
-                                child: Image.asset(
-                                  product?.imageUrl! ?? "",
-                                  fit: BoxFit.cover,
-                                  height: double.infinity,
-                                  width: double.infinity,
-                                ),
-                              ),
-                      ),
+            return GestureDetector(
+              onTap: () => widget.args.onProductSelected(product),
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      //   color: Colors.black,
+                      border: Border.all(width: 0.3),
                     ),
-                    Text(product?.name ?? ""),
-                  ],
-                ),
-              );
-            },
-          ))
-        ],
-      ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: product?.imageUrl == null
+                          ? Container(
+                              //    height: 80,
+                              color: Colors.amber,
+                            )
+                          : ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.asset(
+                                product?.imageUrl! ?? "",
+                                fit: BoxFit.cover,
+                                //  height: double.infinity,
+                                //   width: double.infinity,
+                              ),
+                            ),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        "${product?.productType.type ?? ""}: ${product?.name ?? ""}",
+                        maxLines: 2,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            );
+          },
+        ))
+      ],
     );
   }
 }

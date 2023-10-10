@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mapbeauty/modules/core/utils/app_routes.dart';
 import 'package:mapbeauty/modules/product/domain/models/color_type.dart';
 import 'package:mapbeauty/modules/product/domain/models/product.dart';
+import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
 import 'package:mapbeauty/modules/product/presentation/components/stepper_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/pages/brands_page.dart';
 import 'package:mapbeauty/modules/product/presentation/pages/colors_page.dart';
@@ -9,8 +10,6 @@ import 'package:mapbeauty/modules/product/presentation/pages/product_colors_comp
 import 'package:mapbeauty/modules/product/presentation/pages/products_page.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
 import 'package:provider/provider.dart';
-
-import '../../../core/presentation/components/loading_widget.dart';
 import '../../../core/presentation/components/main_drawer.dart';
 import '../../domain/models/brand.dart';
 
@@ -25,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   Brand? selectedBrand;
   List<Product> products = [];
   Product? selectedProduct;
+
   Color? selectedColor;
   int pageIndex = 0;
   int stepsOpened = 1;
@@ -56,8 +56,8 @@ class _HomePageState extends State<HomePage> {
     goToPage(2);
   }
 
-  void onColorSelected(Product product, ColorType colorType) {
-    Navigator.of(context).pushNamed(AppRoutes.productsColorComparisonResult, arguments: ProductsColorComparisonResultArgs(product, colorType));
+  void onColorSelected(Product product, ProductColor productColor) {
+    Navigator.of(context).pushNamed(AppRoutes.productsColorComparisonResult, arguments: ProductsColorComparisonResultArgs(product, productColor));
   }
 
   void goToPage(int index) {
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
               controller: pageController,
               children: [
                 BrandsPage(onBrandSelected: onBrandSelected),
-                ProductsPage(args: ProductsPageArgs(products: products, onProductSelected: onProductSelected)),
+                ProductsPage(args: ProductsPageArgs(brand: this.selectedBrand, products: products, onProductSelected: onProductSelected)),
                 ColorsPage(product: selectedProduct, onColorSelected: onColorSelected)
               ],
             ))

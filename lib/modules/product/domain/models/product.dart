@@ -12,7 +12,7 @@ class Product {
   final String pageUrl;
   final ProductType productType;
 
-  final List<ProductColors> productColors;
+  final List<ProductColor> productColors;
 
   const Product({
     required this.id,

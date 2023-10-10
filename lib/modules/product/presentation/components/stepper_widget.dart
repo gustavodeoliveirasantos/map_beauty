@@ -33,27 +33,24 @@ class StepperWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.amber,
-      // height: 50,
-      child: Stack(
-        children: [
-          StepperSeparatorWidget(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              StepperItemWidget(step: 1, title: "Marca", state: getState(0), onTap: () => onTap(0)),
-              //  const StepperSeparatorWidget(),
-              StepperItemWidget(step: 2, title: "Produto", state: getState(1), onTap: () => onTap(1)),
-              //  const StepperSeparatorWidget(),
-              StepperItemWidget(step: 3, title: "Cores", state: getState(2), onTap: () => onTap(2)),
-              // StepperSeparatorWidget(),
-              // StepperItemWidget(step: 4, title: "Resultado", state: getState(3)),
-            ],
-          ),
-        ],
-      ),
+    return Stack(
+      alignment: AlignmentDirectional.center,
+      children: [
+        const StepperSeparatorWidget(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            StepperItemWidget(step: 1, title: "Marcas", state: getState(0), onTap: () => onTap(0)),
+            //  const StepperSeparatorWidget(),
+            StepperItemWidget(step: 2, title: "Produtos", state: getState(1), onTap: () => onTap(1)),
+            //  const StepperSeparatorWidget(),
+            StepperItemWidget(step: 3, title: "Cores", state: getState(2), onTap: () => onTap(2)),
+            // StepperSeparatorWidget(),
+            // StepperItemWidget(step: 4, title: "Resultado", state: getState(3)),
+          ],
+        ),
+      ],
     );
   }
 }
