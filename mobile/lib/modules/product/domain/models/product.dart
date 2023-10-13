@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:ui';
+
 import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_type.dart';
 
@@ -23,4 +25,9 @@ class Product {
     required this.pageUrl,
     required this.productColors,
   });
+
+  String getBrandColorNameFor({required ProductColor selectedColor}) {
+    print(123);
+    return productColors.firstWhere((element) => element.colorType.id == selectedColor.colorType.id).brandColorName;
+  }
 }

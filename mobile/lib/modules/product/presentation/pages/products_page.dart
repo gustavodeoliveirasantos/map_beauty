@@ -81,7 +81,7 @@ class _ProductsPageState extends State<ProductsPage> {
                           child: product?.imageUrl == null
                               ? Container(
                                   //    height: 80,
-                                  color: Colors.amber,
+                                  color: Colors.grey,
                                 )
                               : ClipRRect(
                                   borderRadius: BorderRadius.circular(12.0),

@@ -11,11 +11,16 @@ import 'package:mapbeauty/modules/product/presentation/pages/product_colors_comp
 import '../../domain/models/color_type.dart';
 
 class ColorsPage extends StatefulWidget {
-  final Brand? brand;
+  // final Brand? brand;
   final Product? product;
   final Function(Product, ProductColor) onColorSelected;
   final Function(ScrollDirection direction) didScroll;
-  const ColorsPage({super.key, required this.product, required this.onColorSelected, required this.didScroll, required this.brand});
+  const ColorsPage({
+    super.key,
+    required this.product,
+    required this.onColorSelected,
+    required this.didScroll,
+  });
 
   @override
   State<ColorsPage> createState() => _ColorsPageState();
@@ -26,13 +31,17 @@ class _ColorsPageState extends State<ColorsPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.brand?.name ?? "",
-            textAlign: TextAlign.start,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+            widget.product?.brand.name ?? "",
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black),
+          ),
+          Text(
+            widget.product?.name ?? "",
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.normal, color: Colors.black),
           ),
           // const SearchBar(hintText: "Pesquisar", leading: Icon(Icons.search)),
           const SizedBox(height: 20),

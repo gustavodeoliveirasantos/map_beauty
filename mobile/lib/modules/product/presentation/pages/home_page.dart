@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mapbeauty/modules/core/utils/app_routes.dart';
 import 'package:mapbeauty/modules/product/domain/models/product.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
@@ -103,7 +104,27 @@ class _HomePageState extends State<HomePage> {
     // final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(title: const Text("MAP Beauty")),
+      appBar: AppBar(
+        title: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: "MAP",
+                style: GoogleFonts.belleza(
+                  fontSize: 30,
+                  color: Colors.black,
+                ),
+              ),
+              TextSpan(
+                  text: " beauty",
+                  style: GoogleFonts.allura(
+                    fontSize: 30,
+                    color: Colors.black,
+                  )),
+            ],
+          ),
+        ),
+      ),
       drawer: MainDrawerWidget(),
       body: Column(
         children: [
@@ -133,7 +154,6 @@ class _HomePageState extends State<HomePage> {
                 didScroll: didScroll,
               )),
               ColorsPage(
-                brand: selectedBrand,
                 product: selectedProduct,
                 onColorSelected: onColorSelected,
                 didScroll: didScroll,
