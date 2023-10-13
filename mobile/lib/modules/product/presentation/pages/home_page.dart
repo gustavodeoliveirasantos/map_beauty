@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:mapbeauty/modules/core/utils/app_routes.dart';
-import 'package:mapbeauty/modules/product/domain/models/color_type.dart';
 import 'package:mapbeauty/modules/product/domain/models/product.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
 import 'package:mapbeauty/modules/product/presentation/components/stepper_widget.dart';
@@ -28,9 +28,11 @@ class _HomePageState extends State<HomePage> {
   Color? selectedColor;
   int pageIndex = 0;
   int stepsOpened = 1;
+  bool isStepBarHidden = false;
 
   PageController pageController = PageController(
     initialPage: 0,
+
     viewportFraction: 1,
     //  keepPage: true,
   );
@@ -83,6 +85,19 @@ class _HomePageState extends State<HomePage> {
     goToPage(index);
   }
 
+  void onPageChanged(int index) {
+    setState(() => isStepBarHidden = false);
+  }
+
+  didScroll(ScrollDirection direction) {
+    // print(offset);
+    if (direction == ScrollDirection.reverse) {
+      setState(() => isStepBarHidden = true);
+    } else if (direction == ScrollDirection.forward) {
+      setState(() => isStepBarHidden = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // final size = MediaQuery.of(context).size;
@@ -90,29 +105,42 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(title: const Text("MAP Beauty")),
       drawer: MainDrawerWidget(),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          children: [
-            StepperWidget(
-              currentIndex: pageIndex,
-              stepsOpened: stepsOpened,
-              onTap: onStepperSelected,
-            ),
-            //      const SearchBar(hintText: "Pesquisar", leading: Icon(Icons.search)),
-            const SizedBox(height: 20),
-            Expanded(
-                child: PageView(
-              //  physics: const NeverScrollableScrollPhysics(),
-              controller: pageController,
-              children: [
-                BrandsPage(onBrandSelected: onBrandSelected),
-                ProductsPage(args: ProductsPageArgs(brand: this.selectedBrand, products: products, onProductSelected: onProductSelected)),
-                ColorsPage(product: selectedProduct, onColorSelected: onColorSelected)
-              ],
-            ))
-          ],
-        ),
+      body: Column(
+        children: [
+          StepperWidget(
+            currentIndex: pageIndex,
+            stepsOpened: stepsOpened,
+            onTap: onStepperSelected,
+            isHidden: isStepBarHidden,
+          ),
+          //      const SearchBar(hintText: "Pesquisar", leading: Icon(Icons.search)),
+          SizedBox(height: isStepBarHidden ? 0 : 20),
+          Expanded(
+              child: PageView(
+            onPageChanged: onPageChanged,
+            //  physics: const NeverScrollableScrollPhysics(),
+            controller: pageController,
+            children: [
+              BrandsPage(
+                onBrandSelected: onBrandSelected,
+                didScroll: didScroll,
+              ),
+              ProductsPage(
+                  args: ProductsPageArgs(
+                brand: selectedBrand,
+                products: products,
+                onProductSelected: onProductSelected,
+                didScroll: didScroll,
+              )),
+              ColorsPage(
+                brand: selectedBrand,
+                product: selectedProduct,
+                onColorSelected: onColorSelected,
+                didScroll: didScroll,
+              )
+            ],
+          ))
+        ],
       ),
     );
   }

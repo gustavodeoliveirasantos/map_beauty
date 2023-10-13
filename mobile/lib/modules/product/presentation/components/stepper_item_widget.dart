@@ -5,6 +5,7 @@ class StepperItemWidget extends StatelessWidget {
   final int step;
   final String title;
   final StepState state;
+  final bool isHidden;
   final Function() onTap;
 
   const StepperItemWidget({
@@ -13,6 +14,7 @@ class StepperItemWidget extends StatelessWidget {
     required this.title,
     required this.state,
     required this.onTap,
+    required this.isHidden,
   }) : super(key: key);
 
   TextStyle getTextStyppeFromState(BuildContext context) {
@@ -55,7 +57,7 @@ class StepperItemWidget extends StatelessWidget {
           child: Column(
             children: [
               CircleAvatar(
-                  maxRadius: 16,
+                  maxRadius: 20,
                   child: Text(
                     "${step}",
                     style: getTextStyppeFromState(context),

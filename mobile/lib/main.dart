@@ -38,7 +38,7 @@ class MapBeautyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ProductViewModel()),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Map Beauty',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),

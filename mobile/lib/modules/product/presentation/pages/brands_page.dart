@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:mapbeauty/modules/core/utils/app_routes.dart';
 import 'package:mapbeauty/modules/product/domain/models/brand.dart';
 import 'package:mapbeauty/modules/product/presentation/pages/products_page.dart';
@@ -7,7 +8,8 @@ import 'package:provider/provider.dart';
 
 class BrandsPage extends StatefulWidget {
   final Function(Brand) onBrandSelected;
-  const BrandsPage({super.key, required this.onBrandSelected});
+  final Function(ScrollDirection direction) didScroll;
+  const BrandsPage({super.key, required this.onBrandSelected, required this.didScroll});
 
   @override
   State<BrandsPage> createState() => _BrandsPageState();
@@ -35,44 +37,55 @@ class _BrandsPageState extends State<BrandsPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return GridView.builder(
-      itemCount: brands?.length,
-      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: size.width / 3,
-        childAspectRatio: 1,
-        mainAxisSpacing: 20,
-        crossAxisSpacing: 20,
-      ),
-      itemBuilder: (context, index) {
-        final brand = brands?[index];
-        if (brand == null) {
-          return Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.black12),
-          );
-        }
-        return GestureDetector(
-          onTap: () => widget.onBrandSelected(brand),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              //   color: Colors.black,
-              border: Border.all(width: 0.3),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12.0),
-                child: Image.asset(
-                  brand.imageUrl,
-                  fit: BoxFit.cover,
-                  height: double.infinity,
-                  width: double.infinity,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: NotificationListener<UserScrollNotification>(
+        onNotification: (notification) {
+          final ScrollDirection direction = notification.direction;
+          widget.didScroll(direction);
+
+          return true;
+        },
+        child: GridView.builder(
+          itemCount: brands?.length,
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: size.width / 3,
+            childAspectRatio: 1,
+            mainAxisSpacing: 20,
+            crossAxisSpacing: 20,
+          ),
+          itemBuilder: (context, index) {
+            final brand = brands?[index];
+            if (brand == null) {
+              return Container(
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.black12),
+              );
+            }
+            return GestureDetector(
+              onTap: () => widget.onBrandSelected(brand),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  //   color: Colors.black,
+                  border: Border.all(width: 0.3),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12.0),
+                    child: Image.asset(
+                      brand.imageUrl,
+                      fit: BoxFit.cover,
+                      height: double.infinity,
+                      width: double.infinity,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-        );
-      },
+            );
+          },
+        ),
+      ),
     );
   }
 }
