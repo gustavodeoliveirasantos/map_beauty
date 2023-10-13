@@ -105,6 +105,8 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 8,
+        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
         title: RichText(
           text: TextSpan(
             children: [

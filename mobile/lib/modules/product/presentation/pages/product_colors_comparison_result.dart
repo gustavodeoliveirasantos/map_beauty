@@ -66,6 +66,12 @@ class _ProductsColorComparisonResultState extends State<ProductsColorComparisonR
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 8,
+        shadowColor: Colors.black,
+        surfaceTintColor: Colors.transparent,
+        //  foregroundColor: ,
+        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+        // backgroundColor: Colors.red,
         title: Text(
           "Resultados",
           style: GoogleFonts.belleza(
