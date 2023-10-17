@@ -1,10 +1,10 @@
 class Brand {
   final String id;
   final String name;
-  final String imageUrl;
+  final String? imageName;
   const Brand({
     required this.id,
     required this.name,
-    required this.imageUrl,
+    required this.imageName,
   });
 }

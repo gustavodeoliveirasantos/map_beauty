@@ -87,7 +87,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   void onPageChanged(int index) {
-    setState(() => isStepBarHidden = false);
+    setState(() {
+      //   pageIndex = index;
+      isStepBarHidden = false;
+    });
   }
 
   didScroll(ScrollDirection direction) {
@@ -141,7 +144,7 @@ class _HomePageState extends State<HomePage> {
           Expanded(
               child: PageView(
             onPageChanged: onPageChanged,
-            //  physics: const NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             controller: pageController,
             children: [
               BrandsPage(

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "452881834159",
+    "project_id": "map-beauty-f8b01",
+    "storage_bucket": "map-beauty-f8b01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452881834159:android:063966fabe03889b57b45a",
+        "android_client_info": {
+          "package_name": "br.com.mapbeauty.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLVs5nyorGP-5CBuFe0obCySWm_B1w31Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

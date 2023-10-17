@@ -8,25 +8,25 @@ import 'package:mapbeauty/modules/product/services/dto/product_dto.dart';
 class BrandDTO {
   final String id;
   final String name;
-  final String imageUrl;
+  final String? imageName;
   final List<ProductDTO> products;
   const BrandDTO({
     required this.id,
     required this.name,
-    required this.imageUrl,
+    required this.imageName,
     required this.products,
   });
 
   BrandDTO copyWith({
     String? id,
     String? name,
-    String? imageUrl,
+    String? imageName,
     List<ProductDTO>? products,
   }) {
     return BrandDTO(
       id: id ?? this.id,
       name: name ?? this.name,
-      imageUrl: imageUrl ?? this.imageUrl,
+      imageName: imageName ?? this.imageName,
       products: products ?? this.products,
     );
   }
@@ -35,7 +35,7 @@ class BrandDTO {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'imageUrl': imageUrl,
+      'imageName': imageName,
       'products': products.map((x) {
         return x.toMap();
       }).toList(growable: false),
@@ -46,7 +46,7 @@ class BrandDTO {
     return BrandDTO(
       id: (map["id"] ?? '') as String,
       name: (map["name"] ?? '') as String,
-      imageUrl: (map["imageUrl"] ?? '') as String,
+      imageName: map['imageName'] != null ? map["imageName"] ?? '' as String : null,
       products: List<ProductDTO>.from(
         ((map['products'] ?? const <ProductDTO>[]) as List).map<ProductDTO>((x) {
           return ProductDTO.fromMap((x ?? Map<String, dynamic>.from({})) as Map<String, dynamic>);
@@ -61,18 +61,18 @@ class BrandDTO {
 
   @override
   String toString() {
-    return 'BrandDTO(id: $id, name: $name, imageUrl: $imageUrl, products: $products)';
+    return 'BrandDTO(id: $id, name: $name, imageName: $imageName, products: $products)';
   }
 
   @override
   bool operator ==(covariant BrandDTO other) {
     if (identical(this, other)) return true;
 
-    return other.id == id && other.name == name && other.imageUrl == imageUrl && listEquals(other.products, products);
+    return other.id == id && other.name == name && other.imageName == imageName && listEquals(other.products, products);
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ name.hashCode ^ imageUrl.hashCode ^ products.hashCode;
+    return id.hashCode ^ name.hashCode ^ imageName.hashCode ^ products.hashCode;
   }
 }

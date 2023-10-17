@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:mapbeauty/firebase/firebase_storage_service.dart';
 import 'package:mapbeauty/modules/core/utils/app_routes.dart';
 
 import 'package:mapbeauty/modules/product/domain/models/product.dart';
+import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
 
 import '../../domain/models/brand.dart';
 
@@ -29,7 +31,10 @@ class ProductsPage extends StatefulWidget {
   State<ProductsPage> createState() => _ProductsPageState();
 }
 
-class _ProductsPageState extends State<ProductsPage> {
+class _ProductsPageState extends State<ProductsPage> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   void didScroll(ScrollDirection direction) {
     widget.args.didScroll(direction);
   }
@@ -37,6 +42,8 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final imageSize = size.width / 2 - 20;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: Column(
@@ -76,31 +83,30 @@ class _ProductsPageState extends State<ProductsPage> {
                           //   color: Colors.black,
                           border: Border.all(width: 0.3),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: product?.imageUrl == null
-                              ? Container(
-                                  //    height: 80,
-                                  color: Colors.grey,
-                                )
-                              : ClipRRect(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  child: Image.asset(
-                                    product?.imageUrl! ?? "",
-                                    fit: BoxFit.cover,
-                                    //  height: double.infinity,
-                                    //   width: double.infinity,
-                                  ),
+                        child: product?.imageUrl == null
+                            ? Container(
+                                //    height: 80,
+                                color: Colors.grey,
+                              )
+                            : ClipRRect(
+                                borderRadius: BorderRadius.circular(12.0),
+                                child: FirebaseStorageImageWidget(
+                                  imageType: ImageType.product,
+                                  imageName: product?.imageUrl,
+                                  height: imageSize,
+                                  width: imageSize,
                                 ),
-                        ),
+                              ),
                       ),
-                      Column(
-                        children: [
-                          Text(
+                      Expanded(
+                        child: Center(
+                          child: Text(
                             "${product?.productType.type ?? ""}: ${product?.name ?? ""}",
                             maxLines: 2,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                        ],
+                        ),
                       ),
                     ],
                   ),

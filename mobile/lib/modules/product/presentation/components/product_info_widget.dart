@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mapbeauty/firebase/firebase_storage_service.dart';
 import 'package:mapbeauty/modules/product/domain/models/product.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
+import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
 
 class ProductInfoWidget extends StatelessWidget {
   final Product product;
@@ -71,9 +73,9 @@ class ProductInfoWidget extends StatelessWidget {
                 flex: 1,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
-                  child: Image.asset(
-                    product.imageUrl ?? "",
-                    fit: BoxFit.cover,
+                  child: FirebaseStorageImageWidget(
+                    imageName: product.imageUrl,
+                    imageType: ImageType.product,
                     height: 100,
                   ),
                 ),

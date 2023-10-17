@@ -12,14 +12,14 @@ class ProductDTO {
   final String id;
   final String name;
   final ProductTypeDTO productType;
-  final String? imageUrl;
+  final String? imageName;
   final String pageUrl;
   final List<ProductColorDTO> productColors;
   const ProductDTO({
     required this.id,
     required this.name,
     required this.productType,
-    this.imageUrl,
+    this.imageName,
     required this.pageUrl,
     required this.productColors,
   });
@@ -36,7 +36,7 @@ class ProductDTO {
       id: id ?? this.id,
       name: name ?? this.name,
       productType: productType ?? this.productType,
-      imageUrl: imageUrl ?? this.imageUrl,
+      imageName: imageUrl ?? this.imageName,
       pageUrl: pageUrl ?? this.pageUrl,
       productColors: productColors ?? this.productColors,
     );
@@ -47,7 +47,7 @@ class ProductDTO {
       'id': id,
       'name': name,
       'productType': productType.toMap(),
-      'imageUrl': imageUrl,
+      'imageUrl': imageName,
       'pageUrl': pageUrl,
       'productColors': productColors.map((x) {
         return x.toMap();
@@ -60,7 +60,7 @@ class ProductDTO {
       id: (map["id"] ?? '') as String,
       name: (map["name"] ?? '') as String,
       productType: ProductTypeDTO.fromMap((map["productType"] ?? Map<String, dynamic>.from({})) as Map<String, dynamic>),
-      imageUrl: map['imageUrl'] != null ? map["imageUrl"] ?? '' as String : null,
+      imageName: map['imageUrl'] != null ? map["imageUrl"] ?? '' as String : null,
       pageUrl: (map["pageUrl"] ?? '') as String,
       productColors: List<ProductColorDTO>.from(
         ((map['productColors'] ?? const <ProductColorDTO>[]) as List).map<ProductColorDTO>((x) {
@@ -76,18 +76,18 @@ class ProductDTO {
 
   @override
   String toString() {
-    return 'ProductDTO(id: $id, name: $name, productType: $productType, imageUrl: $imageUrl, pageUrl: $pageUrl, productColors: $productColors)';
+    return 'ProductDTO(id: $id, name: $name, productType: $productType, imageUrl: $imageName, pageUrl: $pageUrl, productColors: $productColors)';
   }
 
   @override
   bool operator ==(covariant ProductDTO other) {
     if (identical(this, other)) return true;
 
-    return other.id == id && other.name == name && other.productType == productType && other.imageUrl == imageUrl && other.pageUrl == pageUrl && listEquals(other.productColors, productColors);
+    return other.id == id && other.name == name && other.productType == productType && other.imageName == imageName && other.pageUrl == pageUrl && listEquals(other.productColors, productColors);
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ name.hashCode ^ productType.hashCode ^ imageUrl.hashCode ^ pageUrl.hashCode ^ productColors.hashCode;
+    return id.hashCode ^ name.hashCode ^ productType.hashCode ^ imageName.hashCode ^ pageUrl.hashCode ^ productColors.hashCode;
   }
 }

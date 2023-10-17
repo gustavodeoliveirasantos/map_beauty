@@ -28,188 +28,313 @@ final productTypesDummy = [
 ];
 
 final someProducts = [
-  ProductDTO(
-      id: Utils.uuid(),
-      name: "BT Skin 1 lalala hdhdue aiuasdu iduah asdoi sjdiasdj aoijas adsoijisa asda sd asd asd asd asd asd asd asd asd asd asdsdasdasd sdasdas asd asd asdji s",
-      productType: productTypesDummy[2],
-      imageUrl: ProductsImagesAssets.p1,
-      pageUrl: productUrlTest,
-      productColors: [
-        ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-        ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-        ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-        ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
-      ]),
-  ProductDTO(
-      id: Utils.uuid(),
-      name: "BT Skin 22222222222 22222222 2222 22222222  22222222",
-      productType: productTypesDummy[2],
-      imageUrl: ProductsImagesAssets.p2,
-      pageUrl: productUrlTest,
-      productColors: [
-        ProductColorDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
-        ProductColorDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
-        ProductColorDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
-        ProductColorDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
-      ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 3", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p3, pageUrl: productUrlTest, productColors: [
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "A1", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "A2", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "A3", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "A4", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 1 lal", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 4", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p4, pageUrl: productUrlTest, productColors: [
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 2222", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 5", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p5, pageUrl: productUrlTest, productColors: [
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "B1", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "B2", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "B3", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "B4", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 3", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "A1", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "A2", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "A3", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "A4", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 6", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p6, pageUrl: productUrlTest, productColors: [
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "BB1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "BB2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "BB3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "BB4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 4", productType: productTypesDummy[2], imageName: "mac_matte_chili.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "AA4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 7", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p1, pageUrl: productUrlTest, productColors: [
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "B5", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "B6", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "B7", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "b8", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 5", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "B1", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "B2", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "B3", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "B4", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 8", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p2, pageUrl: productUrlTest, productColors: [
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "CC1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "CC2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "CC3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "CC4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 6", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "BB1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "BB2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "BB3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "BB4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 9", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p3, pageUrl: productUrlTest, productColors: [
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 7", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "B5", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "B6", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "B7", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "b8", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 10", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p4, pageUrl: productUrlTest, productColors: [
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "DD1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "DD2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "DD3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "DD4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 8", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "CC1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "CC2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "CC3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "CC4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 11", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p5, pageUrl: productUrlTest, productColors: [
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 9", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 12", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p6, pageUrl: productUrlTest, productColors: [
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "EE0", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "EE1", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "EE2", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "EE3", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 10", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "DD1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "DD2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "DD3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "DD4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 13", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p1, pageUrl: productUrlTest, productColors: [
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "FF0", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "FF1", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "FF2", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "FF3", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 11", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 14", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p2, pageUrl: productUrlTest, productColors: [
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "GG1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "GG2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "GG3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "GG4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 12", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "EE0", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "EE1", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "EE2", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "EE3", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
   ]),
-  ProductDTO(id: Utils.uuid(), name: "BT Skin 15", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p3, pageUrl: productUrlTest, productColors: [
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC"),
-    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC"),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 13", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "FF0", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "FF1", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "FF2", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "FF3", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
+  ]),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 14", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "GG1", colorType: colorsDummy[4], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "GG2", colorType: colorsDummy[5], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "GG3", colorType: colorsDummy[6], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "GG4", colorType: colorsDummy[7], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
+  ]),
+  ProductDTO(id: Utils.uuid(), name: "BT Skin 15", productType: productTypesDummy[2], imageName: "mac_powder_kiss_mull_it_over.png", pageUrl: productUrlTest, productColors: [
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F10", colorType: colorsDummy[0], buyUrl: "https://amzn.to/4742SCC", imageName: "bruna_tavares_bt_lux_lana.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F20", colorType: colorsDummy[1], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_satin_twig.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F30", colorType: colorsDummy[2], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_matte_chili.png"),
+    ProductColorDTO(id: Utils.uuid(), brandColorName: "F40", colorType: colorsDummy[3], buyUrl: "https://amzn.to/4742SCC", imageName: "mac_powder_kiss_mull_it_over.png"),
   ]),
 ];
 
 final productsDummy = [
   BrandDTO(
     id: Utils.uuid(),
-    name: "Bruna Tavares",
-    imageUrl: BrandImagesAssets.brunaTavares,
+    name: "MAC",
+    imageName: "mac_logo.png",
     products: someProducts,
   ),
-  BrandDTO(id: Utils.uuid(), name: "Eudora 1", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p1, pageUrl: productUrlTest, productColors: [
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
-    ]),
+  BrandDTO(id: Utils.uuid(), name: "Avon", imageName: "avon_logo.png", products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
   ]),
-  BrandDTO(id: Utils.uuid(), name: "Eudora 2", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p2, pageUrl: productUrlTest, productColors: [
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "C1", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "C2", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "C3", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
-    ]),
+  BrandDTO(id: Utils.uuid(), name: "o Boticário", imageName: "o_boticário_logo.png", products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "C1", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "C2", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "C3", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
   ]),
-  BrandDTO(id: Utils.uuid(), name: "Eudora 3", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p3, pageUrl: productUrlTest, productColors: [
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
-    ]),
+  BrandDTO(id: Utils.uuid(), name: "Bruna Tavares", imageName: "bruna_tavares_logo.jpg", products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
   ]),
-  BrandDTO(id: Utils.uuid(), name: "Eudora 4", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p4, pageUrl: productUrlTest, productColors: [
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
-    ]),
+  BrandDTO(id: Utils.uuid(), name: "Essence", imageName: 'essence_logo.png', products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
   ]),
-  BrandDTO(id: Utils.uuid(), name: "Eudora 5", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p5, pageUrl: productUrlTest, productColors: [
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
-    ]),
+  BrandDTO(id: Utils.uuid(), name: "Eudora", imageName: 'eudora_logo.jpg', products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
   ]),
-  BrandDTO(id: Utils.uuid(), name: "Eudora 6", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p6, pageUrl: productUrlTest, productColors: [
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
-    ]),
+  BrandDTO(id: Utils.uuid(), name: "Fenty Beauty", imageName: 'fenty_beauty_logo.jpg', products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
   ]),
-  BrandDTO(id: Utils.uuid(), name: "Eudora 7", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p1, pageUrl: productUrlTest, productColors: [
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
-    ]),
+  BrandDTO(id: Utils.uuid(), name: "Fran", imageName: null, products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
   ]),
-  BrandDTO(id: Utils.uuid(), name: "Eudora 8", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p2, pageUrl: productUrlTest, productColors: [
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
-    ]),
+  BrandDTO(id: Utils.uuid(), name: "Jequiti", imageName: 'jequiti_logo.png', products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
   ]),
-  BrandDTO(id: Utils.uuid(), name: "Eudora 9", imageUrl: BrandImagesAssets.eudora, products: [
-    ProductDTO(id: Utils.uuid(), name: "Base Protetor Stick Glam Skin Protect", productType: productTypesDummy[2], imageUrl: ProductsImagesAssets.p3, pageUrl: productUrlTest, productColors: [
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA"),
-      ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s"),
-    ]),
+  BrandDTO(id: Utils.uuid(), name: "Mahav", imageName: 'mahav_logo.png', products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
+  ]),
+
+  BrandDTO(id: Utils.uuid(), name: "Mari Maria", imageName: 'mari_maria_logo.jpg', products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
+  ]),
+
+  BrandDTO(id: Utils.uuid(), name: "Maybelline", imageName: 'maybelline_logo.png', products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
+  ]),
+
+  BrandDTO(id: Utils.uuid(), name: "Natura", imageName: 'natura_logo.png', products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
+  ]),
+
+  BrandDTO(id: Utils.uuid(), name: "Payot", imageName: 'payot_logo.png', products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
+  ]),
+
+  BrandDTO(id: Utils.uuid(), name: "Rare Beauty", imageName: 'rare_beauty_logo.png', products: [
+    ProductDTO(
+        id: Utils.uuid(),
+        name: "Base Protetor Stick Glam Skin Protect",
+        productType: productTypesDummy[2],
+        imageName: "mac_powder_kiss_mull_it_over.png",
+        pageUrl: productUrlTest,
+        productColors: [
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "00", colorType: colorsDummy[0], buyUrl: "https://amzn.to/3Dx1mM4", imageName: "bruna_tavares_bt_lux_lana.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "05", colorType: colorsDummy[1], buyUrl: "https://amzn.to/3OyeMO9", imageName: "mac_satin_twig.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "10", colorType: colorsDummy[2], buyUrl: "https://amzn.to/3KetWFA", imageName: "mac_matte_chili.png"),
+          ProductColorDTO(id: Utils.uuid(), brandColorName: "15", colorType: colorsDummy[3], buyUrl: "https://amzn.to/44Zb59s", imageName: "mac_powder_kiss_mull_it_over.png"),
+        ]),
   ]),
 
   //BrandDTO(id: Utils.uuid(), name: "Mari Maria", imageUrl: BrandImagesAssets.mariMaria, products: []),

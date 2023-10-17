@@ -6,6 +6,6 @@ import '../models/brand.dart';
 class BrandAdapter implements Adapter<Brand, BrandDTO> {
   @override
   Brand adapt(BrandDTO dto) {
-    return Brand(id: dto.id, name: dto.name, imageUrl: dto.imageUrl);
+    return Brand(id: dto.id, name: dto.name, imageName: dto.imageName);
   }
 }

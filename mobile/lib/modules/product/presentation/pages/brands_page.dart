@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:mapbeauty/firebase/firebase_storage_service.dart';
 import 'package:mapbeauty/modules/core/utils/app_routes.dart';
 import 'package:mapbeauty/modules/product/domain/models/brand.dart';
+import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/pages/products_page.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
 import 'package:provider/provider.dart';
@@ -15,8 +17,11 @@ class BrandsPage extends StatefulWidget {
   State<BrandsPage> createState() => _BrandsPageState();
 }
 
-class _BrandsPageState extends State<BrandsPage> {
+class _BrandsPageState extends State<BrandsPage> with AutomaticKeepAliveClientMixin {
   List<Brand>? brands;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -37,6 +42,8 @@ class _BrandsPageState extends State<BrandsPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final imageSize = size.width / 3 - 30;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: NotificationListener<UserScrollNotification>(
@@ -50,9 +57,9 @@ class _BrandsPageState extends State<BrandsPage> {
           itemCount: brands?.length,
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: size.width / 3,
-            childAspectRatio: 1,
-            mainAxisSpacing: 20,
-            crossAxisSpacing: 20,
+            childAspectRatio: 0.8,
+            mainAxisSpacing: 30,
+            crossAxisSpacing: 30,
           ),
           itemBuilder: (context, index) {
             final brand = brands?[index];
@@ -61,27 +68,33 @@ class _BrandsPageState extends State<BrandsPage> {
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.black12),
               );
             }
-            return GestureDetector(
-              onTap: () => widget.onBrandSelected(brand),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  //   color: Colors.black,
-                  border: Border.all(width: 0.3),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12.0),
-                    child: Image.asset(
-                      brand.imageUrl,
-                      fit: BoxFit.cover,
-                      height: double.infinity,
-                      width: double.infinity,
+            return Column(
+              children: [
+                GestureDetector(
+                  onTap: () => widget.onBrandSelected(brand),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      //   color: Colors.black,
+                      border: Border.all(width: 0.3),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12.0),
+                      child: FirebaseStorageImageWidget(
+                        imageType: ImageType.logo,
+                        imageName: brand.imageName,
+                        height: imageSize,
+                        width: imageSize,
+                      ),
                     ),
                   ),
                 ),
-              ),
+                Text(
+                  brand.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             );
           },
         ),

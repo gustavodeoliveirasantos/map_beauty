@@ -5,6 +5,7 @@ class ProductColor {
   final String brandColorName;
   final ColorType colorType;
   final String buyUrl;
+  final String? imageName;
 
-  ProductColor(this.id, this.brandColorName, this.colorType, this.buyUrl);
+  ProductColor(this.id, this.brandColorName, this.colorType, this.buyUrl, this.imageName);
 }

@@ -1,7 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mapbeauty/firebase/firebase_storage_service.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
+import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/product_info_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
 import 'package:provider/provider.dart';
@@ -113,12 +116,19 @@ class _ProductsColorComparisonResultState extends State<ProductsColorComparisonR
                             //   tileColor: Colors.amber,
                             leading: ClipRRect(
                               borderRadius: BorderRadius.circular(12.0),
-                              child: Image.asset(
-                                product?.imageUrl! ?? "",
-                                fit: BoxFit.cover,
-                                //  height: double.infinity,
-                                //   width: double.infinity,
+                              child: FirebaseStorageImageWidget(
+                                imageName: product.imageUrl,
+                                imageType: ImageType.product,
+                                height: 80,
+                                width: 60,
                               ),
+
+                              //  Image.asset(
+                              //   product?.imageUrl! ?? "",
+                              //   fit: BoxFit.cover,
+                              //   //  height: double.infinity,
+                              //   //   width: double.infinity,
+                              // ),
                             ),
                             title: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,14 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mapbeauty/modules/core/utils/app_routes.dart';
-import 'package:mapbeauty/modules/product/domain/models/brand.dart';
+import 'package:mapbeauty/firebase/firebase_storage_service.dart';
 
 import 'package:mapbeauty/modules/product/domain/models/product.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
-import 'package:mapbeauty/modules/product/presentation/pages/product_colors_comparison_result.dart';
-
-import '../../domain/models/color_type.dart';
+import 'package:mapbeauty/modules/product/presentation/components/color_picker_widget.dart';
+import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
 
 class ColorsPage extends StatefulWidget {
   // final Brand? brand;
@@ -27,6 +25,24 @@ class ColorsPage extends StatefulWidget {
 }
 
 class _ColorsPageState extends State<ColorsPage> {
+  ProductColor? selectedProductColor;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    selectedProductColor = widget.product?.productColors[0];
+    print("GOS");
+    print(widget.product?.productColors[0].imageName);
+  }
+
+  onColorSelected(Product product, ProductColor productColor) {
+    print(productColor.brandColorName);
+    setState(() {
+      selectedProductColor = productColor;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -41,54 +57,40 @@ class _ColorsPageState extends State<ColorsPage> {
           ),
           Text(
             widget.product?.name ?? "",
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.normal, color: Colors.black),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Colors.black),
+          ),
+          const SizedBox(height: 20),
+
+          Center(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                //   color: Colors.black,
+                border: Border.all(width: 0.3),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12.0),
+                child: FirebaseStorageImageWidget(
+                  imageType: ImageType.product,
+                  imageName: selectedProductColor?.imageName,
+                  height: 300,
+                  width: 300,
+                ),
+              ),
+            ),
           ),
           // const SearchBar(hintText: "Pesquisar", leading: Icon(Icons.search)),
           const SizedBox(height: 20),
-          Expanded(
-              child: NotificationListener<UserScrollNotification>(
-            onNotification: (notification) {
-              final ScrollDirection direction = notification.direction;
-              widget.didScroll(direction);
-              return true;
-            },
-            child: GridView.builder(
-              itemCount: widget.product?.productColors.length,
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: size.width / 3,
-                mainAxisExtent: size.width / 3,
-                childAspectRatio: 0.9,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-              ),
-              itemBuilder: (context, index) {
-                final productColor = widget.product?.productColors[index];
-
-                return GestureDetector(
-                  onTap: () => widget.onColorSelected(
-                    widget.product!,
-                    productColor!,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: productColor?.colorType.color ?? Colors.white, // HexColor.fromHex(productColor.colorType.color),
-                          border: Border.all(width: 0.3),
-                        ),
-                      ),
-                      Text(productColor?.brandColorName ?? ""),
-                    ],
-                  ),
-                );
-              },
-            ),
-          ))
+          ColorPickerWidget(
+            product: widget.product,
+            onColorSelected: onColorSelected,
+          ),
+          Center(
+              child: ElevatedButton(
+                  onPressed: () {
+                    widget.onColorSelected(widget.product!, selectedProductColor!);
+                  },
+                  child: const Text("Continuar"))),
         ],
       ),
     );
