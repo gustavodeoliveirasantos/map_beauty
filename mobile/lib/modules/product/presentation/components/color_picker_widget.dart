@@ -31,7 +31,7 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
     ScrollController _controller = ScrollController();
     return SafeArea(
       child: SizedBox(
-        height: 90,
+        height: 80,
         child: Scrollbar(
           scrollbarOrientation: ScrollbarOrientation.bottom,
           controller: _controller,

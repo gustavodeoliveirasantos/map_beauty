@@ -19,7 +19,7 @@ class ProductDTO {
     required this.id,
     required this.name,
     required this.productType,
-    this.imageName,
+    required this.imageName,
     required this.pageUrl,
     required this.productColors,
   });

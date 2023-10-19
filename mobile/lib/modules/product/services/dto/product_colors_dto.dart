@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:mapbeauty/modules/product/services/dto/color_type_dto.dart';
 
 class ProductColorDTO {
@@ -8,13 +10,13 @@ class ProductColorDTO {
   final String brandColorName;
   final ColorTypeDTO colorType;
   final String buyUrl;
-  final String? imageName;
+  final List<String>? images;
   const ProductColorDTO({
     required this.id,
     required this.brandColorName,
     required this.colorType,
     required this.buyUrl,
-    this.imageName,
+    required this.images,
   });
 
   ProductColorDTO copyWith({
@@ -22,14 +24,14 @@ class ProductColorDTO {
     String? brandColorName,
     ColorTypeDTO? colorType,
     String? buyUrl,
-    String? imageUrl,
+    List<String>? images,
   }) {
     return ProductColorDTO(
       id: id ?? this.id,
       brandColorName: brandColorName ?? this.brandColorName,
       colorType: colorType ?? this.colorType,
       buyUrl: buyUrl ?? this.buyUrl,
-      imageName: imageUrl ?? this.imageName,
+      images: images ?? this.images,
     );
   }
 
@@ -39,7 +41,7 @@ class ProductColorDTO {
       'brandColorName': brandColorName,
       'colorType': colorType.toMap(),
       'buyUrl': buyUrl,
-      'imageUrl': imageName,
+      'images': images,
     };
   }
 
@@ -49,7 +51,11 @@ class ProductColorDTO {
       brandColorName: (map["brandColorName"] ?? '') as String,
       colorType: ColorTypeDTO.fromMap((map["colorType"] ?? Map<String, dynamic>.from({})) as Map<String, dynamic>),
       buyUrl: (map["buyUrl"] ?? '') as String,
-      imageName: map['imageUrl'] != null ? map["imageUrl"] ?? '' as String : null,
+      images: map['images'] != null
+          ? List<String>.from(
+              ((map['images']) as List<String>),
+            )
+          : null,
     );
   }
 
@@ -59,18 +65,18 @@ class ProductColorDTO {
 
   @override
   String toString() {
-    return 'ProductColorDTO(id: $id, brandColorName: $brandColorName, colorType: $colorType, buyUrl: $buyUrl, imageUrl: $imageName)';
+    return 'ProductColorDTO(id: $id, brandColorName: $brandColorName, colorType: $colorType, buyUrl: $buyUrl, images: $images)';
   }
 
   @override
   bool operator ==(covariant ProductColorDTO other) {
     if (identical(this, other)) return true;
 
-    return other.id == id && other.brandColorName == brandColorName && other.colorType == colorType && other.buyUrl == buyUrl && other.imageName == imageName;
+    return other.id == id && other.brandColorName == brandColorName && other.colorType == colorType && other.buyUrl == buyUrl && listEquals(other.images, images);
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ brandColorName.hashCode ^ colorType.hashCode ^ buyUrl.hashCode ^ imageName.hashCode;
+    return id.hashCode ^ brandColorName.hashCode ^ colorType.hashCode ^ buyUrl.hashCode ^ images.hashCode;
   }
 }

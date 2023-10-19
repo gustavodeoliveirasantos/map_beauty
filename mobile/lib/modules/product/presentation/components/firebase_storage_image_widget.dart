@@ -13,22 +13,21 @@ class FirebaseStorageImageWidget extends StatefulWidget {
   State<FirebaseStorageImageWidget> createState() => _FirebaseStorageImageWidgetState();
 }
 
-class _FirebaseStorageImageWidgetState extends State<FirebaseStorageImageWidget> {
+class _FirebaseStorageImageWidgetState extends State<FirebaseStorageImageWidget> with AutomaticKeepAliveClientMixin {
   String? imageUrl;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getImage();
+  }
 
   @override
   void didUpdateWidget(covariant FirebaseStorageImageWidget oldWidget) {
     // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     if (mounted) getImage();
-    print("didUpdateWidget");
-  }
-
-  @override
-  void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
-    // if (mounted) getImage();
     print("didUpdateWidget");
   }
 
@@ -57,4 +56,8 @@ class _FirebaseStorageImageWidgetState extends State<FirebaseStorageImageWidget>
             errorWidget: (context, url, error) => const Icon(Icons.error),
           );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

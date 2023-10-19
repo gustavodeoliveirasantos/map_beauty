@@ -22,6 +22,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //TODO: https://docs.flutter.dev/cookbook/effects/shimmer-loading
   Brand? selectedBrand;
   List<Product> products = [];
   Product? selectedProduct;
@@ -147,22 +148,9 @@ class _HomePageState extends State<HomePage> {
             physics: const NeverScrollableScrollPhysics(),
             controller: pageController,
             children: [
-              BrandsPage(
-                onBrandSelected: onBrandSelected,
-                didScroll: didScroll,
-              ),
-              ProductsPage(
-                  args: ProductsPageArgs(
-                brand: selectedBrand,
-                products: products,
-                onProductSelected: onProductSelected,
-                didScroll: didScroll,
-              )),
-              ColorsPage(
-                product: selectedProduct,
-                onColorSelected: onColorSelected,
-                didScroll: didScroll,
-              )
+              BrandsPage(onBrandSelected: onBrandSelected, didScroll: didScroll),
+              ProductsPage(args: ProductsPageArgs(brand: selectedBrand, products: products, onProductSelected: onProductSelected, didScroll: didScroll)),
+              ColorsPage(product: selectedProduct, onColorSelected: onColorSelected, didScroll: didScroll)
             ],
           ))
         ],

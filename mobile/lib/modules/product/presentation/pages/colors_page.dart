@@ -7,6 +7,7 @@ import 'package:mapbeauty/modules/product/domain/models/product.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
 import 'package:mapbeauty/modules/product/presentation/components/color_picker_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
+import 'package:mapbeauty/modules/product/presentation/components/product_color_images_widget.dart';
 
 class ColorsPage extends StatefulWidget {
   // final Brand? brand;
@@ -32,8 +33,18 @@ class _ColorsPageState extends State<ColorsPage> {
     // TODO: implement initState
     super.initState();
     selectedProductColor = widget.product?.productColors[0];
-    print("GOS");
-    print(widget.product?.productColors[0].imageName);
+    print(selectedProductColor?.images?.length);
+  }
+
+  @override
+  void didUpdateWidget(covariant ColorsPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (mounted) {
+      setState(() {
+        selectedProductColor = widget.product?.productColors[0];
+      });
+    }
+    print("didUpdateWidget");
   }
 
   onColorSelected(Product product, ProductColor productColor) {
@@ -48,50 +59,36 @@ class _ColorsPageState extends State<ColorsPage> {
     final size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            widget.product?.brand.name ?? "",
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black),
-          ),
-          Text(
-            widget.product?.name ?? "",
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Colors.black),
-          ),
-          const SizedBox(height: 20),
-
-          Center(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                //   color: Colors.black,
-                border: Border.all(width: 0.3),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12.0),
-                child: FirebaseStorageImageWidget(
-                  imageType: ImageType.product,
-                  imageName: selectedProductColor?.imageName,
-                  height: 300,
-                  width: 300,
-                ),
-              ),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              widget.product?.brand.name ?? "",
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black),
             ),
-          ),
-          // const SearchBar(hintText: "Pesquisar", leading: Icon(Icons.search)),
-          const SizedBox(height: 20),
-          ColorPickerWidget(
-            product: widget.product,
-            onColorSelected: onColorSelected,
-          ),
-          Center(
-              child: ElevatedButton(
-                  onPressed: () {
-                    widget.onColorSelected(widget.product!, selectedProductColor!);
-                  },
-                  child: const Text("Continuar"))),
-        ],
+            Text(
+              widget.product?.name ?? "",
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Colors.black),
+            ),
+            const SizedBox(height: 20),
+            ProductColorImagesWidget(images: selectedProductColor?.images),
+            const SizedBox(height: 20),
+            ColorPickerWidget(
+              product: widget.product,
+              onColorSelected: onColorSelected,
+            ),
+            Center(
+                child: ElevatedButton(
+                    onPressed: () {
+                      widget.onColorSelected(widget.product!, selectedProductColor!);
+                    },
+                    child: const Text("Continuar"))),
+            SizedBox(
+              height: 300,
+            )
+          ],
+        ),
       ),
     );
   }
