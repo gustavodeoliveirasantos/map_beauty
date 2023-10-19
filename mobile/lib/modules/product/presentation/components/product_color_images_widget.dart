@@ -36,18 +36,21 @@ class _ProductColorImagesWidgetState extends State<ProductColorImagesWidget> {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
-              child: PageView.builder(
-                controller: pageController,
-                itemCount: widget.images?.length,
-                itemBuilder: (context, index) {
-                  final imageName = widget.images?[index];
-                  return Center(
-                    child: FirebaseStorageImageWidget(
-                      imageType: ImageType.product,
-                      imageName: imageName,
-                    ),
-                  );
-                },
+              child: NotificationListener(
+                onNotification: (_) => true,
+                child: PageView.builder(
+                  controller: pageController,
+                  itemCount: widget.images?.length,
+                  itemBuilder: (context, index) {
+                    final imageName = widget.images?[index];
+                    return Center(
+                      child: FirebaseStorageImageWidget(
+                        imageType: ImageType.product,
+                        imageName: imageName,
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ),

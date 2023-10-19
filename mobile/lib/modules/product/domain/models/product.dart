@@ -11,7 +11,6 @@ class Product {
   final String name;
   final Brand brand;
   final String? imageUrl;
-  final String pageUrl;
   final ProductType productType;
 
   final List<ProductColor> productColors;
@@ -22,7 +21,6 @@ class Product {
     required this.brand,
     required this.imageUrl,
     required this.productType,
-    required this.pageUrl,
     required this.productColors,
   });
 

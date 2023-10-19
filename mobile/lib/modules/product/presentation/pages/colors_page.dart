@@ -59,9 +59,14 @@ class _ColorsPageState extends State<ColorsPage> {
     final size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      child: NotificationListener<UserScrollNotification>(
+        onNotification: (notification) {
+          final ScrollDirection direction = notification.direction;
+          widget.didScroll(direction);
+          print("GOS  $direction");
+          return true;
+        },
+        child: ListView(
           children: [
             Text(
               widget.product?.brand.name ?? "",
@@ -84,9 +89,6 @@ class _ColorsPageState extends State<ColorsPage> {
                       widget.onColorSelected(widget.product!, selectedProductColor!);
                     },
                     child: const Text("Continuar"))),
-            SizedBox(
-              height: 300,
-            )
           ],
         ),
       ),

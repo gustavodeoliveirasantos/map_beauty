@@ -34,7 +34,6 @@ class _BrandsPageState extends State<BrandsPage> with AutomaticKeepAliveClientMi
   }
 
   void loadBrands() async {
-    Future.delayed(Duration(seconds: 3)); //FIXME
     brands = await Provider.of<ProductViewModel>(context, listen: false).loadBrands();
     setState(() {});
   }

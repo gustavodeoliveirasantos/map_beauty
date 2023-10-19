@@ -48,11 +48,11 @@ class _ProductsColorComparisonResultState extends State<ProductsColorComparisonR
     super.initState();
   }
 
-  void openProductPage(Product product) async {
-    final uri = Uri.parse(product.pageUrl);
+  void openProductPage(ProductColor productColor) async {
+    final uri = Uri.parse(productColor.buyUrl);
 
     if (!await launchUrl(uri)) {
-      throw Exception('Could not launch ${product.pageUrl}');
+      throw Exception('Could not launch ${productColor.buyUrl}');
     }
   }
 
@@ -162,7 +162,7 @@ class _ProductsColorComparisonResultState extends State<ProductsColorComparisonR
                                   "Comprar",
                                   style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
                                 ),
-                                onPressed: () => openProductPage(product),
+                                onPressed: () => openProductPage(widget.args.productColor),
                               ),
                             ),
                             //   onTap: () => openProductPage(product),

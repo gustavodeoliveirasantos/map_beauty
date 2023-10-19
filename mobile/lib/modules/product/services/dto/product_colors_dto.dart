@@ -10,12 +10,14 @@ class ProductColorDTO {
   final String brandColorName;
   final ColorTypeDTO colorType;
   final String buyUrl;
+  final String colorHex;
   final List<String>? images;
   const ProductColorDTO({
     required this.id,
     required this.brandColorName,
     required this.colorType,
     required this.buyUrl,
+    required this.colorHex,
     required this.images,
   });
 
@@ -24,6 +26,7 @@ class ProductColorDTO {
     String? brandColorName,
     ColorTypeDTO? colorType,
     String? buyUrl,
+    String? colorHex,
     List<String>? images,
   }) {
     return ProductColorDTO(
@@ -31,6 +34,7 @@ class ProductColorDTO {
       brandColorName: brandColorName ?? this.brandColorName,
       colorType: colorType ?? this.colorType,
       buyUrl: buyUrl ?? this.buyUrl,
+      colorHex: colorHex ?? this.colorHex,
       images: images ?? this.images,
     );
   }
@@ -41,6 +45,7 @@ class ProductColorDTO {
       'brandColorName': brandColorName,
       'colorType': colorType.toMap(),
       'buyUrl': buyUrl,
+      'colorHex': colorHex,
       'images': images,
     };
   }
@@ -51,6 +56,7 @@ class ProductColorDTO {
       brandColorName: (map["brandColorName"] ?? '') as String,
       colorType: ColorTypeDTO.fromMap((map["colorType"] ?? Map<String, dynamic>.from({})) as Map<String, dynamic>),
       buyUrl: (map["buyUrl"] ?? '') as String,
+      colorHex: (map["colorHex"] ?? '') as String,
       images: map['images'] != null
           ? List<String>.from(
               ((map['images']) as List<String>),
@@ -65,18 +71,18 @@ class ProductColorDTO {
 
   @override
   String toString() {
-    return 'ProductColorDTO(id: $id, brandColorName: $brandColorName, colorType: $colorType, buyUrl: $buyUrl, images: $images)';
+    return 'ProductColorDTO(id: $id, brandColorName: $brandColorName, colorType: $colorType, buyUrl: $buyUrl, colorHex: $colorHex, images: $images)';
   }
 
   @override
   bool operator ==(covariant ProductColorDTO other) {
     if (identical(this, other)) return true;
 
-    return other.id == id && other.brandColorName == brandColorName && other.colorType == colorType && other.buyUrl == buyUrl && listEquals(other.images, images);
+    return other.id == id && other.brandColorName == brandColorName && other.colorType == colorType && other.buyUrl == buyUrl && other.colorHex == colorHex && listEquals(other.images, images);
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ brandColorName.hashCode ^ colorType.hashCode ^ buyUrl.hashCode ^ images.hashCode;
+    return id.hashCode ^ brandColorName.hashCode ^ colorType.hashCode ^ buyUrl.hashCode ^ colorHex.hashCode ^ images.hashCode;
   }
 }

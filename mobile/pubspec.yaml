@@ -46,6 +46,7 @@ dependencies:
   device_preview: ^1.1.0
   google_fonts: 
   cached_network_image: ^3.3.0
+  csv: ^5.1.0
   
 
 dev_dependencies:
@@ -82,6 +83,12 @@ flutter:
     - assets/product_images/eudora_glam_skin_perfection.jpg
     - assets/product_images/eudora_niina_secrets_daily_tint_cream.jpeg
     - assets/product_images/eudora_niina_secrets_hidra_glow.jpeg
+    - assets/map_data/map_beauty_marcas.csv
+    - assets/map_data/map_beauty_imagens_cores_produtos.csv
+    - assets/map_data/map_beauty_cores_produto.csv
+    - assets/map_data/map_beauty _tipo_produtos.csv
+    - assets/map_data/map_beauty_cores_padronizadas.csv
+    - assets/map_data/map_beauty_linhas_produtos.csv
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

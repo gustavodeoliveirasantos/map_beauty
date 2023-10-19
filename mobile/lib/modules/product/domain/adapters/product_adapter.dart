@@ -27,11 +27,10 @@ class ProductAdapter implements Adapter<Product, ProductAdapterInput> {
       id: input.dto.id,
       name: input.dto.name,
       brand: input.brand,
-      imageUrl: input.dto.imageName,
-      pageUrl: input.dto.pageUrl,
+      imageUrl: input.dto.productColors.first.images?.first,
       productType: ProductType(id: input.dto.productType.id, type: input.dto.productType.type),
       productColors: input.dto.productColors.map((e) {
-        return ProductColor(e.id, e.brandColorName, ColorType(id: e.colorType.id, colorName: e.colorType.colorName, color: HexColor(e.colorType.hexCode)), e.buyUrl, e.images);
+        return ProductColor(e.id, e.brandColorName, ColorType(id: e.colorType.id, colorName: e.colorType.colorName, color: HexColor(e.colorHex)), e.buyUrl, e.images);
       }).toList(),
     );
   }
