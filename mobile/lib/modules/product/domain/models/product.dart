@@ -7,7 +7,7 @@ import 'package:mapbeauty/modules/product/domain/models/product_type.dart';
 import 'brand.dart';
 
 class Product {
-  final String id;
+  final int id;
   final String name;
   final Brand brand;
   final String? imageUrl;
@@ -25,7 +25,6 @@ class Product {
   });
 
   String getBrandColorNameFor({required ProductColor selectedColor}) {
-    print(123);
     return productColors.firstWhere((element) => element.colorType.id == selectedColor.colorType.id).brandColorName;
   }
 }

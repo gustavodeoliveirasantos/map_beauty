@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 class ProductTypeDTO {
-  final String id;
+  final int id;
   final String type;
   const ProductTypeDTO({
     required this.id,
@@ -10,7 +10,7 @@ class ProductTypeDTO {
   });
 
   ProductTypeDTO copyWith({
-    String? id,
+    int? id,
     String? type,
   }) {
     return ProductTypeDTO(
@@ -28,7 +28,7 @@ class ProductTypeDTO {
 
   factory ProductTypeDTO.fromMap(Map<String, dynamic> map) {
     return ProductTypeDTO(
-      id: (map["id"] ?? '') as String,
+      id: (map["id"] ?? 0) as int,
       type: (map["type"] ?? '') as String,
     );
   }
@@ -38,7 +38,7 @@ class ProductTypeDTO {
   factory ProductTypeDTO.fromJson(String source) => ProductTypeDTO.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'ProductType(id: $id, type: $type)';
+  String toString() => 'ProductTypeDTO(id: $id, type: $type)';
 
   @override
   bool operator ==(covariant ProductTypeDTO other) {

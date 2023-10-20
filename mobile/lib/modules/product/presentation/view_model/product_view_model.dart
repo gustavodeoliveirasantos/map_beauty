@@ -16,7 +16,7 @@ class ProductViewModel extends BaseViewModel {
     return _loadBrandsUseCase.execute();
   }
 
-  Future<List<Product>> loadProducts(String brandId) {
+  Future<List<Product>> loadProducts(int brandId) {
     return _loadProductsUseCase.execute(brandId);
   }
 

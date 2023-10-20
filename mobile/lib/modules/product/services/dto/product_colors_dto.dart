@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
-
 import 'package:mapbeauty/modules/product/services/dto/color_type_dto.dart';
 
 class ProductColorDTO {
-  final String id;
+  final int id;
   final String brandColorName;
   final ColorTypeDTO colorType;
   final String buyUrl;
@@ -22,7 +22,7 @@ class ProductColorDTO {
   });
 
   ProductColorDTO copyWith({
-    String? id,
+    int? id,
     String? brandColorName,
     ColorTypeDTO? colorType,
     String? buyUrl,
@@ -52,7 +52,7 @@ class ProductColorDTO {
 
   factory ProductColorDTO.fromMap(Map<String, dynamic> map) {
     return ProductColorDTO(
-      id: (map["id"] ?? '') as String,
+      id: (map["id"] ?? 0) as int,
       brandColorName: (map["brandColorName"] ?? '') as String,
       colorType: ColorTypeDTO.fromMap((map["colorType"] ?? Map<String, dynamic>.from({})) as Map<String, dynamic>),
       buyUrl: (map["buyUrl"] ?? '') as String,
@@ -77,6 +77,7 @@ class ProductColorDTO {
   @override
   bool operator ==(covariant ProductColorDTO other) {
     if (identical(this, other)) return true;
+    final listEquals = const DeepCollectionEquality().equals;
 
     return other.id == id && other.brandColorName == brandColorName && other.colorType == colorType && other.buyUrl == buyUrl && other.colorHex == colorHex && listEquals(other.images, images);
   }

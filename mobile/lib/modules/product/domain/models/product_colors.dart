@@ -1,7 +1,7 @@
 import 'color_type.dart';
 
 class ProductColor {
-  final String id;
+  final int id;
   final String brandColorName;
   final ColorType colorType;
   final String buyUrl;

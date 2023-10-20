@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 class ColorTypeDTO {
-  final String id;
+  final int id;
   final String colorName;
   const ColorTypeDTO({
     required this.id,
@@ -10,7 +10,7 @@ class ColorTypeDTO {
   });
 
   ColorTypeDTO copyWith({
-    String? id,
+    int? id,
     String? colorName,
   }) {
     return ColorTypeDTO(
@@ -28,7 +28,7 @@ class ColorTypeDTO {
 
   factory ColorTypeDTO.fromMap(Map<String, dynamic> map) {
     return ColorTypeDTO(
-      id: (map["id"] ?? '') as String,
+      id: (map["id"] ?? 0) as int,
       colorName: (map["colorName"] ?? '') as String,
     );
   }

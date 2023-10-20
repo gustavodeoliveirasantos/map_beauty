@@ -1,5 +1,5 @@
 class ProductType {
-  final String id;
+  final int id;
   final String type;
   const ProductType({
     required this.id,

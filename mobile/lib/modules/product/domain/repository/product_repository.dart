@@ -6,7 +6,7 @@ import 'package:mapbeauty/modules/product/domain/models/color_type.dart';
 import 'package:mapbeauty/modules/product/domain/models/product.dart';
 
 abstract class ProductRepository {
-  Future<List<Product>> loadProductsByBrand(String brandId);
+  Future<List<Product>> loadProductsByBrand(int brandId);
   Future<List<Brand>> loadBrands();
   Future<List<Product>> loadSimilarProducts(Product product, ColorType colorType);
 }
@@ -14,7 +14,7 @@ abstract class ProductRepository {
 class Products {}
 
 class ProductRepositoryImpl implements ProductRepository {
-  ProductStore _store = ProductStoreImpl();
+  ProductStore _store = ProductStoreImpl.shared;
 
   @override
   Future<List<Brand>> loadBrands() async {
@@ -25,7 +25,7 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 
   @override
-  Future<List<Product>> loadProductsByBrand(String brandId) async {
+  Future<List<Product>> loadProductsByBrand(int brandId) async {
     final brandsDTO = await _store.loadBrandsAndProducts();
     final brandDTO = brandsDTO.firstWhere((element) => element.id == brandId);
     final productsDTO = brandDTO.products;

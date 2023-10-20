@@ -2,7 +2,7 @@
 import 'dart:ui';
 
 class ColorType {
-  final String id;
+  final int id;
   final String colorName;
   final Color color;
   const ColorType({

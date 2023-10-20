@@ -1,19 +1,13 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
-import 'package:mapbeauty/modules/product/domain/models/color_type.dart';
-import 'package:mapbeauty/modules/product/domain/models/product_type.dart';
-import 'package:mapbeauty/modules/product/presentation/components/product_color_images_widget.dart';
 import 'package:mapbeauty/modules/product/services/dto/brand_dto.dart';
 import 'package:mapbeauty/modules/product/services/dto/color_type_dto.dart';
 import 'package:mapbeauty/modules/product/services/dto/product_colors_dto.dart';
 import 'package:mapbeauty/modules/product/services/dto/product_dto.dart';
 import 'package:mapbeauty/modules/product/services/dto/product_type_dto.dart';
-import 'package:mapbeauty/modules/product/services/dummy_data.dart';
 
 abstract class ProductStore {
+  List<BrandDTO> _brands = [];
   Future<List<BrandDTO>> loadBrandsAndProducts();
 }
 
@@ -23,8 +17,16 @@ class ProductStoreImpl implements ProductStore {
   List<ColorTypeDTO> _colorTypeList = [];
 
   @override
+  List<BrandDTO> _brands = [];
+
+  static final ProductStore shared = ProductStoreImpl._internal();
+
+  ProductStoreImpl._internal() {}
+
+  @override
   Future<List<BrandDTO>> loadBrandsAndProducts() async {
     await loadCSVData();
+
     loadProductTypeList();
     loadColorTypeList();
     return getBrands();
@@ -50,6 +52,8 @@ class ProductStoreImpl implements ProductStore {
     final data = await rootBundle.loadString(bundle);
     List<List<dynamic>> list = const CsvToListConverter().convert(data);
 
+    list.removeAt(0);
+
     return list;
   }
 
@@ -60,8 +64,8 @@ class ProductStoreImpl implements ProductStore {
     for (int a = 0; a < list.length; a++) {
       final productType = list[a];
 
-      final id = productType[0];
-      final type = productType[0];
+      final int id = productType[0];
+      final String type = productType[1].trim();
 
       _productTypeList.add(ProductTypeDTO(id: id, type: type));
     }
@@ -75,19 +79,24 @@ class ProductStoreImpl implements ProductStore {
       final colorType = list[a];
 
       final id = colorType[0];
-      final name = colorType[0];
+      final name = colorType[1];
 
       _colorTypeList.add(ColorTypeDTO(id: id, colorName: name));
     }
   }
 
   List<BrandDTO> getBrands() {
+    if (_brands.isNotEmpty) {
+      print("GOS Singlethon funcionou!!!");
+      return _brands;
+    }
+
     final list = _csvData["brands"];
     List<BrandDTO> brands = [];
     if (list == null) brands;
 
     for (int a = 0; a < list!.length; a++) {
-      if (a == 0) continue;
+      // if (a == 0) continue;
       final brandCSV = list[a];
 
       final id = brandCSV[0];
@@ -97,7 +106,9 @@ class ProductStoreImpl implements ProductStore {
 
       brands.add(BrandDTO(id: id, name: name, imageName: imageName, products: products));
     }
-    return brands;
+    print("GOS - Entrou aqui?");
+    _brands = brands;
+    return _brands;
   }
 
   ProductTypeDTO getProductType(String type) {
@@ -112,12 +123,15 @@ class ProductStoreImpl implements ProductStore {
 
     for (int a = 0; a < list.length; a++) {
       final productCSV = list[a];
+      final brand = productCSV[2];
 
-      if (productCSV[2] == brandName) {
+      if (brand == brandName) {
         final id = productCSV[0];
         final name = productCSV[1];
 
-        final productType = getProductType(productCSV[3]);
+        final String productTypeCSV = productCSV[3].trim();
+        final productType = getProductType(productTypeCSV);
+
         final productColors = getProductColors(name);
 
         productList.add(ProductDTO(id: id, name: name, productType: productType, productColors: productColors));
@@ -135,11 +149,11 @@ class ProductStoreImpl implements ProductStore {
       final productColorCSV = list[a];
 
       if (productColorCSV[1] == productName) {
-        final id = productColorCSV[0];
-        final brandColorName = productColorCSV[2];
+        final int id = productColorCSV[0];
+        final String brandColorName = productColorCSV[2].toString();
         final colorType = getColorsType(productColorCSV[3]) ?? ColorTypeDTO(id: id, colorName: "");
-        final buyUrl = productColorCSV[4];
-        final colorHex = productColorCSV[5];
+        final String buyUrl = productColorCSV[4];
+        final String colorHex = productColorCSV[5];
         // final imageName = productColorCSV[5];
         final images = getProductColorsImages(id);
 
@@ -157,17 +171,22 @@ class ProductStoreImpl implements ProductStore {
     for (int a = 0; a < list.length; a++) {
       final productColorsImageCSV = list[a];
 
-      final id = productColorsImageCSV[0];
+      final id = productColorsImageCSV[1];
+
       if (id == productColorID) {
-        final name = productColorsImageCSV[1];
+        final String name = productColorsImageCSV[2];
         productColorsImages.add(name);
       }
     }
     return productColorsImages;
   }
 
-  ColorTypeDTO getColorsType(String colorTypeName) {
+  ColorTypeDTO? getColorsType(String colorTypeName) {
     final types = _colorTypeList.where((element) => colorTypeName == element.colorName);
+
+    if (types.isEmpty) {
+      return null;
+    }
 
     return types.first;
   }
