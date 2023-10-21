@@ -147,28 +147,28 @@ Id,Produto,Cor da Marca,Cor Padroniza,Link Site para Compar,Cor Hex,Nome da Imag
 146,Cover up,MM22,Teste Gustavo Remover,,#BBBBBB,mari_maria_cover_up_mm22
 147,Cover up,MM23,Teste Gustavo Remover,,#CCCCCC,mari_maria_cover_up_mm23
 148,Cover up,MM24,MAP BS 30,,#DDDDDD,mari_maria_cover_up_mm24
-149,Powder Kiss,Mull It Over,MAP BT 01,,#EEEEEE,mac_powder_kiss_mull_it_over
-150,Ultramatte,Nude Rosé,MAP BT 01,,#FFFFFF,avon_ultramatte_nude_rosé
-151,Satin,Twig,MAP BT 02,,#AAAAAA,mac_satin_twig
-152,Matte,Chili,MAP BT 03,,#BBBBBB,mac_matte_chili
-153,Bt Lux,Lana,MAP BT 03,,#CCCCCC,bruna_tavares_bt_lux_lana
-154,Matte,Velvet Teddy,MAP BT 04,,#DDDDDD,mac_matte_velvet_teddy
-155,CC Hidratante ,Nude 2C,MAP BT 04,,#EEEEEE,natura_cc_hidratante_nude_2c
-156,Amplified,Fast Play,MAP BT 05,,#FFFFFF,mac_amplified_fast_play
-157,Perfect Shine,N° 5,MAP BT 05,,#AAAAAA,essence_perfect_shine_n°_5
-158,Satin,Cherish,MAP BT 06,,#BBBBBB,mac_satin_cherish
-159,Extremo Conforto,Marrom 1C,MAP BT 06,,#CCCCCC,natura_extremo_conforto_marrom_1c
-160,Retro Matte,Ruby woo,MAP BT 07,,#DDDDDD,mac_retro_matte_ruby_woo
-161,Bt Lux,Ana,MAP BT 07,,#EEEEEE,bruna_tavares_bt_lux_ana
-162,Mattefix,Vermelho Irresistível,MAP BT 07,,#FFFFFF,jequiti_mattefix_vermelho_irresistível
-163,Cremesheen,Creme in your coffee,MAP BT 08,,#AAAAAA,mac_cremesheen_creme_in_your_coffee
-164,Utra 8 em 1,Nude Médio,MAP BT 08,,#BBBBBB,avon_utra_8_em_1_nude_médio
-165,Bala,50,MAP BT 02,,#CCCCCC,bauny_bala_50
-166,Lip Oil Soft Pinch Tinted,Serenity,MAP BT 09,,#DDDDDD,rare_beauty_lip_oil_soft_pinch_tinted_serenity
-167,Gel Lip Stain Una,Rose,MAP BT 09,,#EEEEEE,natura_gel_lip_stain_una_rose
-168,Superstay Matte Ink,Pioneer,MAP BT 10,,#FFFFFF,maybelline_superstay_matte_ink_pioneer
-169,Niina Secrets Skinny Matte,Vermelho Hibisco,MAP BT 10,,#AAAAAA,eudora_niina_secrets_skinny_matte_vermelho_hibisco
-170,Gloss Bomb,Fenty Glow,MAP BT 11,,#BBBBBB,fenty_beauty_gloss_bomb_fenty_glow
-171,Niins Secrets Gloss Crystal,Topázio,MAP BT 11,,#CCCCCC,eudora_niins_secrets_gloss_crystal_topázio
-172,Intense,120,MAP BT 02,,#DDDDDD,boticário_intense_120
-173,Microplastia,Nude Rosado,MAP BT 04,,#EEEEEE,eudora_microplastia_nude_rosado
+149,Powder Kiss,Mull It Over,MAP BT 01,,#c76864,mac_powder_kiss_mull_it_over
+150,Ultramatte,Nude Rosé,MAP BT 01,,#a4484a,avon_ultramatte_nude_rosé
+151,Satin,Twig,MAP BT 02,,#b75554,mac_satin_twig
+152,Matte,Chili,MAP BT 03,,#a71e0b,mac_matte_chili
+153,Bt Lux,Lana,MAP BT 03,,#8b322c,bruna_tavares_bt_lux_lana
+154,Matte,Velvet Teddy,MAP BT 04,,#d27a66,mac_matte_velvet_teddy
+155,CC Hidratante ,Nude 2C,MAP BT 04,,#ab594e,natura_cc_hidratante_nude_2c
+156,Amplified,Fast Play,MAP BT 05,,#b48081,mac_amplified_fast_play
+157,Perfect Shine,N° 5,MAP BT 05,,#a3484c,essence_perfect_shine_n°_5
+158,Satin,Cherish,MAP BT 06,,#be9181,mac_satin_cherish
+159,Extremo Conforto,Marrom 1C,MAP BT 06,,##B85F4D,natura_extremo_conforto_marrom_1c
+160,Retro Matte,Ruby woo,MAP BT 07,,#af0009,mac_retro_matte_ruby_woo
+161,Bt Lux,Ana,MAP BT 07,,#bb1521,bruna_tavares_bt_lux_ana
+162,Mattefix,Vermelho Irresistível,MAP BT 07,,#9a302d,jequiti_mattefix_vermelho_irresistível
+163,Cremesheen,Creme in your coffee,MAP BT 08,,#a8676d,mac_cremesheen_creme_in_your_coffee
+164,Utra 8 em 1,Nude Médio,MAP BT 08,,#a84d4c,avon_utra_8_em_1_nude_médio
+165,Bala,50,MAP BT 02,,#C06668,bauny_bala_50
+166,Lip Oil Soft Pinch Tinted,Serenity,MAP BT 09,,#a84446,rare_beauty_lip_oil_soft_pinch_tinted_serenity
+167,Gel Lip Stain Una,Rose,MAP BT 09,,#a55c53,natura_gel_lip_stain_una_rose
+168,Superstay Matte Ink,Pioneer,MAP BT 10,,#8f131d,maybelline_superstay_matte_ink_pioneer
+169,Niina Secrets Skinny Matte,Vermelho Hibisco,MAP BT 10,,#af121b,eudora_niina_secrets_skinny_matte_vermelho_hibisco
+170,Gloss Bomb,Fenty Glow,MAP BT 11,,#b36855,fenty_beauty_gloss_bomb_fenty_glow
+171,Niins Secrets Gloss Crystal,Topázio,MAP BT 11,,#c9735c,eudora_niins_secrets_gloss_crystal_topázio
+172,Intense,120,MAP BT 02,,#7d3a3a,boticário_intense_120
+173,Microplastia,Nude Rosado,MAP BT 04,,#a85146,eudora_microplastia_nude_rosado

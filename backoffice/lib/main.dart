@@ -2,9 +2,9 @@ import 'package:backoffice/modules/core/app_bootstrap.dart';
 import 'package:backoffice/modules/core/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  AppBootstrap.initializeApp();
+  await AppBootstrap.initializeApp();
   String initialRoute = AppBootstrap.getInitialRoute();
 
   runApp(MapBeautyBackoffice(initialRoute: initialRoute));
