@@ -33,11 +33,11 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         TextButton(
-          onPressed: () => Navigator.of(context).pushNamed(AppRoutes.offers),
+          onPressed: () => Navigator.of(context).pushReplacementNamed(AppRoutes.offers),
           child: Text("Promoção do dia"),
         ),
         TextButton(
-          onPressed: () => Navigator.of(context).pushNamed(AppRoutes.brands),
+          onPressed: () => Navigator.of(context).pushReplacementNamed(AppRoutes.brands),
           child: Text("Cadastros"),
         ),
         TextButton(

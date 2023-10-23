@@ -5,6 +5,6 @@ import 'package:backoffice/modules/products/service/dto/brand_dto.dart';
 class BrandAdapter extends Adapter<Brand, BrandDTO> {
   @override
   Brand adapt(BrandDTO dto) {
-    return Brand(id: dto.id, name: dto.name, images: dto.images);
+    return Brand(id: dto.id, name: dto.name, image: dto.image);
   }
 }

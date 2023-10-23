@@ -1,7 +1,7 @@
 class Brand {
   final String id;
   final String name;
-  final List<String> images;
+  final String image;
 
-  Brand({required this.id, required this.name, required this.images});
+  Brand({required this.id, required this.name, required this.image});
 }

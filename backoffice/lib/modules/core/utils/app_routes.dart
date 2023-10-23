@@ -25,6 +25,12 @@ class AppRoutes {
           builder: (context) => const LoginPage(),
         ),
       );
+    } else if (initialRouteName.contains(AppRoutes.brands)) {
+      routes.add(
+        MaterialPageRoute(
+          builder: (context) => const BrandsPage(),
+        ),
+      );
     }
 
     return routes;

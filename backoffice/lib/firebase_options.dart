@@ -58,6 +58,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '452881834159',
     projectId: 'map-beauty-f8b01',
     authDomain: 'map-beauty-f8b01.firebaseapp.com',
+    databaseURL: 'https://map-beauty-f8b01-default-rtdb.firebaseio.com',
     storageBucket: 'map-beauty-f8b01.appspot.com',
     measurementId: 'G-QNL8GFXBR7',
   );

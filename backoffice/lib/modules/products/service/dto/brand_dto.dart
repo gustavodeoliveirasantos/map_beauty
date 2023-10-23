@@ -6,23 +6,23 @@ import 'package:flutter/foundation.dart';
 class BrandDTO {
   final String id;
   final String name;
-  final List<String> images;
+  final String image;
 
   const BrandDTO({
     required this.id,
     required this.name,
-    required this.images,
+    required this.image,
   });
 
   BrandDTO copyWith({
     String? id,
     String? name,
-    List<String>? images,
+    String? image,
   }) {
     return BrandDTO(
       id: id ?? this.id,
       name: name ?? this.name,
-      images: images ?? this.images,
+      image: image ?? this.image,
     );
   }
 
@@ -30,7 +30,7 @@ class BrandDTO {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'images': images,
+      'image': image,
     };
   }
 
@@ -38,9 +38,7 @@ class BrandDTO {
     return BrandDTO(
       id: (map["id"] ?? '') as String,
       name: (map["name"] ?? '') as String,
-      images: List<String>.from(
-        ((map['images'] ?? const <String>[]) as List<String>),
-      ),
+      image: (map["image"] ?? '') as String,
     );
   }
 
@@ -49,15 +47,15 @@ class BrandDTO {
   factory BrandDTO.fromJson(String source) => BrandDTO.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'BrandDTO(id: $id, name: $name, images: $images)';
+  String toString() => 'BrandDTO(id: $id, name: $name, image: $image)';
 
   @override
   bool operator ==(covariant BrandDTO other) {
     if (identical(this, other)) return true;
 
-    return other.id == id && other.name == name && listEquals(other.images, images);
+    return other.id == id && other.name == name && other.image == image;
   }
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ images.hashCode;
+  int get hashCode => id.hashCode ^ name.hashCode ^ image.hashCode;
 }
