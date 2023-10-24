@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 class BrandDTO {
   final String id;
   final String name;
-  final String image;
+  final String? image;
 
   const BrandDTO({
     required this.id,

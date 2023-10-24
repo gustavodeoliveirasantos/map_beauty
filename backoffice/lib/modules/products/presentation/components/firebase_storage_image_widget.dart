@@ -6,7 +6,7 @@ class FirebaseStorageImageWidget extends StatefulWidget {
   final String? imageName;
   final double? height;
   final double? width;
-  final ImageType imageType;
+  final ImageFolder imageType;
   const FirebaseStorageImageWidget({super.key, required this.imageName, this.height, this.width, required this.imageType});
 
   @override

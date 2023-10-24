@@ -1,17 +1,19 @@
-Id,Marca,Imagem,Logo
-1,Avon,avon_logo.png,ok
-2,Bauny,,
-3,o Boticário,o_boticário_logo.png,ok
-4,Bruna Tavares,bruna_tavares_logo.jpg,ok
-5,Essence,essence_logo.png,ok
-6,Eudora,eudora_logo.jpg,ok
-7,Fenty Beauty ,fenty_beauty_logo.jpg,ok
-8,Fran,,
-9,Jequiti,jequiti_logo.png,ok
-10,MAC,mac_logo.png,ok
-11,Mahav,mahav_logo.png,ok
-12,Mari Maria ,mari_maria_logo.jpg,ok
-13,Maybelline,maybelline_logo.png,ok
-14,Natura,natura_logo.png,ok
-15,Payot,payot_logo.png,
-16,Rare Beauty,rare_beauty_logo.png,ok
+Id,Marca,Imagem
+1,Avon,avon_logo.png
+2,Bauny,bauny_logo.png
+3,o Boticário,o_boticário_logo.png
+4,Bruna Tavares,bruna_tavares_logo.jpg
+5,Essence,essence_logo.png
+6,Eudora,eudora_logo.jpg
+7,Fenty Beauty ,fenty_beauty_logo.jpg
+8,Fran,fran_logo.png
+9,Jequiti,jequiti_logo.png
+10,MAC,mac_logo.png
+11,Mahav,mahav_logo.png
+12,Mari Maria ,mari_maria_logo.jpg
+13,Maybelline,maybelline_logo.png
+14,Natura,natura_logo.png
+15,Payot,payot_logo.png
+16,Rare Beauty,rare_beauty_logo.png
+17,Oceane,oceane_logo.png
+18,Ruby Kisses,ruby_kisses_logo.png

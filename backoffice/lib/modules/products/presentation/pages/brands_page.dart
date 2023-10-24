@@ -1,9 +1,11 @@
 import 'dart:typed_data';
 import 'package:backoffice/modules/core/presentation/components/app_bar_widget.dart';
+import 'package:backoffice/modules/core/utils/view_utils.dart';
 import 'package:backoffice/modules/firebase/firebase_storage_service.dart';
 import 'package:backoffice/modules/products/domain/models/brand_model.dart';
+import 'package:backoffice/modules/products/presentation/components/brand_add_widget.dart';
 import 'package:backoffice/modules/products/presentation/components/firebase_storage_image_widget.dart';
-import 'package:backoffice/modules/products/presentation/view_model/product_view_model.dart';
+import 'package:backoffice/modules/products/presentation/view_model/brand_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -15,10 +17,13 @@ class BrandsPage extends StatefulWidget {
 }
 
 class _BrandsPageState extends State<BrandsPage> {
-  final vm = ProductViewModel();
+  final vm = BrandViewModel();
   List<Brand> brands = [];
   int? indexInEditMode;
   bool showAddNewBrand = false;
+  bool showSuccesLabel = false;
+
+  // Brand? newBrand;
 
   @override
   void initState() {
@@ -36,24 +41,21 @@ class _BrandsPageState extends State<BrandsPage> {
     setState(() {});
   }
 
-  openImagePicker() async {
-    final imagePicker = ImagePicker();
+  openImagePicker(Brand? brand) async {
+    //TODO: Se a brand for null significa que to fazendo isso do Adicionar ...
 
-    final XFile? pickedImage = await imagePicker.pickImage(source: ImageSource.gallery);
-
-    if (pickedImage == null) {
-      return;
-    } else {
-      // String fileName = path.basename(tmpFile.path);
-      Uint8List imageData = await pickedImage.readAsBytes();
-      final imageURL = await vm.uploadImageToFirebaseStorage(imageData, pickedImage.name);
-      print(imageURL);
-    }
+    final imageData = await ViewUtils.getImageDataFromimagePicker();
   }
 
-  void saveBrand() {
-    vm.saveBrand();
-    vm.getBrands2();
+  void onBrandAdded(Brand brand) async {
+    setState(() {
+      showSuccesLabel = true;
+      showAddNewBrand = false;
+    });
+    await Future.delayed(Duration(seconds: 3));
+    setState(() {
+      showSuccesLabel = false;
+    });
   }
 
   @override
@@ -73,30 +75,11 @@ class _BrandsPageState extends State<BrandsPage> {
                   },
                   child: Text(showAddNewBrand ? "Cancelar" : "+ Novo Produto")),
               const SizedBox(height: 20),
-              if (showAddNewBrand)
-                Container(
-                  height: 70,
-                  width: 400,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            labelText: "Nome da Marca",
-                            fillColor: Colors.transparent,
-                          ),
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: openImagePicker,
-                        icon: const Icon(Icons.add_photo_alternate),
-                      ),
-                      ElevatedButton(onPressed: saveBrand, child: Text("Salvar")),
-                    ],
-                  ),
-                ),
+              if (showSuccesLabel) const Text("Marca Adicionada com sucesso... :)"),
+              if (showAddNewBrand) BrandAddWidget(onBrandAdded: onBrandAdded),
               const SizedBox(height: 40),
               Expanded(
+                //TODO: Trocar por List View e adicionar a tabela dentro da lista para cada elemento?
                 child: Table(
                   border: TableBorder.all(width: 0.5),
                   columnWidths: const {0: FixedColumnWidth(100), 1: FixedColumnWidth(400), 2: FixedColumnWidth(100), 3: IntrinsicColumnWidth()},
@@ -110,18 +93,22 @@ class _BrandsPageState extends State<BrandsPage> {
                         imageName: brand.image,
                         height: 100,
                         width: 50,
-                        imageType: ImageType.logo,
+                        imageType: ImageFolder.logo,
                       )),
                       TableCell(
                           verticalAlignment: TableCellVerticalAlignment.middle,
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextField(enabled: isEditMode, controller: TextEditingController(text: brand.name)),
-                          )),
+                              padding: const EdgeInsets.all(8.0),
+                              child: isEditMode
+                                  ? TextField(
+                                      enabled: isEditMode,
+                                      controller: TextEditingController(text: brand.name),
+                                    )
+                                  : Text(brand.name))),
                       TableCell(
                         verticalAlignment: TableCellVerticalAlignment.middle,
                         child: IconButton(
-                          onPressed: openImagePicker,
+                          onPressed: () => openImagePicker(brand),
                           icon: const Icon(Icons.add_photo_alternate),
                         ),
                       ),
@@ -150,15 +137,6 @@ class _BrandsPageState extends State<BrandsPage> {
               ),
             ],
           ),
-        )
-
-        // ListView.builder(
-        //   itemCount: brands.length,
-        //   itemBuilder: (context, index) {
-        //     final brand = brands[index];
-        //     return Text(brand.name);
-        //   },
-        // ),
-        );
+        ));
   }
 }
