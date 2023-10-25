@@ -45,7 +45,6 @@ class ProductRepositoryImpl implements ProductRepository {
 
   @override
   Future<void> deleteBrand(String brandId) {
-    // TODO: implement deleteBrand
-    throw UnimplementedError();
+    return _service.deleteBrand(brandId);
   }
 }

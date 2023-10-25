@@ -9,6 +9,7 @@ abstract class ProductService {
   Future<void> addBrand(BrandDTO brandDTO);
   Future<void> updateBrand(BrandDTO brandDTO);
   Future<String?> uploadBrandImage(BrandDTO brandDTO, Uint8List imageData);
+  Future<void> deleteBrand(String brandId);
 }
 
 class ProductServiceImpl implements ProductService {
@@ -69,7 +70,8 @@ class ProductServiceImpl implements ProductService {
   }
 
   @override
-  Future<void> deleteBrand(BrandDTO brandDTO) async {
-    //TODO - Excluir a imagem também
+  Future<void> deleteBrand(String brandId) async {
+    DatabaseReference ref = FirebaseDatabase.instance.ref("brands/$brandId");
+    await ref.remove();
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:backoffice/modules/core/presentation/view_model/base_view_model.dart';
 import 'package:backoffice/modules/core/utils/utils.dart';
 import 'package:backoffice/modules/products/domain/models/brand_model.dart';
 import 'package:backoffice/modules/products/domain/use_case/brand_add_use_case.dart';
@@ -7,12 +8,9 @@ import 'package:backoffice/modules/products/domain/use_case/brand_delete_use_cas
 import 'package:backoffice/modules/products/domain/use_case/brand_get_use_case.dart';
 import 'package:backoffice/modules/products/domain/use_case/brand_update_image_use_case.dart';
 import 'package:backoffice/modules/products/domain/use_case/brand_update_use_case.dart';
-import 'package:backoffice/modules/products/service/dto/brand_dto.dart';
-import 'package:backoffice/modules/products/service/service/brand_service.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 
-class BrandViewModel {
+class BrandViewModel extends ChangeNotifier {
   late final GetBrandsUseCase _getBrandsUseCase = GetBrandsUseCaseImpl();
   late final AddBrandUseCase _addBrandUseCase = AddBrandUseCaseImpl();
   late final UpdateBrandUseCase _updateBrandUseCase = UpdateBrandUseCaseImpl();
@@ -21,8 +19,13 @@ class BrandViewModel {
 
   // late List<Brand> _brands;
 
-  Future<List<Brand>> getBrands() {
-    return _getBrandsUseCase.execute();
+  List<Brand> _brands = [];
+  List<Brand> get brands => [..._brands];
+
+  Future<void> loadBrands() async {
+    _brands = await _getBrandsUseCase.execute();
+
+    notifyListeners();
   }
 
   Future<String?> uploadImageToFirebaseStorage(Brand brand, Uint8List imageData) async {
@@ -44,10 +47,14 @@ class BrandViewModel {
   }
 
   Future<void> updateBrand(Brand brand) async {
-    return _updateBrandUseCase.execute(brand);
+    await _updateBrandUseCase.execute(brand);
+    notifyListeners();
   }
 
   Future<void> deleteBrand(Brand brand) async {
-    return _deleteBrandUseCase.execute(brand);
+    await _deleteBrandUseCase.execute(brand);
+
+    _brands.remove(brand);
+    notifyListeners();
   }
 }

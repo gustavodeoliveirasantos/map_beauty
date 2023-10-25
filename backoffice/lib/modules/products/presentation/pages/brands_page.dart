@@ -8,6 +8,7 @@ import 'package:backoffice/modules/products/presentation/components/firebase_sto
 import 'package:backoffice/modules/products/presentation/view_model/brand_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class BrandsPage extends StatefulWidget {
   const BrandsPage({super.key});
@@ -17,8 +18,8 @@ class BrandsPage extends StatefulWidget {
 }
 
 class _BrandsPageState extends State<BrandsPage> {
-  final vm = BrandViewModel();
-  List<Brand> brands = [];
+  final _viewModel = BrandViewModel();
+
   int? indexInEditMode;
   bool showAddNewBrand = false;
   bool showSuccesLabel = false;
@@ -29,16 +30,10 @@ class _BrandsPageState extends State<BrandsPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    //  WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   Provider.of<NotificationsViewModel>(context, listen: false).loadAllSubgroupNotificationsList();
-    //   Provider.of<InAppPurchaseViewModel>(context, listen: false).validateSubscription();
-    // });
-    loadBrands();
-  }
-
-  void loadBrands() async {
-    brands = await vm.getBrands();
-    setState(() {});
+    final _viewModel = Provider.of<BrandViewModel>(context, listen: false);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _viewModel.loadBrands();
+    });
   }
 
   openImagePicker(Brand? brand) async {
@@ -52,10 +47,26 @@ class _BrandsPageState extends State<BrandsPage> {
       showSuccesLabel = true;
       showAddNewBrand = false;
     });
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     setState(() {
       showSuccesLabel = false;
     });
+  }
+
+  void updateBrand(
+    Brand brand,
+    String newName,
+  ) {}
+
+  void delete(Brand brand) {
+    ViewUtils.showConfirmAlert(
+      context: context,
+      title: "Atenção",
+      description: "Tem certeza que deseja excluir?",
+      confirmButtonText: "Sim",
+      cancelButtonText: "Não",
+      onConfirm: () => _viewModel.deleteBrand(brand),
+    );
   }
 
   @override
@@ -80,59 +91,69 @@ class _BrandsPageState extends State<BrandsPage> {
               const SizedBox(height: 40),
               Expanded(
                 //TODO: Trocar por List View e adicionar a tabela dentro da lista para cada elemento?
-                child: Table(
-                  border: TableBorder.all(width: 0.5),
-                  columnWidths: const {0: FixedColumnWidth(100), 1: FixedColumnWidth(400), 2: FixedColumnWidth(100), 3: IntrinsicColumnWidth()},
-                  children: brands.map((brand) {
-                    int index = brands.indexOf(brand);
+                child: Consumer<BrandViewModel>(
+                  builder: (context, viewModel, child) {
+                    final brands = viewModel.brands;
+                    print("entrou aqui");
+                    print(brands.length);
+                    return Table(
+                      border: TableBorder.all(width: 0.5),
+                      columnWidths: const {0: FixedColumnWidth(100), 1: FixedColumnWidth(400), 2: FixedColumnWidth(100), 3: IntrinsicColumnWidth()},
+                      children: brands.map((brand) {
+                        int index = brands.indexOf(brand);
 
-                    bool isEditMode = index == indexInEditMode;
-                    return TableRow(children: [
-                      TableCell(
-                          child: FirebaseStorageImageWidget(
-                        imageName: brand.image,
-                        height: 100,
-                        width: 50,
-                        imageType: ImageFolder.logo,
-                      )),
-                      TableCell(
-                          verticalAlignment: TableCellVerticalAlignment.middle,
-                          child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: isEditMode
-                                  ? TextField(
-                                      enabled: isEditMode,
-                                      controller: TextEditingController(text: brand.name),
-                                    )
-                                  : Text(brand.name))),
-                      TableCell(
-                        verticalAlignment: TableCellVerticalAlignment.middle,
-                        child: IconButton(
-                          onPressed: () => openImagePicker(brand),
-                          icon: const Icon(Icons.add_photo_alternate),
-                        ),
-                      ),
-                      TableCell(
-                          verticalAlignment: TableCellVerticalAlignment.middle,
-                          child: Container(
-                            height: 50,
-                            child: Row(
-                              children: [
-                                TextButton(
-                                    onPressed: () {
-                                      if (!isEditMode) {
-                                        setState(() {
-                                          indexInEditMode = index;
-                                        });
-                                      } else {}
-                                    },
-                                    child: Text(isEditMode ? "Salvar" : "Editar")),
-                                TextButton(onPressed: () {}, child: Text("Excluir")),
-                              ],
-                            ),
+                        bool isEditMode = index == indexInEditMode;
+                        final controller = TextEditingController(text: brand.name);
+                        return TableRow(children: [
+                          TableCell(
+                              child: FirebaseStorageImageWidget(
+                            imageName: brand.image,
+                            height: 100,
+                            width: 50,
+                            imageType: ImageFolder.logo,
                           )),
-                    ]);
-                  }).toList(),
+                          TableCell(
+                              verticalAlignment: TableCellVerticalAlignment.middle,
+                              child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: isEditMode
+                                      ? TextField(
+                                          enabled: isEditMode,
+                                          controller: controller,
+                                        )
+                                      : Text(brand.name))),
+                          TableCell(
+                            verticalAlignment: TableCellVerticalAlignment.middle,
+                            child: IconButton(
+                              onPressed: () => openImagePicker(brand),
+                              icon: const Icon(Icons.add_photo_alternate),
+                            ),
+                          ),
+                          TableCell(
+                              verticalAlignment: TableCellVerticalAlignment.middle,
+                              child: SizedBox(
+                                height: 50,
+                                child: Row(
+                                  children: [
+                                    TextButton(
+                                        onPressed: () {
+                                          if (!isEditMode) {
+                                            setState(() {
+                                              indexInEditMode = index;
+                                            });
+                                          } else {
+                                            isEditMode = false;
+                                          }
+                                        },
+                                        child: Text(isEditMode ? "Salvar" : "Editar")),
+                                    TextButton(onPressed: () => delete(brand), child: Text("Excluir")),
+                                  ],
+                                ),
+                              )),
+                        ]);
+                      }).toList(),
+                    );
+                  },
                 ),
               ),
             ],
