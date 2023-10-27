@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ViewUtils {
-  static Future<Map<String, Uint8List>?> getImageDataFromimagePicker() async {
+  static Future<Map<String, dynamic>?> getImageDataFromimagePicker() async {
     final imagePicker = ImagePicker();
 
     final XFile? pickedImage = await imagePicker.pickImage(source: ImageSource.gallery);
@@ -11,9 +11,11 @@ class ViewUtils {
     if (pickedImage == null) {
       return null;
     } else {
-      // String fileName = path.basename(tmpFile.path);
       Uint8List imageData = await pickedImage.readAsBytes();
-      return {pickedImage.name: imageData};
+      return {"imageData": imageData, "imageName": pickedImage.name};
+
+      // String fileName = path.basename(tmpFile.path);
+
       //  final imageURL = await vm.uploadImageToFirebaseStorage(imageData, pickedImage.name);
       //    print(imageURL);
     }

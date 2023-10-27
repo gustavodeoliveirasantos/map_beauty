@@ -18,11 +18,12 @@ class BrandsPage extends StatefulWidget {
 }
 
 class _BrandsPageState extends State<BrandsPage> {
-  final _viewModel = BrandViewModel();
+  late final BrandViewModel _viewModel;
 
   int? indexInEditMode;
   bool showAddNewBrand = false;
   bool showSuccesLabel = false;
+  bool isImageLoading = false;
 
   // Brand? newBrand;
 
@@ -30,16 +31,19 @@ class _BrandsPageState extends State<BrandsPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    final _viewModel = Provider.of<BrandViewModel>(context, listen: false);
+    _viewModel = Provider.of<BrandViewModel>(context, listen: false);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _viewModel.loadBrands();
     });
   }
 
-  openImagePicker(Brand? brand) async {
+  openImagePicker(Brand brand) async {
     //TODO: Se a brand for null significa que to fazendo isso do Adicionar ...
 
-    final imageData = await ViewUtils.getImageDataFromimagePicker();
+    final result = await ViewUtils.getImageDataFromimagePicker();
+    setState(() => isImageLoading = true);
+    await _viewModel.updateBrandImage(brand, result?["imageData"], result?["imageName"]).onError((error, stackTrace) => print(stackTrace.toString()));
+    setState(() => isImageLoading = false);
   }
 
   void onBrandAdded(Brand brand) async {
@@ -53,10 +57,13 @@ class _BrandsPageState extends State<BrandsPage> {
     });
   }
 
-  void updateBrand(
-    Brand brand,
-    String newName,
-  ) {}
+  void updateBrand(Brand brand, String? newName) {
+    if (newName == brand.name) {
+      return;
+    }
+
+    _viewModel.updateBrand(brand, newName, null);
+  }
 
   void delete(Brand brand) {
     ViewUtils.showConfirmAlert(
@@ -88,20 +95,21 @@ class _BrandsPageState extends State<BrandsPage> {
               const SizedBox(height: 20),
               if (showSuccesLabel) const Text("Marca Adicionada com sucesso... :)"),
               if (showAddNewBrand) BrandAddWidget(onBrandAdded: onBrandAdded),
+              if (isImageLoading)
+                const Row(
+                  children: [CircularProgressIndicator(), Text("Carregando imagem...")],
+                ),
               const SizedBox(height: 40),
               Expanded(
                 //TODO: Trocar por List View e adicionar a tabela dentro da lista para cada elemento?
                 child: Consumer<BrandViewModel>(
                   builder: (context, viewModel, child) {
                     final brands = viewModel.brands;
-                    print("entrou aqui");
-                    print(brands.length);
                     return Table(
                       border: TableBorder.all(width: 0.5),
                       columnWidths: const {0: FixedColumnWidth(100), 1: FixedColumnWidth(400), 2: FixedColumnWidth(100), 3: IntrinsicColumnWidth()},
                       children: brands.map((brand) {
                         int index = brands.indexOf(brand);
-
                         bool isEditMode = index == indexInEditMode;
                         final controller = TextEditingController(text: brand.name);
                         return TableRow(children: [
@@ -142,7 +150,11 @@ class _BrandsPageState extends State<BrandsPage> {
                                               indexInEditMode = index;
                                             });
                                           } else {
-                                            isEditMode = false;
+                                            updateBrand(brand, controller.text);
+                                            setState(() {
+                                              indexInEditMode = -1;
+                                              isEditMode = false;
+                                            });
                                           }
                                         },
                                         child: Text(isEditMode ? "Salvar" : "Editar")),

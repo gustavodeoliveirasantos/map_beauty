@@ -2,6 +2,7 @@ import 'package:backoffice/modules/core/app_bootstrap.dart';
 import 'package:backoffice/modules/core/utils/app_routes.dart';
 import 'package:backoffice/modules/products/presentation/view_model/brand_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -10,7 +11,7 @@ void main() async {
   String initialRoute = AppBootstrap.getInitialRoute();
 
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (context) => BrandViewModel()),
+    ChangeNotifierProvider<BrandViewModel>(create: (context) => GetIt.instance<BrandViewModel>()),
   ], child: MapBeautyBackoffice(initialRoute: initialRoute)));
 }
 
@@ -22,6 +23,7 @@ class MapBeautyBackoffice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: GlobalKey(),
       title: 'Map Beauty',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

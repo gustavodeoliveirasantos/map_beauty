@@ -5,10 +5,12 @@ import 'package:backoffice/modules/products/domain/repository/brand_repository.d
 abstract class GetBrandsUseCase implements UseCase<List<Brand>> {}
 
 class GetBrandsUseCaseImpl implements GetBrandsUseCase {
-  final ProductRepository _repository = ProductRepositoryImpl();
+  final BrandRepository repository;
+
+  GetBrandsUseCaseImpl({required this.repository});
 
   @override
   Future<List<Brand>> execute() {
-    return _repository.getBrands();
+    return repository.getBrands();
   }
 }

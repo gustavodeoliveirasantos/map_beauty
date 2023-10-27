@@ -28,7 +28,7 @@ class _FirebaseStorageImageWidgetState extends State<FirebaseStorageImageWidget>
     // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     if (mounted) getImage();
-    print("didUpdateWidget");
+    print("FirebaseStorageImageWidget - didUpdateWidget");
   }
 
   void getImage() async {
