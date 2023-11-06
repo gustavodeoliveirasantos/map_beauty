@@ -1,6 +1,5 @@
 import 'package:backoffice/modules/products/domain/repository/brand_repository.dart';
 import 'package:backoffice/modules/products/domain/use_case/brand_add_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/brand_delete_image_use_case.dart';
 import 'package:backoffice/modules/products/domain/use_case/brand_delete_use_case.dart';
 import 'package:backoffice/modules/products/domain/use_case/brand_get_use_case.dart';
 import 'package:backoffice/modules/products/domain/use_case/brand_upload_image_use_case.dart';
@@ -27,9 +26,7 @@ class Inject {
     getIt.registerFactory<AddBrandUseCase>(
       () => AddBrandUseCaseImpl(repository: getIt()),
     );
-    getIt.registerFactory<DeleteBrandImageUseCase>(
-      () => DeleteBrandImageUseCaseImpl(repository: getIt()),
-    );
+
     getIt.registerFactory<DeleteBrandUseCase>(
       () => DeleteBrandUseCaseImpl(repository: getIt()),
     );
@@ -50,7 +47,6 @@ class Inject {
         addBrandUseCase: getIt(),
         updateBrandUseCase: getIt(),
         updateImageBrandUseCase: getIt(),
-        deleteBrandImageUseCase: getIt(),
         deleteBrandUseCase: getIt(),
       ),
     );

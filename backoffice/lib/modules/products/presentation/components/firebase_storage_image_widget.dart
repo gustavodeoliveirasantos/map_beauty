@@ -46,8 +46,8 @@ class _FirebaseStorageImageWidgetState extends State<FirebaseStorageImageWidget>
             width: widget.width,
             child: const Icon(Icons.photo),
           )
-        : Image.network(
-            imageUrl!,
+        : CachedNetworkImage(
+            imageUrl: imageUrl!,
             //TODO: https://www.youtube.com/watch?v=zEdw_1B7JHY&t=1s
             fit: BoxFit.cover,
             height: widget.height,

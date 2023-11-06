@@ -8,7 +8,8 @@ import 'package:provider/provider.dart';
 
 class BrandAddWidget extends StatefulWidget {
   final Function(Brand) onBrandAdded;
-  const BrandAddWidget({super.key, required this.onBrandAdded});
+  final Function() onAddBrandTapped;
+  const BrandAddWidget({super.key, required this.onBrandAdded, required this.onAddBrandTapped});
 
   @override
   State<BrandAddWidget> createState() => _BrandAddWidgetState();
@@ -34,6 +35,7 @@ class _BrandAddWidgetState extends State<BrandAddWidget> {
       ViewUtils.showConfirmAlert(context: context, title: "Ops", description: "Tem que adicionar o nome e a imagem.");
       return;
     }
+    widget.onAddBrandTapped();
 
     final viewModel = Provider.of<BrandViewModel>(context, listen: false);
 

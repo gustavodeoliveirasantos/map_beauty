@@ -20,7 +20,7 @@ class UploadImageBrandUseCaseImpl implements UploadImageBrandUseCase {
   UploadImageBrandUseCaseImpl({required this.repository});
 
   @override
-  Future<void> execute(UploadImageBrandUseCaseInput input) {
-    return repository.uploadBrandImage(input.brand, input.imageData, input.oldImageName);
+  Future<void> execute(UploadImageBrandUseCaseInput input) async {
+    return await repository.uploadBrandImage(input.brand, input.imageData, input.oldImageName);
   }
 }

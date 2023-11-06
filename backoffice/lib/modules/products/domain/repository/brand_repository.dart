@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:backoffice/modules/products/domain/adapters/brand_adapter.dart';
+import 'package:backoffice/modules/products/service/adapters/brand_adapter.dart';
 import 'package:backoffice/modules/products/domain/models/brand_model.dart';
 import 'package:backoffice/modules/products/service/dto/brand_dto.dart';
 import 'package:backoffice/modules/products/service/service/brand_service.dart';
@@ -9,7 +9,7 @@ abstract class BrandRepository {
   Future<List<Brand>> getBrands();
   Future<void> addBrand(Brand brand);
   Future<void> updateBrand(Brand brand);
-  Future<void> uploadBrandImage(Brand brand, Uint8List imageData, String oldImageName);
+  Future<void> uploadBrandImage(Brand brand, Uint8List imageData, String? oldImageName);
   Future<void> deleteBrand(Brand brand);
 }
 
@@ -40,10 +40,12 @@ class BrandRepositoryImpl implements BrandRepository {
   }
 
   @override
-  Future<void> uploadBrandImage(Brand brand, Uint8List imageData, String oldImageName) async {
+  Future<void> uploadBrandImage(Brand brand, Uint8List imageData, String? oldImageName) async {
     final brandDTO = BrandAdapter().adaptToDTO(brand);
     await service.uploadBrandImage(brandDTO, imageData);
-    service.deleteOldBrandImage(oldImageName);
+    if (oldImageName != null && oldImageName != brand.image) {
+      service.deleteOldBrandImage(oldImageName);
+    }
   }
 
   @override

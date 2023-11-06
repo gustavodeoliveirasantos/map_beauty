@@ -24,7 +24,6 @@ class FirebaseStorageService {
       final gsReference = FirebaseStorage.instance.refFromURL(firebaseStorageUrl);
       final url = await gsReference.getDownloadURL();
       _cachesUrl[imageName] = url;
-
       return url;
     } on FirebaseException catch (e) {
       print("Imagem não encontrada - $imageName");
@@ -58,13 +57,13 @@ class FirebaseStorageService {
     final mountainsRef = storageRef.child("$folder/$imageName");
     try {
       await mountainsRef.delete();
-      print("GOS -  Excluiru a Imagem");
+      print("GOS -  Excluiu a Imagem");
     } on FirebaseException catch (e) {
       print("Não subiu a imagem");
 
       Future.error("Erro ao apagar a imagem");
     } catch (ex2) {
-      print("GOS - O erro é : ");
+      print("GOS - Erro ao excluir a imagem : ${ex2.toString()} ");
     }
   }
 }

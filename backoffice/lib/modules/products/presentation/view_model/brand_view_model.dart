@@ -30,47 +30,51 @@ class BrandViewModel extends ChangeNotifier {
 
   Future<void> loadBrands() async {
     _brands = await getBrandsUseCase.execute();
+    _sortBrands();
 
     notifyListeners();
   }
 
-  Future<void> uploadImageToFirebaseStorage(Brand brand, Uint8List imageData) async {
-    //TODO: Como atualizar a imagem no setState
-    //Achar a melhor soluçnao para fazer upload das imagens
-    // return await updateImageBrandUseCase.execute(UploadImageBrandUseCaseInput(brand: brand, imageData: imageData));
+  void _sortBrands() {
+    _brands.sort(
+      (a, b) {
+        return a.name.toLowerCase().compareTo(b.name.toLowerCase());
+      },
+    );
   }
 
   Future<Brand> addBrandAndUpdateImage(String name, Uint8List imageData, String imageName) async {
     final id = Utils.uuid();
     final finalImageName = "${id}_$imageName";
     final brand = Brand(id: id, name: name, image: imageName);
-    await _addBrand(brand).then((value) {
-      // updateImageBrandUseCase.execute(UploadImageBrandUseCaseInput(brand: brand, imageData: imageData));
-    });
+
+    await addBrandUseCase.execute(AddBrandUseCaseInput(brand: brand, imageData: imageData));
+    _brands.add(brand);
+    _sortBrands();
+
     return brand;
   }
 
   Future<void> updateBrandImage(Brand brand, Uint8List imageData, String imageName) async {
-    final String oldImageName = brand.image ?? "";
+    final String oldImageName = brand.image;
 
     final finalImageName = "${brand.id}_$imageName";
-    await updateBrand(brand, null, finalImageName, false).onError((error, stackTrace) => print("GOS deu erro no update?"));
+
+    final updatedBrand = brand.copyWith(image: finalImageName);
+
+    await updateBrand(updatedBrand, false).onError((error, stackTrace) => print("GOS deu erro no update?"));
     await updateImageBrandUseCase.execute(UploadImageBrandUseCaseInput(brand: brand, imageData: imageData, oldImageName: oldImageName));
     print("GOS -  Entrou aqui e vai dar Notigy");
     notifyListeners();
   }
 
-  Future<void> _addBrand(Brand brand) async {
-    await addBrandUseCase.execute(brand);
-    _brands.add(brand);
-
-    notifyListeners();
-  }
-
-  Future<void> updateBrand(Brand brand, String? newName, String? newImageName, [bool shouldNotify = true]) async {
-    brand.name = newName ?? brand.name;
-    brand.image = newImageName ?? brand.image;
+  Future<void> updateBrand(Brand brand, [bool shouldNotify = true]) async {
     await updateBrandUseCase.execute(brand);
+    final index = _brands.indexWhere((element) => element.id == brand.id);
+
+    _brands.removeWhere((element) => element.id == brand.id);
+    _brands.insert(index, brand);
+
     if (shouldNotify) {
       notifyListeners();
     }
@@ -80,6 +84,7 @@ class BrandViewModel extends ChangeNotifier {
     await deleteBrandUseCase.execute(brand);
 
     _brands.remove(brand);
+
     notifyListeners();
   }
 }

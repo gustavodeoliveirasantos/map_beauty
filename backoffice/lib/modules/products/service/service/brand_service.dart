@@ -66,7 +66,7 @@ class BrandServiceImpl implements BrandService {
       return Future.error("Sem nome da imagem");
     }
 
-    final downloadUrl = await FirebaseStorageService.addNewImage(imageData, brandDTO.image!, ImageFolder.logo);
+    await FirebaseStorageService.addNewImage(imageData, brandDTO.image!, ImageFolder.logo);
     updateBrand(brandDTO);
   }
 

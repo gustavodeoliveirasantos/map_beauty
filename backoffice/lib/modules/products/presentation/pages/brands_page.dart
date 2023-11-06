@@ -1,5 +1,7 @@
 import 'dart:typed_data';
 import 'package:backoffice/modules/core/presentation/components/app_bar_widget.dart';
+import 'package:backoffice/modules/core/presentation/components/brands_dropdown_widget.dart';
+import 'package:backoffice/modules/core/presentation/components/loading_widget.dart';
 import 'package:backoffice/modules/core/utils/view_utils.dart';
 import 'package:backoffice/modules/firebase/firebase_storage_service.dart';
 import 'package:backoffice/modules/products/domain/models/brand_model.dart';
@@ -7,7 +9,6 @@ import 'package:backoffice/modules/products/presentation/components/brand_add_wi
 import 'package:backoffice/modules/products/presentation/components/firebase_storage_image_widget.dart';
 import 'package:backoffice/modules/products/presentation/view_model/brand_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class BrandsPage extends StatefulWidget {
@@ -23,7 +24,7 @@ class _BrandsPageState extends State<BrandsPage> {
   int? indexInEditMode;
   bool showAddNewBrand = false;
   bool showSuccesLabel = false;
-  bool isImageLoading = false;
+  bool isLoading = false;
 
   // Brand? newBrand;
 
@@ -41,15 +42,22 @@ class _BrandsPageState extends State<BrandsPage> {
     //TODO: Se a brand for null significa que to fazendo isso do Adicionar ...
 
     final result = await ViewUtils.getImageDataFromimagePicker();
-    setState(() => isImageLoading = true);
+    setState(() => isLoading = true);
     await _viewModel.updateBrandImage(brand, result?["imageData"], result?["imageName"]).onError((error, stackTrace) => print(stackTrace.toString()));
-    setState(() => isImageLoading = false);
+    setState(() => isLoading = false);
+  }
+
+  void onAddBrandTapped() {
+    setState(() {
+      isLoading = true;
+    });
   }
 
   void onBrandAdded(Brand brand) async {
     setState(() {
       showSuccesLabel = true;
       showAddNewBrand = false;
+      isLoading = false;
     });
     await Future.delayed(const Duration(seconds: 3));
     setState(() {
@@ -61,8 +69,7 @@ class _BrandsPageState extends State<BrandsPage> {
     if (newName == brand.name) {
       return;
     }
-
-    _viewModel.updateBrand(brand, newName, null);
+    _viewModel.updateBrand(brand.copyWith(name: newName));
   }
 
   void delete(Brand brand) {
@@ -79,7 +86,7 @@ class _BrandsPageState extends State<BrandsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarWidget(),
+        appBar: const AppBarWidget(),
         body: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
@@ -93,11 +100,21 @@ class _BrandsPageState extends State<BrandsPage> {
                   },
                   child: Text(showAddNewBrand ? "Cancelar" : "+ Novo Produto")),
               const SizedBox(height: 20),
+              BrandsDropdownWidget(
+                onChanged: (p0) {},
+              ),
               if (showSuccesLabel) const Text("Marca Adicionada com sucesso... :)"),
-              if (showAddNewBrand) BrandAddWidget(onBrandAdded: onBrandAdded),
-              if (isImageLoading)
+              if (showAddNewBrand) BrandAddWidget(onBrandAdded: onBrandAdded, onAddBrandTapped: onAddBrandTapped),
+              if (isLoading)
                 const Row(
-                  children: [CircularProgressIndicator(), Text("Carregando imagem...")],
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    LoadingWidget(
+                      size: Size(20, 20),
+                    ),
+                    SizedBox(width: 10),
+                    Text("Carregando...")
+                  ],
                 ),
               const SizedBox(height: 40),
               Expanded(
