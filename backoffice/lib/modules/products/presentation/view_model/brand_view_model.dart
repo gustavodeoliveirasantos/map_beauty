@@ -46,7 +46,7 @@ class BrandViewModel extends ChangeNotifier {
   Future<Brand> addBrandAndUpdateImage(String name, Uint8List imageData, String imageName) async {
     final id = Utils.uuid();
     final finalImageName = "${id}_$imageName";
-    final brand = Brand(id: id, name: name, image: imageName);
+    final brand = Brand(id: id, name: name, image: finalImageName);
 
     await addBrandUseCase.execute(AddBrandUseCaseInput(brand: brand, imageData: imageData));
     _brands.add(brand);
@@ -65,6 +65,7 @@ class BrandViewModel extends ChangeNotifier {
     await updateBrand(updatedBrand, false).onError((error, stackTrace) => print("GOS deu erro no update?"));
     await updateImageBrandUseCase.execute(UploadImageBrandUseCaseInput(brand: brand, imageData: imageData, oldImageName: oldImageName));
     print("GOS -  Entrou aqui e vai dar Notigy");
+
     notifyListeners();
   }
 
