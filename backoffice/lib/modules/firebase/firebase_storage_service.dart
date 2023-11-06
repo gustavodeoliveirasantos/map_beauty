@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
 
-enum ImageFolder { logo, product }
+enum ImageFolder { logo, product, offersProducts }
 
 class FirebaseStorageService {
   FirebaseStorage storage = FirebaseStorage.instanceFor(bucket: "gs://map-beauty-f8b01.appspot.com");
@@ -14,7 +14,7 @@ class FirebaseStorageService {
   static Future<String?> getImagePath(String? imageName, ImageFolder imageFolder) async {
     if (imageName == null) return null;
     try {
-      final folder = imageFolder == ImageFolder.logo ? "logos" : "products";
+      final folder = _getFolder(imageFolder);
       final firebaseStorageUrl = "gs://map-beauty-f8b01.appspot.com/$folder/$imageName";
 
       if (_cachesUrl.containsKey(imageName)) {
@@ -32,7 +32,7 @@ class FirebaseStorageService {
   }
 
   static Future<void> addNewImage(Uint8List imageData, String imageName, ImageFolder imageFolder) async {
-    final folder = imageFolder == ImageFolder.logo ? "logos" : "products";
+    final folder = _getFolder(imageFolder);
 
     final storageRef = FirebaseStorage.instance.ref();
     final mountainsRef = storageRef.child("$folder/$imageName");
@@ -51,7 +51,7 @@ class FirebaseStorageService {
   }
 
   static Future<void> deleteImage(String imageName, ImageFolder imageFolder) async {
-    final folder = imageFolder == ImageFolder.logo ? "logos" : "products";
+    final folder = _getFolder(imageFolder);
 
     final storageRef = FirebaseStorage.instance.ref();
     final mountainsRef = storageRef.child("$folder/$imageName");
@@ -64,6 +64,17 @@ class FirebaseStorageService {
       Future.error("Erro ao apagar a imagem");
     } catch (ex2) {
       print("GOS - Erro ao excluir a imagem : ${ex2.toString()} ");
+    }
+  }
+
+  static String _getFolder(ImageFolder folder) {
+    switch (folder) {
+      case ImageFolder.logo:
+        return "logos";
+      case ImageFolder.product:
+        return "products";
+      case ImageFolder.offersProducts:
+        return "offers_products";
     }
   }
 }

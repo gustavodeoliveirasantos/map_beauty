@@ -26,7 +26,6 @@ class BrandServiceImpl implements BrandService {
     List<BrandDTO> list = [];
 
     if (snapshot.exists) {
-      print(snapshot.value);
       final result = snapshot.value as Map<String, dynamic>;
       for (final id in result.keys) {
         final String name = result[id]["name"];

@@ -31,6 +31,12 @@ class AppRoutes {
           builder: (context) => const BrandsPage(),
         ),
       );
+    } else if (initialRouteName.contains(AppRoutes.offers)) {
+      routes.add(
+        MaterialPageRoute(
+          builder: (context) => const OffersPage(),
+        ),
+      );
     }
 
     return routes;

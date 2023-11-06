@@ -22,7 +22,7 @@ class AppBootstrap {
     // Findation.loadData();
   }
   static String getInitialRoute() {
-    // return AppRoutes.login;
+    return AppRoutes.home;
     if (FirebaseAuth.instance.currentUser == null) {
       return AppRoutes.login;
     } else {

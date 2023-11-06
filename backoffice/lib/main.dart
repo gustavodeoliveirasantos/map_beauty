@@ -23,7 +23,7 @@ class MapBeautyBackoffice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: GlobalKey(),
+      //  navigatorKey: GlobalKey(),
       title: 'Map Beauty',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
