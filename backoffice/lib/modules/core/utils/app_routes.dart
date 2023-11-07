@@ -1,7 +1,7 @@
 import 'package:backoffice/modules/authentication/presentation/pages/login_page.dart';
 import 'package:backoffice/modules/core/presentation/pages/home_page.dart';
-import 'package:backoffice/modules/offers/presentation/pages/offers_page.dart';
 import 'package:backoffice/modules/products/presentation/pages/brands_page.dart';
+import 'package:backoffice/modules/products/presentation/pages/offers_page.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -46,13 +46,13 @@ class AppRoutes {
     late Widget page;
 
     if (settings.name == AppRoutes.home) {
-      page = HomePage();
+      page = const HomePage();
     } else if (settings.name == AppRoutes.login) {
-      page = LoginPage();
+      page = const LoginPage();
     } else if (settings.name == AppRoutes.offers) {
-      page = OffersPage();
+      page = const OffersPage();
     } else if (settings.name == AppRoutes.brands) {
-      page = BrandsPage();
+      page = const BrandsPage();
     }
 
     return MaterialPageRoute<dynamic>(

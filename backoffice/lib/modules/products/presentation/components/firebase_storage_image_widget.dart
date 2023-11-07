@@ -1,6 +1,7 @@
-import 'package:backoffice/modules/firebase/firebase_storage_service.dart';
+import 'package:backoffice/modules/firebase_service/firebase_storage_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 class FirebaseStorageImageWidget extends StatefulWidget {
   final String? imageName;
@@ -18,21 +19,21 @@ class _FirebaseStorageImageWidgetState extends State<FirebaseStorageImageWidget>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getImage();
   }
 
   @override
   void didUpdateWidget(covariant FirebaseStorageImageWidget oldWidget) {
-    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     if (mounted) getImage();
-    print("FirebaseStorageImageWidget - didUpdateWidget");
+    debugPrint("FirebaseStorageImageWidget - didUpdateWidget");
   }
 
   void getImage() async {
-    imageUrl = await FirebaseStorageService.getImagePath(widget.imageName, widget.imageType);
+    final firebaseStorageService = GetIt.instance<FirebaseStorageService>();
+
+    imageUrl = await firebaseStorageService.getImagePath(widget.imageName, widget.imageType);
     if (mounted) {
       setState(() {});
     }
@@ -40,6 +41,7 @@ class _FirebaseStorageImageWidgetState extends State<FirebaseStorageImageWidget>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return imageUrl == null
         ? SizedBox(
             height: widget.height,
@@ -59,6 +61,5 @@ class _FirebaseStorageImageWidgetState extends State<FirebaseStorageImageWidget>
   }
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 }

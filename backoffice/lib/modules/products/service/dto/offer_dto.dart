@@ -10,8 +10,10 @@ class OfferDTO {
   final String productName;
   final String productDescription;
   final String brandId;
-  final List<String> images;
-
+  final double oldPrice;
+  final double discountPrice;
+  final String buyUrl;
+  final List<String>? images;
   const OfferDTO({
     required this.id,
     required this.date,
@@ -19,6 +21,9 @@ class OfferDTO {
     required this.productName,
     required this.productDescription,
     required this.brandId,
+    required this.oldPrice,
+    required this.discountPrice,
+    required this.buyUrl,
     required this.images,
   });
 
@@ -29,6 +34,9 @@ class OfferDTO {
     String? productName,
     String? productDescription,
     String? brandId,
+    double? oldPrice,
+    double? discountPrice,
+    String? buyUrl,
     List<String>? images,
   }) {
     return OfferDTO(
@@ -38,6 +46,9 @@ class OfferDTO {
       productName: productName ?? this.productName,
       productDescription: productDescription ?? this.productDescription,
       brandId: brandId ?? this.brandId,
+      oldPrice: oldPrice ?? this.oldPrice,
+      discountPrice: discountPrice ?? this.discountPrice,
+      buyUrl: buyUrl ?? this.buyUrl,
       images: images ?? this.images,
     );
   }
@@ -50,6 +61,9 @@ class OfferDTO {
       'productName': productName,
       'productDescription': productDescription,
       'brandId': brandId,
+      'oldPrice': oldPrice,
+      'discountPrice': discountPrice,
+      'buyUrl': buyUrl,
       'images': images,
     };
   }
@@ -62,6 +76,9 @@ class OfferDTO {
       productName: (map["productName"] ?? '') as String,
       productDescription: (map["productDescription"] ?? '') as String,
       brandId: (map["brandId"] ?? '') as String,
+      oldPrice: (map["oldPrice"] ?? 0.0) as double,
+      discountPrice: (map["discountPrice"] ?? 0.0) as double,
+      buyUrl: (map["buyUrl"] ?? '') as String,
       images: List<String>.from(
         ((map['images'] ?? const <String>[]) as List<String>),
       ),
@@ -74,7 +91,7 @@ class OfferDTO {
 
   @override
   String toString() {
-    return 'OfferDTO(id: $id, date: $date, isActive: $isActive, productName: $productName, productDescription: $productDescription, brandId: $brandId, images: $images)';
+    return 'OfferDTO(id: $id, date: $date, isActive: $isActive, productName: $productName, productDescription: $productDescription, brandId: $brandId, oldPrice: $oldPrice, discountPrice: $discountPrice, buyUrl: $buyUrl, images: $images)';
   }
 
   @override
@@ -87,11 +104,23 @@ class OfferDTO {
         other.productName == productName &&
         other.productDescription == productDescription &&
         other.brandId == brandId &&
+        other.oldPrice == oldPrice &&
+        other.discountPrice == discountPrice &&
+        other.buyUrl == buyUrl &&
         listEquals(other.images, images);
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ date.hashCode ^ isActive.hashCode ^ productName.hashCode ^ productDescription.hashCode ^ brandId.hashCode ^ images.hashCode;
+    return id.hashCode ^
+        date.hashCode ^
+        isActive.hashCode ^
+        productName.hashCode ^
+        productDescription.hashCode ^
+        brandId.hashCode ^
+        oldPrice.hashCode ^
+        discountPrice.hashCode ^
+        buyUrl.hashCode ^
+        images.hashCode;
   }
 }

@@ -15,12 +15,12 @@ class UploadImageBrandUseCaseInput {
 abstract class UploadImageBrandUseCase implements InputUseCase<void, UploadImageBrandUseCaseInput> {}
 
 class UploadImageBrandUseCaseImpl implements UploadImageBrandUseCase {
-  final BrandRepository repository;
+  final BrandRepository _repository;
 
-  UploadImageBrandUseCaseImpl({required this.repository});
+  UploadImageBrandUseCaseImpl(this._repository);
 
   @override
   Future<void> execute(UploadImageBrandUseCaseInput input) async {
-    return await repository.uploadBrandImage(input.brand, input.imageData, input.oldImageName);
+    return await _repository.uploadBrandImage(input.brand, input.imageData, input.oldImageName);
   }
 }

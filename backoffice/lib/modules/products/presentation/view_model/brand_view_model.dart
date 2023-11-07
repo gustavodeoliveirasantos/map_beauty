@@ -1,35 +1,37 @@
 import 'dart:typed_data';
-
-import 'package:backoffice/modules/core/presentation/view_model/base_view_model.dart';
 import 'package:backoffice/modules/core/utils/utils.dart';
 import 'package:backoffice/modules/products/domain/models/brand_model.dart';
-import 'package:backoffice/modules/products/domain/use_case/brand_add_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/brand_delete_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/brand_get_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/brand_upload_image_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/brand_update_use_case.dart';
+import 'package:backoffice/modules/products/domain/use_case/brand/brand_add_use_case.dart';
+import 'package:backoffice/modules/products/domain/use_case/brand/brand_delete_use_case.dart';
+import 'package:backoffice/modules/products/domain/use_case/brand/brand_get_use_case.dart';
+import 'package:backoffice/modules/products/domain/use_case/brand/brand_update_use_case.dart';
+import 'package:backoffice/modules/products/domain/use_case/brand/brand_upload_image_use_case.dart';
 import 'package:flutter/material.dart';
 
 class BrandViewModel extends ChangeNotifier {
-  late final GetBrandsUseCase getBrandsUseCase;
-  late final AddBrandUseCase addBrandUseCase;
-  late final UpdateBrandUseCase updateBrandUseCase;
-  late final UploadImageBrandUseCase updateImageBrandUseCase;
-  late final DeleteBrandUseCase deleteBrandUseCase;
+  late final GetBrandsUseCase _getBrandsUseCase;
+  late final AddBrandUseCase _addBrandUseCase;
+  late final UpdateBrandUseCase _updateBrandUseCase;
+  late final UploadImageBrandUseCase _updateImageBrandUseCase;
+  late final DeleteBrandUseCase _deleteBrandUseCase;
 
   BrandViewModel({
-    required this.getBrandsUseCase,
-    required this.addBrandUseCase,
-    required this.updateBrandUseCase,
-    required this.updateImageBrandUseCase,
-    required this.deleteBrandUseCase,
-  });
+    required GetBrandsUseCase getBrandsUseCase,
+    required AddBrandUseCase addBrandUseCase,
+    required UpdateBrandUseCase updateBrandUseCase,
+    required UploadImageBrandUseCase updateImageBrandUseCase,
+    required DeleteBrandUseCase deleteBrandUseCase,
+  })  : _deleteBrandUseCase = deleteBrandUseCase,
+        _updateImageBrandUseCase = updateImageBrandUseCase,
+        _updateBrandUseCase = updateBrandUseCase,
+        _addBrandUseCase = addBrandUseCase,
+        _getBrandsUseCase = getBrandsUseCase;
 
   List<Brand> _brands = [];
   List<Brand> get brands => [..._brands];
 
   Future<void> loadBrands() async {
-    _brands = await getBrandsUseCase.execute();
+    _brands = await _getBrandsUseCase.execute();
     _sortBrands();
 
     notifyListeners();
@@ -48,7 +50,7 @@ class BrandViewModel extends ChangeNotifier {
     final finalImageName = "${id}_$imageName";
     final brand = Brand(id: id, name: name, image: finalImageName);
 
-    await addBrandUseCase.execute(AddBrandUseCaseInput(brand: brand, imageData: imageData));
+    await _addBrandUseCase.execute(AddBrandUseCaseInput(brand: brand, imageData: imageData));
     _brands.add(brand);
     _sortBrands();
 
@@ -62,15 +64,15 @@ class BrandViewModel extends ChangeNotifier {
 
     final updatedBrand = brand.copyWith(image: finalImageName);
 
-    await updateBrand(updatedBrand, false).onError((error, stackTrace) => print("GOS deu erro no update?"));
-    await updateImageBrandUseCase.execute(UploadImageBrandUseCaseInput(brand: brand, imageData: imageData, oldImageName: oldImageName));
-    print("GOS -  Entrou aqui e vai dar Notigy");
+    await updateBrand(updatedBrand, false).onError((error, stackTrace) => debugPrint("GOS deu erro no update?"));
+    await _updateImageBrandUseCase.execute(UploadImageBrandUseCaseInput(brand: brand, imageData: imageData, oldImageName: oldImageName));
+    debugPrint("GOS -  Entrou aqui e vai dar Notigy");
 
     notifyListeners();
   }
 
   Future<void> updateBrand(Brand brand, [bool shouldNotify = true]) async {
-    await updateBrandUseCase.execute(brand);
+    await _updateBrandUseCase.execute(brand);
     final index = _brands.indexWhere((element) => element.id == brand.id);
 
     _brands.removeWhere((element) => element.id == brand.id);
@@ -82,7 +84,7 @@ class BrandViewModel extends ChangeNotifier {
   }
 
   Future<void> deleteBrand(Brand brand) async {
-    await deleteBrandUseCase.execute(brand);
+    await _deleteBrandUseCase.execute(brand);
 
     _brands.remove(brand);
 

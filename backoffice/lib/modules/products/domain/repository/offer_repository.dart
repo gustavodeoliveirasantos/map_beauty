@@ -1,8 +1,8 @@
 import 'dart:typed_data';
-import 'package:backoffice/modules/offers/domain/models/offer.dart';
-import 'package:backoffice/modules/offers/service/adapters/offer_adapter.dart';
-import 'package:backoffice/modules/offers/service/service/offer_service.dart';
-import 'package:backoffice/modules/products/service/adapters/brand_adapter.dart';
+import 'package:backoffice/modules/firebase_service/firebase_storage_service.dart';
+import 'package:backoffice/modules/products/domain/models/offer_model.dart';
+import 'package:backoffice/modules/products/service/adapters/offer_adapter.dart';
+import 'package:backoffice/modules/products/service/service/offer_service.dart';
 
 abstract class OfferRepository {
   Future<List<Offer>> getOffers();
@@ -12,14 +12,15 @@ abstract class OfferRepository {
 
   Future<void> activateOffers(List<String> ids);
   Future<void> deactivateOffers(List<String> ids);
-  Future<void> uploadOfferImage(Offer dto, String imageName, Uint8List imageData);
-  Future<void> deleteImage(String imageName);
+  Future<void> uploadOfferImage(Offer offer, String imageName, Uint8List imageData);
+  Future<void> deleteImage(Offer offer, String imageName);
 }
 
-class OfferRepositoryImp implements OfferRepository {
+class OfferRepositoryImpl implements OfferRepository {
   final OfferService _service;
+  late final FirebaseStorageService _firebaseStorageService;
 
-  OfferRepositoryImp(this._service);
+  OfferRepositoryImpl(this._service, this._firebaseStorageService);
 
   @override
   Future<List<Offer>> getOffers() async {
@@ -44,6 +45,12 @@ class OfferRepositoryImp implements OfferRepository {
 
   @override
   Future<void> deleteOffer(Offer offer) {
+    if (offer.images != null) {
+      for (var image in offer.images!) {
+        deleteImage(offer, image);
+      }
+    }
+
     return _service.deleteOffer(OfferAdapter().adaptToDTO(offer));
   }
 
@@ -58,14 +65,15 @@ class OfferRepositoryImp implements OfferRepository {
   }
 
   @override
-  Future<void> uploadOfferImage(Offer dto, String imageName, Uint8List imageData) {
-    // TODO: implement uploadOfferImage
-    throw UnimplementedError();
+  Future<void> uploadOfferImage(Offer offer, String imageName, Uint8List imageData) async {
+    final dto = OfferAdapter().adaptToDTO(offer);
+    _service.uploadOfferImage(dto, imageName);
+
+    await _firebaseStorageService.uploadImage(imageData, imageName, ImageFolder.logo);
   }
 
   @override
-  Future<void> deleteImage(String imageName) {
-    // TODO: implement deleteImage
-    throw UnimplementedError();
+  Future<void> deleteImage(Offer offer, String imageName) async {
+    return _firebaseStorageService.deleteImage(imageName, ImageFolder.offersProducts);
   }
 }

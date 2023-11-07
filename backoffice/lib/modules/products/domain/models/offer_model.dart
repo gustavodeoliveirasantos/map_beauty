@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:backoffice/modules/products/domain/models/brand_model.dart';
-
 class Offer {
   final String id;
   final DateTime date;
@@ -8,7 +5,10 @@ class Offer {
   final String productName;
   final String productDescription;
   final String brandId;
-  final List<String> images;
+  final double oldPrice;
+  final double discountPrice;
+  final String buyUrl;
+  final List<String>? images;
 
   const Offer({
     required this.id,
@@ -17,6 +17,9 @@ class Offer {
     required this.productName,
     required this.productDescription,
     required this.brandId,
+    required this.oldPrice,
+    required this.discountPrice,
+    required this.buyUrl,
     required this.images,
   });
 
@@ -27,6 +30,9 @@ class Offer {
     String? productName,
     String? productDescription,
     String? brandId,
+    double? oldPrice,
+    double? discountPrice,
+    String? buyUrl,
     List<String>? images,
   }) {
     return Offer(
@@ -36,7 +42,12 @@ class Offer {
       productName: productName ?? this.productName,
       productDescription: productDescription ?? this.productDescription,
       brandId: brandId ?? this.brandId,
+      oldPrice: oldPrice ?? this.oldPrice,
+      discountPrice: discountPrice ?? this.discountPrice,
+      buyUrl: buyUrl ?? this.buyUrl,
       images: images ?? this.images,
     );
   }
+
+  double get discountPercentage => ((oldPrice - discountPrice) * 100) / oldPrice;
 }

@@ -5,12 +5,12 @@ import 'package:backoffice/modules/products/domain/repository/brand_repository.d
 abstract class DeleteBrandUseCase implements InputUseCase<void, Brand> {}
 
 class DeleteBrandUseCaseImpl implements DeleteBrandUseCase {
-  final BrandRepository repository;
+  final BrandRepository _repository;
 
-  DeleteBrandUseCaseImpl({required this.repository});
+  DeleteBrandUseCaseImpl(this._repository);
 
   @override
   Future<void> execute(Brand input) {
-    return repository.deleteBrand(input);
+    return _repository.deleteBrand(input);
   }
 }

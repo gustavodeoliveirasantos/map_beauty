@@ -16,13 +16,11 @@ class BrandAddWidget extends StatefulWidget {
 }
 
 class _BrandAddWidgetState extends State<BrandAddWidget> {
-  //TODO Jogar para o
   String? imageName;
   Uint8List? imageData;
   final _controller = TextEditingController();
 
   openImagePicker() async {
-    //TODO: Se a brand for null significa que to fazendo isso do Adicionar ...
     final result = await ViewUtils.getImageDataFromimagePicker();
 
     imageName = result?["imageName"];
@@ -42,14 +40,13 @@ class _BrandAddWidgetState extends State<BrandAddWidget> {
     viewModel.addBrandAndUpdateImage(_controller.text, imageData!, imageName!).then((brand) {
       widget.onBrandAdded(brand);
     }).onError((error, stackTrace) async {
-      //TODO tratar o erro certinho
       await ViewUtils.showConfirmAlert(context: context, title: "Ops", description: "Ocorreu um erro ao adicionar uma nova marca");
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 70,
       width: 500,
       child: Row(
@@ -60,7 +57,7 @@ class _BrandAddWidgetState extends State<BrandAddWidget> {
               height: 40,
               width: 40,
             ),
-          SizedBox(width: 20),
+          const SizedBox(width: 20),
           Expanded(
             child: TextField(
               controller: _controller,
@@ -74,7 +71,7 @@ class _BrandAddWidgetState extends State<BrandAddWidget> {
             onPressed: () => openImagePicker(),
             icon: const Icon(Icons.add_photo_alternate),
           ),
-          ElevatedButton(onPressed: addBrand, child: Text("Salvar")),
+          ElevatedButton(onPressed: addBrand, child: const Text("Salvar")),
         ],
       ),
     );

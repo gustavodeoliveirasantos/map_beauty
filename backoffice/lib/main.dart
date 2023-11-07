@@ -16,8 +16,8 @@ void main() async {
 }
 
 class MapBeautyBackoffice extends StatelessWidget {
-  String initialRoute;
-  MapBeautyBackoffice({required this.initialRoute, super.key});
+  final String initialRoute;
+  const MapBeautyBackoffice({required this.initialRoute, super.key});
 
   // This widget is the root of your application.
   @override

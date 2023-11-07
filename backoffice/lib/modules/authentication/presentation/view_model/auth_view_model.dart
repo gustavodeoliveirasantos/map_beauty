@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 
 class AuthViewModel {
   void authStateChanges() {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        print('User is currently signed out!');
+        debugPrint('User is currently signed out!');
       } else {
-        print('authStateChanges - User is signed in!: ${user.email}');
+        debugPrint('authStateChanges - User is signed in!: ${user.email}');
       }
     });
   }
@@ -15,9 +15,9 @@ class AuthViewModel {
   void idTokenChanges() {
     FirebaseAuth.instance.idTokenChanges().listen((User? user) {
       if (user == null) {
-        print('User is currently signed out!');
+        debugPrint('User is currently signed out!');
       } else {
-        print('idTokenChanges - User is signed in!: ${user.email}');
+        debugPrint('idTokenChanges - User is signed in!: ${user.email}');
       }
     });
   }
@@ -25,9 +25,9 @@ class AuthViewModel {
   void userchanges() {
     FirebaseAuth.instance.userChanges().listen((User? user) {
       if (user == null) {
-        print('User is currently signed out!');
+        debugPrint('User is currently signed out!');
       } else {
-        print(' userchanges - User is signed in!: ${user.email}');
+        debugPrint(' userchanges - User is signed in!: ${user.email}');
       }
     });
   }

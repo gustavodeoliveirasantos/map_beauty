@@ -11,7 +11,7 @@ class OfferDetailPage extends StatefulWidget {
 class _OfferDetailPageState extends State<OfferDetailPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: AppBarWidget(),
     );
   }

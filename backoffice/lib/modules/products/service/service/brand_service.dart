@@ -1,15 +1,10 @@
-import 'dart:typed_data';
-import 'package:backoffice/modules/firebase/firebase_storage_service.dart';
 import 'package:backoffice/modules/products/service/dto/brand_dto.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 abstract class BrandService {
   Future<List<BrandDTO>> getBrands();
   Future<void> addBrand(BrandDTO brandDTO);
   Future<void> updateBrand(BrandDTO brandDTO);
-  Future<void> deleteOldBrandImage(String imageName);
-  Future<void> uploadBrandImage(BrandDTO brandDTO, Uint8List imageData);
   Future<void> deleteBrand(String brandId);
 }
 
@@ -57,21 +52,6 @@ class BrandServiceImpl implements BrandService {
       "name": brandDTO.name,
       "image": brandDTO.image,
     });
-  }
-
-  @override
-  Future<void> uploadBrandImage(BrandDTO brandDTO, Uint8List imageData) async {
-    if (brandDTO.image == null) {
-      return Future.error("Sem nome da imagem");
-    }
-
-    await FirebaseStorageService.addNewImage(imageData, brandDTO.image!, ImageFolder.logo);
-    updateBrand(brandDTO);
-  }
-
-  @override
-  Future<void> deleteOldBrandImage(String imageName) {
-    return FirebaseStorageService.deleteImage(imageName, ImageFolder.logo);
   }
 
   @override

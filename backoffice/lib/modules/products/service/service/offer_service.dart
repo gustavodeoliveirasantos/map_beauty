@@ -1,7 +1,4 @@
-import 'dart:typed_data';
-
-import 'package:backoffice/modules/firebase/firebase_storage_service.dart';
-import 'package:backoffice/modules/offers/service/dto/offer_dto.dart';
+import 'package:backoffice/modules/products/service/dto/offer_dto.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 abstract class OfferService {
@@ -12,8 +9,8 @@ abstract class OfferService {
 
   Future<void> activateOffers(List<String> ids);
   Future<void> deactivateOffers(List<String> ids);
-  Future<void> uploadOfferImage(OfferDTO dto, String imageName, Uint8List imageData);
-  Future<void> deleteImage(String imageName);
+  Future<void> uploadOfferImage(OfferDTO dto, String imageName);
+  Future<void> deleteOfferImage(OfferDTO dto, String imageName);
 }
 
 class OfferServiceImpl implements OfferService {
@@ -36,6 +33,9 @@ class OfferServiceImpl implements OfferService {
         final String productName = result[id]["productName"] as String;
         final String productDescription = result[id]["productDescription"];
         final String brandId = result[id]["brandId"];
+        final double oldPrice = (result[id]["oldPrice"] ?? 0.0) as double;
+        final double discountPrice = (result[id]["discountPrice"] ?? 0.0) as double;
+        final String buyUrl = result[id]["buyUrl"];
         final images = ((result[id]["images"] ?? const <String>[]) as List<dynamic>).map((e) => e as String).toList();
 
         final offerDTO = OfferDTO(
@@ -45,6 +45,9 @@ class OfferServiceImpl implements OfferService {
           productName: productName,
           productDescription: productDescription,
           brandId: brandId,
+          oldPrice: oldPrice,
+          discountPrice: discountPrice,
+          buyUrl: buyUrl,
           images: images,
         );
         list.add(offerDTO);
@@ -65,6 +68,9 @@ class OfferServiceImpl implements OfferService {
       "productName": dto.productName,
       "productDescription": dto.productDescription,
       "brandId": dto.brandId,
+      "oldPrice": dto.oldPrice,
+      "discountPrice": dto.discountPrice,
+      "buyUrl": dto.buyUrl,
       "images": dto.images,
     });
   }
@@ -88,9 +94,6 @@ class OfferServiceImpl implements OfferService {
     DatabaseReference ref = database.ref("offers/${dto.id}");
 
     await ref.remove();
-    for (var image in dto.images) {
-      deleteImage(image);
-    }
   }
 
   @override
@@ -108,19 +111,36 @@ class OfferServiceImpl implements OfferService {
     Map<String, Object?> valueToUpdate = {};
 
     for (var id in ids) {
-      valueToUpdate["offers/${id}/isActive"] = isActive;
+      valueToUpdate["offers/$id/isActive"] = isActive;
     }
     ref.update(valueToUpdate);
   }
 
   @override
-  Future<void> uploadOfferImage(OfferDTO dto, String imageName, Uint8List imageData) async {
-    await FirebaseStorageService.addNewImage(imageData, imageName, ImageFolder.logo);
-    // updateBrand(brandDTO);
+  Future<void> uploadOfferImage(OfferDTO dto, String imageName) async {
+    DatabaseReference ref = database.ref();
+    final List<String> images = [];
+    if (dto.images != null && dto.images!.isNotEmpty) {
+      images.addAll(dto.images!);
+    }
+
+    images.add(imageName);
+
+    Map<String, Object?> valueToUpdate = {"offers/${dto.id}/images": images};
+    ref.update(valueToUpdate);
   }
 
   @override
-  Future<void> deleteImage(String imageName) {
-    return FirebaseStorageService.deleteImage(imageName, ImageFolder.offersProducts);
+  Future<void> deleteOfferImage(OfferDTO dto, String imageName) async {
+    DatabaseReference ref = database.ref();
+    final List<String> images = [];
+    if (dto.images != null && dto.images!.isNotEmpty) {
+      images.addAll(dto.images!);
+    }
+
+    images.removeWhere((element) => element == imageName);
+
+    Map<String, Object?> valueToUpdate = {"offers/${dto.id}/images": images};
+    ref.update(valueToUpdate);
   }
 }

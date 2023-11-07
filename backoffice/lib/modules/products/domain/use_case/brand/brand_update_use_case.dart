@@ -5,12 +5,12 @@ import 'package:backoffice/modules/products/domain/repository/brand_repository.d
 abstract class UpdateBrandUseCase implements InputUseCase<void, Brand> {}
 
 class UpdateBrandUseCaseImpl implements UpdateBrandUseCase {
-  final BrandRepository repository;
+  final BrandRepository _repository;
 
-  UpdateBrandUseCaseImpl({required this.repository});
+  UpdateBrandUseCaseImpl(this._repository);
 
   @override
   Future<void> execute(Brand input) {
-    return repository.updateBrand(input);
+    return _repository.updateBrand(input);
   }
 }

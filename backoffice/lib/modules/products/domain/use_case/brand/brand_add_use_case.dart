@@ -1,8 +1,7 @@
-import 'dart:typed_data';
-
 import 'package:backoffice/modules/core/use_case/use_case.dart';
 import 'package:backoffice/modules/products/domain/models/brand_model.dart';
 import 'package:backoffice/modules/products/domain/repository/brand_repository.dart';
+import 'package:flutter/foundation.dart';
 
 abstract class AddBrandUseCase implements InputUseCase<void, AddBrandUseCaseInput> {}
 
@@ -14,13 +13,15 @@ class AddBrandUseCaseInput {
 }
 
 class AddBrandUseCaseImpl implements AddBrandUseCase {
-  final BrandRepository repository;
+  final BrandRepository _repository;
 
-  AddBrandUseCaseImpl({required this.repository});
+  AddBrandUseCaseImpl(this._repository) {
+    debugPrint("GOS - criou a instancia AddBrandUseCase");
+  }
 
   @override
   Future<void> execute(AddBrandUseCaseInput input) async {
-    await repository.uploadBrandImage(input.brand, input.imageData, null);
-    return repository.addBrand(input.brand);
+    await _repository.uploadBrandImage(input.brand, input.imageData, null);
+    return _repository.addBrand(input.brand);
   }
 }

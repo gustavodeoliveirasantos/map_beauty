@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MainDrawerWidget extends StatelessWidget {
+  const MainDrawerWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     var maxWidth = MediaQuery.of(context).size.width * 0.85;

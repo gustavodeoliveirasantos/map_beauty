@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 
+import 'package:backoffice/modules/firebase_service/firebase_storage_service.dart';
 import 'package:backoffice/modules/products/service/adapters/brand_adapter.dart';
 import 'package:backoffice/modules/products/domain/models/brand_model.dart';
-import 'package:backoffice/modules/products/service/dto/brand_dto.dart';
 import 'package:backoffice/modules/products/service/service/brand_service.dart';
 
 abstract class BrandRepository {
@@ -14,9 +14,10 @@ abstract class BrandRepository {
 }
 
 class BrandRepositoryImpl implements BrandRepository {
-  late final BrandService _service;
+  final BrandService _service;
+  final FirebaseStorageService _firebaseStorageService;
 
-  BrandRepositoryImpl({required BrandService service}) : _service = service;
+  BrandRepositoryImpl(this._service, this._firebaseStorageService);
 
   @override
   Future<List<Brand>> getBrands() async {
@@ -41,16 +42,23 @@ class BrandRepositoryImpl implements BrandRepository {
 
   @override
   Future<void> uploadBrandImage(Brand brand, Uint8List imageData, String? oldImageName) async {
+    await _firebaseStorageService.uploadImage(imageData, brand.image, ImageFolder.logo);
+
     final brandDTO = BrandAdapter().adaptToDTO(brand);
-    await _service.uploadBrandImage(brandDTO, imageData);
+    await _service.updateBrand(brandDTO);
+
     if (oldImageName != null && oldImageName != brand.image) {
-      _service.deleteOldBrandImage(oldImageName);
+      _deleteBrandImage(oldImageName);
     }
   }
 
   @override
   Future<void> deleteBrand(Brand brand) async {
     await _service.deleteBrand(brand.id);
-    _service.deleteOldBrandImage(brand.image);
+    await _deleteBrandImage(brand.image);
+  }
+
+  Future<void> _deleteBrandImage(String imageName) {
+    return _firebaseStorageService.deleteImage(imageName, ImageFolder.logo);
   }
 }

@@ -1,9 +1,8 @@
-import 'dart:typed_data';
 import 'package:backoffice/modules/core/presentation/components/app_bar_widget.dart';
 import 'package:backoffice/modules/core/presentation/components/brands_dropdown_widget.dart';
 import 'package:backoffice/modules/core/presentation/components/loading_widget.dart';
 import 'package:backoffice/modules/core/utils/view_utils.dart';
-import 'package:backoffice/modules/firebase/firebase_storage_service.dart';
+import 'package:backoffice/modules/firebase_service/firebase_storage_service.dart';
 import 'package:backoffice/modules/products/domain/models/brand_model.dart';
 import 'package:backoffice/modules/products/presentation/components/brand_add_widget.dart';
 import 'package:backoffice/modules/products/presentation/components/firebase_storage_image_widget.dart';
@@ -30,7 +29,6 @@ class _BrandsPageState extends State<BrandsPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _viewModel = Provider.of<BrandViewModel>(context, listen: false);
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -39,11 +37,9 @@ class _BrandsPageState extends State<BrandsPage> {
   }
 
   openImagePicker(Brand brand) async {
-    //TODO: Se a brand for null significa que to fazendo isso do Adicionar ...
-
     final result = await ViewUtils.getImageDataFromimagePicker();
     setState(() => isLoading = true);
-    await _viewModel.updateBrandImage(brand, result?["imageData"], result?["imageName"]).onError((error, stackTrace) => print(stackTrace.toString()));
+    await _viewModel.updateBrandImage(brand, result?["imageData"], result?["imageName"]).onError((error, stackTrace) => debugPrint(stackTrace.toString()));
     setState(() => isLoading = false);
   }
 
@@ -175,7 +171,7 @@ class _BrandsPageState extends State<BrandsPage> {
                                           }
                                         },
                                         child: Text(isEditMode ? "Salvar" : "Editar")),
-                                    TextButton(onPressed: () => delete(brand), child: Text("Excluir")),
+                                    TextButton(onPressed: () => delete(brand), child: const Text("Excluir")),
                                   ],
                                 ),
                               )),
