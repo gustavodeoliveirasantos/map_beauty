@@ -19,7 +19,7 @@ class OffersPage extends StatefulWidget {
 
 class _OffersPageState extends State<OffersPage> {
   late OfferViewModel _viewModel;
-  bool showOfferDetailModal = false;
+  bool showOfferDetailModal = true;
   Offer? selectedOffer;
 
   @override

@@ -38,7 +38,7 @@ class OffersListWidget extends StatelessWidget {
     final double rowHeight = 70;
     final double size = (offers?.length ?? 0) * rowHeight;
     final brands = Provider.of<BrandViewModel>(context, listen: false).brands;
-    NumberFormat formatoMoeda = NumberFormat.currency(
+    NumberFormat coin = NumberFormat.currency(
       locale: 'pt_BR', // Defina a localização desejada
       symbol: 'R\$ ', // Símbolo da moeda
     );
@@ -52,8 +52,8 @@ class OffersListWidget extends StatelessWidget {
           final offer = offers?[index];
 
           // Formate o número como uma string de moeda
-          String oldPrice = formatoMoeda.format(offer?.oldPrice ?? 0);
-          String discountPrice = formatoMoeda.format(offer?.discountPrice ?? 0);
+          String oldPrice = coin.format(offer?.oldPrice ?? 0);
+          String discountPrice = coin.format(offer?.discountPrice ?? 0);
           String url = offer?.buyUrl ?? "";
 
           return InkWell(
