@@ -1,11 +1,16 @@
 import 'package:backoffice/modules/core/presentation/components/app_bar_widget.dart';
 import 'package:backoffice/modules/core/utils/utils.dart';
+import 'package:backoffice/modules/products/presentation/components/offer_add_widget.dart';
+import 'package:backoffice/modules/products/presentation/components/offers_list_widget.dart';
+import 'package:backoffice/modules/products/presentation/components/offers_title_list_widget.dart';
 import 'package:backoffice/modules/products/presentation/view_model/offer_view_model.dart';
 import 'package:backoffice/modules/products/service/dto/offer_dto.dart';
 import 'package:backoffice/modules/products/service/service/offer_service.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class OffersPage extends StatefulWidget {
   const OffersPage({super.key});
@@ -15,80 +20,90 @@ class OffersPage extends StatefulWidget {
 }
 
 class _OffersPageState extends State<OffersPage> {
-  final viewModel = GetIt.instance<OfferViewModel>();
+  // final viewModel = GetIt.instance<OfferViewModel>();
+  bool showAddNewOffer = false;
 
-  void test() async {
+  void addProduct() async {
     final service = OfferServiceImpl(database: FirebaseDatabase.instance);
     final dto = OfferDTO(
       id: Utils.uuid(),
-      date: DateTime.now().add(Duration(days: -1)),
+      date: DateTime.now().add(Duration(days: 0)),
       isActive: false,
-      productName: "TESTE",
+      productName: "Product 11",
       productDescription: "TESTE teste teste ",
-      brandId: "1699264888402000",
+      brandId: "1699388932652000",
+      brandName: "O Boticário",
       oldPrice: 200.00,
       discountPrice: 150.00,
-      buyUrl: "www.google.com",
+      buyUrl: "https://www.google.com",
       images: ["imagem 1.png", "imagem 2.png"],
     );
 
-    // service.addOffer(dto);
-    viewModel.getOffers();
-
-    // service.addOffer(dto);
-    // // await Future.delayed(Duration(seconds: 5));
-    // service.deleteOfferImage(dto, "imagem 1.png");
-    // dto.images?.remove("imagem 1.png");
-    // // await Future.delayed(Duration(seconds: 5));
-
-    // service.uploadOfferImage(dto, "imagem 3.png");
-    // dto.images?.add("imagem 3.png");
-
-    // // await Future.delayed(Duration(seconds: 5));
-
-    // service.uploadOfferImage(dto, "imagem 4.png");
-    // dto.images?.add("imagem 4.png");
-
-    // // await Future.delayed(Duration(seconds: 5));
-
-    // service.uploadOfferImage(dto, "imagem 5.png");
-    // dto.images?.add("imagem 5.png");
-
-    // // await Future.delayed(Duration(seconds: 5));
-
-    // service.uploadOfferImage(dto, "imagem 6.png");
-    // dto.images?.add("imagem 6.png");
-
-    // // await Future.delayed(Duration(seconds: 5));
-
-    // service.uploadOfferImage(dto, "imagem 7.png");
-    // dto.images?.add("imagem 7.png");
-
-    // // await Future.delayed(Duration(seconds: 5));
-
-    // service.uploadOfferImage(dto, "imagem 8.png");
-    // dto.images?.add("imagem 8.png");
-
-    // // await Future.delayed(Duration(seconds: 5));
-    // service.deleteOfferImage(dto, "imagem 3.png");
-    // dto.images?.remove("imagem 3.png");
-
-    // // await Future.delayed(Duration(seconds: 5));
-    // service.deleteOfferImage(dto, "imagem 7.png");
-    // dto.images?.remove("imagem 7.png");
+    service.addOffer(dto);
+    // viewModel.getOffers();
+    // setState(() {
+    //   showAddNewOffer = false;
+    // });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const AppBarWidget(),
-      body: Container(
-        height: 200,
-        width: 200,
-        color: Colors.amber,
-        child: ElevatedButton(
-          onPressed: test,
-          child: const Text("Add"),
+    return ChangeNotifierProvider<OfferViewModel>(
+      create: (_) => GetIt.instance<OfferViewModel>(),
+      child: Scaffold(
+        appBar: const AppBarWidget(),
+        body: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ElevatedButton(
+                onPressed: () => addProduct(), //setState(() => showAddNewOffer = !showAddNewOffer),
+                child: const Text("+ Novo Produto"),
+              ),
+              if (showAddNewOffer) OfferAddWidget(),
+              Consumer<OfferViewModel>(
+                builder: (context, viewModel, child) {
+                  final offersMap = viewModel.offersMap;
+                  final sortedKeys = offersMap.keys.toList();
+                  sortedKeys.sort((a, b) => b.compareTo(a));
+
+                  return Expanded(
+                    child: ListView.separated(
+                      itemCount: sortedKeys.length,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 60.0, bottom: 16),
+                              child: RichText(
+                                text: TextSpan(
+                                  style: const TextStyle(fontSize: 18),
+                                  children: <TextSpan>[
+                                    const TextSpan(text: 'Data: ', style: TextStyle(fontWeight: FontWeight.bold)),
+                                    TextSpan(text: DateFormat('dd/MM/yyyy').format(sortedKeys[index])),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const OffersTitleListWidget(),
+                            const Divider(height: 0.5),
+                            OffersListWidget(
+                              offers: offersMap[sortedKeys[index]],
+                            ),
+                          ],
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return const Divider(height: 0.5);
+                      },
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

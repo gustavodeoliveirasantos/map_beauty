@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class Offer {
   final String id;
   final DateTime date;
@@ -5,6 +6,7 @@ class Offer {
   final String productName;
   final String productDescription;
   final String brandId;
+  final String brandName;
   final double oldPrice;
   final double discountPrice;
   final String buyUrl;
@@ -17,6 +19,7 @@ class Offer {
     required this.productName,
     required this.productDescription,
     required this.brandId,
+    required this.brandName,
     required this.oldPrice,
     required this.discountPrice,
     required this.buyUrl,
@@ -46,6 +49,7 @@ class Offer {
       discountPrice: discountPrice ?? this.discountPrice,
       buyUrl: buyUrl ?? this.buyUrl,
       images: images ?? this.images,
+      brandName: '',
     );
   }
 

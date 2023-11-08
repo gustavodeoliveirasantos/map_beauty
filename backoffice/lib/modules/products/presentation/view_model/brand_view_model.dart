@@ -25,12 +25,16 @@ class BrandViewModel extends ChangeNotifier {
         _updateImageBrandUseCase = updateImageBrandUseCase,
         _updateBrandUseCase = updateBrandUseCase,
         _addBrandUseCase = addBrandUseCase,
-        _getBrandsUseCase = getBrandsUseCase;
+        _getBrandsUseCase = getBrandsUseCase {
+    loadBrands();
+  }
 
   List<Brand> _brands = [];
   List<Brand> get brands => [..._brands];
 
   Future<void> loadBrands() async {
+    if (_brands.isNotEmpty) return;
+
     _brands = await _getBrandsUseCase.execute();
     _sortBrands();
 

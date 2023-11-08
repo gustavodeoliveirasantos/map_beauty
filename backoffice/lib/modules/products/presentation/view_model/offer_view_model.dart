@@ -1,3 +1,4 @@
+import 'package:backoffice/modules/core/utils/extensions.dart';
 import 'package:backoffice/modules/products/domain/models/offer_model.dart';
 import 'package:backoffice/modules/products/domain/use_case/offers/offer_activate_use_case.dart';
 import 'package:backoffice/modules/products/domain/use_case/offers/offer_add_use_case.dart';
@@ -20,7 +21,7 @@ class OfferViewModel extends ChangeNotifier {
   final ActivateOffersUseCase _activateOffersUseCase;
   final DeactivateOffersUseCase _deactivateOffersUseCase;
 
-  Map<String, List<Offer>> offersMap = {};
+  Map<DateTime, List<Offer>> offersMap = {};
   List<Offer> _offers = [];
 
   OfferViewModel({
@@ -39,7 +40,9 @@ class OfferViewModel extends ChangeNotifier {
         _updateOfferUseCase = updateOfferUseCase,
         _uploadOfferImageUseCase = uploadOfferImageUseCase,
         _activateOffersUseCase = activateOffersUseCase,
-        _deactivateOffersUseCase = deactivateOffersUseCase;
+        _deactivateOffersUseCase = deactivateOffersUseCase {
+    getOffers();
+  }
 
   Future<void> getOffers() async {
     _offers = await _getOffersImageUseCase.execute();
@@ -51,12 +54,11 @@ class OfferViewModel extends ChangeNotifier {
 
   void loadOffersMap() {
     for (var offer in _offers) {
-      final dateKey = DateFormat('dd/MM/yyyy').format(offer.date);
-
-      if (!offersMap.keys.contains(dateKey)) {
-        offersMap[dateKey] = [];
+      final shortDateKey = offer.date.shortDate();
+      if (!offersMap.keys.contains(shortDateKey)) {
+        offersMap[shortDateKey] = [];
       }
-      offersMap[dateKey]?.add(offer);
+      offersMap[shortDateKey]?.add(offer);
     }
   }
 

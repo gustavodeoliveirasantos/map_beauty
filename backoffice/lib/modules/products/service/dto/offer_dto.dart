@@ -10,6 +10,7 @@ class OfferDTO {
   final String productName;
   final String productDescription;
   final String brandId;
+  final String brandName;
   final double oldPrice;
   final double discountPrice;
   final String buyUrl;
@@ -21,6 +22,7 @@ class OfferDTO {
     required this.productName,
     required this.productDescription,
     required this.brandId,
+    required this.brandName,
     required this.oldPrice,
     required this.discountPrice,
     required this.buyUrl,
@@ -34,6 +36,7 @@ class OfferDTO {
     String? productName,
     String? productDescription,
     String? brandId,
+    String? brandName,
     double? oldPrice,
     double? discountPrice,
     String? buyUrl,
@@ -46,6 +49,7 @@ class OfferDTO {
       productName: productName ?? this.productName,
       productDescription: productDescription ?? this.productDescription,
       brandId: brandId ?? this.brandId,
+      brandName: brandName ?? this.brandName,
       oldPrice: oldPrice ?? this.oldPrice,
       discountPrice: discountPrice ?? this.discountPrice,
       buyUrl: buyUrl ?? this.buyUrl,
@@ -61,6 +65,7 @@ class OfferDTO {
       'productName': productName,
       'productDescription': productDescription,
       'brandId': brandId,
+      'brandName': brandName,
       'oldPrice': oldPrice,
       'discountPrice': discountPrice,
       'buyUrl': buyUrl,
@@ -76,12 +81,15 @@ class OfferDTO {
       productName: (map["productName"] ?? '') as String,
       productDescription: (map["productDescription"] ?? '') as String,
       brandId: (map["brandId"] ?? '') as String,
+      brandName: (map["brandName"] ?? '') as String,
       oldPrice: (map["oldPrice"] ?? 0.0) as double,
       discountPrice: (map["discountPrice"] ?? 0.0) as double,
       buyUrl: (map["buyUrl"] ?? '') as String,
-      images: List<String>.from(
-        ((map['images'] ?? const <String>[]) as List<String>),
-      ),
+      images: map['images'] != null
+          ? List<String>.from(
+              ((map['images']) as List<String>),
+            )
+          : null,
     );
   }
 
@@ -91,7 +99,7 @@ class OfferDTO {
 
   @override
   String toString() {
-    return 'OfferDTO(id: $id, date: $date, isActive: $isActive, productName: $productName, productDescription: $productDescription, brandId: $brandId, oldPrice: $oldPrice, discountPrice: $discountPrice, buyUrl: $buyUrl, images: $images)';
+    return 'OfferDTO(id: $id, date: $date, isActive: $isActive, productName: $productName, productDescription: $productDescription, brandId: $brandId, brandName: $brandName, oldPrice: $oldPrice, discountPrice: $discountPrice, buyUrl: $buyUrl, images: $images)';
   }
 
   @override
@@ -104,6 +112,7 @@ class OfferDTO {
         other.productName == productName &&
         other.productDescription == productDescription &&
         other.brandId == brandId &&
+        other.brandName == brandName &&
         other.oldPrice == oldPrice &&
         other.discountPrice == discountPrice &&
         other.buyUrl == buyUrl &&
@@ -118,6 +127,7 @@ class OfferDTO {
         productName.hashCode ^
         productDescription.hashCode ^
         brandId.hashCode ^
+        brandName.hashCode ^
         oldPrice.hashCode ^
         discountPrice.hashCode ^
         buyUrl.hashCode ^

@@ -90,9 +90,7 @@ class _BrandsPageState extends State<BrandsPage> {
             children: [
               ElevatedButton(
                   onPressed: () {
-                    setState(() {
-                      showAddNewBrand = !showAddNewBrand;
-                    });
+                    setState(() => showAddNewBrand = !showAddNewBrand);
                   },
                   child: Text(showAddNewBrand ? "Cancelar" : "+ Novo Produto")),
               const SizedBox(height: 20),

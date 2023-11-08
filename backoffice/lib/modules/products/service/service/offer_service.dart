@@ -33,6 +33,7 @@ class OfferServiceImpl implements OfferService {
         final String productName = result[id]["productName"] as String;
         final String productDescription = result[id]["productDescription"];
         final String brandId = result[id]["brandId"];
+        final String brandName = result[id]["brandName"];
         final double oldPrice = (result[id]["oldPrice"] ?? 0.0) as double;
         final double discountPrice = (result[id]["discountPrice"] ?? 0.0) as double;
         final String buyUrl = result[id]["buyUrl"];
@@ -45,6 +46,7 @@ class OfferServiceImpl implements OfferService {
           productName: productName,
           productDescription: productDescription,
           brandId: brandId,
+          brandName: brandName,
           oldPrice: oldPrice,
           discountPrice: discountPrice,
           buyUrl: buyUrl,
@@ -68,6 +70,7 @@ class OfferServiceImpl implements OfferService {
       "productName": dto.productName,
       "productDescription": dto.productDescription,
       "brandId": dto.brandId,
+      "brandName": dto.brandName,
       "oldPrice": dto.oldPrice,
       "discountPrice": dto.discountPrice,
       "buyUrl": dto.buyUrl,

@@ -16,6 +16,7 @@ class OfferAdapter extends Adapter<Offer, OfferDTO> {
       discountPrice: dto.discountPrice,
       buyUrl: dto.buyUrl,
       images: dto.images,
+      brandName: dto.brandName,
     );
   }
 
@@ -32,6 +33,7 @@ class OfferAdapter extends Adapter<Offer, OfferDTO> {
       discountPrice: value.discountPrice,
       buyUrl: value.buyUrl,
       images: value.images,
+      brandName: value.brandName,
     );
   }
 }

@@ -29,6 +29,10 @@ extension DateTimeExtension on DateTime {
   bool isSameDayMonthYear(DateTime date) {
     return day == date.day && month == date.month && year == date.year;
   }
+
+  DateTime shortDate() {
+    return DateTime(year, month, day);
+  }
 }
 
 extension DurationExtension on Duration {
