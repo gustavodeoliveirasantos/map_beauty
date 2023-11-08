@@ -61,7 +61,7 @@ class OfferRepositoryImpl implements OfferRepository {
 
   @override
   Future<void> deactivateOffers(List<String> ids) {
-    return _service.activateOffers(ids);
+    return _service.deactivateOffers(ids);
   }
 
   @override

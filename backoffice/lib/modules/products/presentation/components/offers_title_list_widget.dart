@@ -1,7 +1,5 @@
 import 'package:backoffice/modules/products/presentation/components/table_separator_widget.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class OffersTitleListWidget extends StatelessWidget {
   final String date;

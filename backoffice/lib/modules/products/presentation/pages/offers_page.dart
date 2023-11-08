@@ -24,7 +24,6 @@ class _OffersPageState extends State<OffersPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _viewModel = Provider.of<OfferViewModel>(context, listen: false);
   }
@@ -53,9 +52,9 @@ class _OffersPageState extends State<OffersPage> {
         onConfirm: () {
           final updatedOffer = offer.copyWith(isActive: !offer.isActive);
           if (offer.isActive) {
-            _viewModel.activateOffer(dateKey, updatedOffer).onError((error, stackTrace) => print("LELELELE entrou aqui tbm"));
-          } else {
             _viewModel.deactivateOffer(dateKey, updatedOffer).onError((error, stackTrace) => print("LELELELE entrou aqui tbm"));
+          } else {
+            _viewModel.activateOffer(dateKey, updatedOffer).onError((error, stackTrace) => print("LELELELE entrou aqui tbm"));
           }
         });
   }
