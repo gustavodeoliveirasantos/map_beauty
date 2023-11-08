@@ -33,6 +33,7 @@ class Offer {
     String? productName,
     String? productDescription,
     String? brandId,
+    String? brandName,
     double? oldPrice,
     double? discountPrice,
     String? buyUrl,
@@ -45,11 +46,11 @@ class Offer {
       productName: productName ?? this.productName,
       productDescription: productDescription ?? this.productDescription,
       brandId: brandId ?? this.brandId,
+      brandName: brandName ?? this.brandName,
       oldPrice: oldPrice ?? this.oldPrice,
       discountPrice: discountPrice ?? this.discountPrice,
       buyUrl: buyUrl ?? this.buyUrl,
       images: images ?? this.images,
-      brandName: '',
     );
   }
 

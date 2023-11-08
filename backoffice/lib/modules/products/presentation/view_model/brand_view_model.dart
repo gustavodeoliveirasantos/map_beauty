@@ -70,7 +70,6 @@ class BrandViewModel extends ChangeNotifier {
 
     await updateBrand(updatedBrand, false).onError((error, stackTrace) => debugPrint("GOS deu erro no update?"));
     await _updateImageBrandUseCase.execute(UploadImageBrandUseCaseInput(brand: brand, imageData: imageData, oldImageName: oldImageName));
-    debugPrint("GOS -  Entrou aqui e vai dar Notigy");
 
     notifyListeners();
   }

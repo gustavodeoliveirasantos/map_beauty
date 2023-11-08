@@ -10,7 +10,16 @@ import 'package:url_launcher/url_launcher.dart';
 
 class OffersListWidget extends StatelessWidget {
   final List<Offer>? offers;
-  const OffersListWidget({super.key, required this.offers});
+  final Function(Offer) onOfferSelected;
+  final Function(Offer) onActivateOrDeactivateTapped;
+  final Function(Offer) onDeleteTapped;
+  const OffersListWidget({
+    super.key,
+    required this.offers,
+    required this.onOfferSelected,
+    required this.onActivateOrDeactivateTapped,
+    required this.onDeleteTapped,
+  });
 
   void openUrl(String url) async {
     String finalUrl = url;
@@ -74,14 +83,14 @@ class OffersListWidget extends StatelessWidget {
                   SizedBox(
                     width: 100,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () => onActivateOrDeactivateTapped(offer!),
                       child: Text((offer?.isActive ?? false) ? "Desativar" : "Ativar"),
                     ),
                   ),
                   SizedBox(
                     width: 80,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () => onDeleteTapped(offer!),
                       child: Text("Excluir"),
                     ),
                   ),

@@ -11,6 +11,7 @@ class DeactivateOffersUseCaseImpl implements DeactivateOffersUseCase {
 
   @override
   Future<void> execute(List<String> input) async {
+    throw Exception("asdads");
     return _repository.deactivateOffers(input);
   }
 }

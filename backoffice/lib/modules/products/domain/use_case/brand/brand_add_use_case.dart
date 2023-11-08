@@ -15,9 +15,7 @@ class AddBrandUseCaseInput {
 class AddBrandUseCaseImpl implements AddBrandUseCase {
   final BrandRepository _repository;
 
-  AddBrandUseCaseImpl(this._repository) {
-    debugPrint("GOS - criou a instancia AddBrandUseCase");
-  }
+  AddBrandUseCaseImpl(this._repository);
 
   @override
   Future<void> execute(AddBrandUseCaseInput input) async {

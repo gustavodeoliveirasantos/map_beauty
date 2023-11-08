@@ -48,7 +48,6 @@ class OfferViewModel extends ChangeNotifier {
     _offers = await _getOffersImageUseCase.execute();
     loadOffersMap();
 
-    print(offersMap);
     notifyListeners();
   }
 
@@ -62,7 +61,7 @@ class OfferViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> addOffer(Offer offer, String dateKey) async {
+  Future<void> addOffer(Offer offer, DateTime dateKey) async {
     offersMap[dateKey]?.add(offer);
 
     _addOfferUseCase.execute(offer).onError((error, stackTrace) {
@@ -74,7 +73,7 @@ class OfferViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> updateOffer(Offer updatedOffer, String dateKey) async {
+  Future<void> updateOffer(Offer updatedOffer, DateTime dateKey) async {
     final offersList = offersMap[dateKey];
 
     final index = offersList?.indexWhere((element) => element.id == updatedOffer.id);
@@ -92,7 +91,7 @@ class OfferViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> deleteOffer(Offer offer, String dateKey) async {
+  Future<void> deleteOffer(Offer offer, DateTime dateKey) async {
     final offersList = offersMap[dateKey];
     final index = offersList?.indexWhere((element) => element.id == offer.id);
     final copyOffer = offer.copyWith();
@@ -101,26 +100,90 @@ class OfferViewModel extends ChangeNotifier {
     _deleteOfferUseCase.execute(offer).onError((error, stackTrace) {
       offersList?.insert(index!, copyOffer);
     });
+
+    notifyListeners();
   }
 
-  Future<void> activateOffersByDate(String dateKey) async {
+  Future<void> activateOffersByDate(DateTime dateKey) async {
     final offersList = offersMap[dateKey]!;
     final ids = offersList.map((e) => e.id).toList();
-    _activateOffersUseCase.execute(ids);
+
+    final List<Offer> updatedList = [];
+    final List<Offer> oldList = [];
+
+    for (var offer in offersList) {
+      oldList.add(offer.copyWith());
+      updatedList.add(offer.copyWith(isActive: true));
+    }
+
+    offersMap[dateKey] = updatedList;
+
+    _activateOffersUseCase.execute(ids).onError((error, stackTrace) {
+      offersMap[dateKey] = oldList;
+      notifyListeners();
+    });
+
+    notifyListeners();
   }
 
-  Future<void> activateOffers(String dateKey) async {
+  Future<void> deactivateOffersByDate(DateTime dateKey) async {
     final offersList = offersMap[dateKey]!;
-    //TODO Atualziar a lista para isActive = true
-    for (var offer in offersList) {}
-
     final ids = offersList.map((e) => e.id).toList();
-    _activateOffersUseCase.execute(ids);
+
+    final List<Offer> updatedList = [];
+    final List<Offer> oldList = [];
+
+    for (var offer in offersList) {
+      oldList.add(offer.copyWith());
+      updatedList.add(offer.copyWith(isActive: false));
+    }
+
+    offersMap[dateKey] = updatedList;
+
+    _deactivateOffersUseCase.execute(ids).onError((error, stackTrace) {
+      offersMap[dateKey] = oldList;
+      print(error);
+      notifyListeners();
+    });
+
+    notifyListeners();
   }
 
-  Future<void> deactivateOffersByDate(String dateKey) async {
-    final offersList = offersMap[dateKey]!;
-    final ids = offersList.map((e) => e.id).toList();
-    _activateOffersUseCase.execute(ids);
+  Future<void> activateOffer(DateTime dateKey, Offer updatedOffer) async {
+    final offersList = offersMap[dateKey];
+
+    final index = offersList?.indexWhere((element) => element.id == updatedOffer.id);
+    final oldOffer = offersList![index!];
+
+    offersList.removeWhere((element) => element.id == updatedOffer.id);
+    offersList.insert(index, updatedOffer);
+
+    _activateOffersUseCase.execute([updatedOffer.id]).onError((error, stackTrace) {
+      offersList.removeWhere((element) => element.id == updatedOffer.id);
+      offersList.insert(index, oldOffer);
+
+      notifyListeners();
+    });
+
+    notifyListeners();
+  }
+
+  Future<void> deactivateOffer(DateTime dateKey, Offer updatedOffer) async {
+    final offersList = offersMap[dateKey];
+
+    final index = offersList?.indexWhere((element) => element.id == updatedOffer.id);
+    final oldOffer = offersList![index!];
+
+    offersList.removeWhere((element) => element.id == updatedOffer.id);
+    offersList.insert(index, updatedOffer);
+
+    _deactivateOffersUseCase.execute([updatedOffer.id]).onError((error, stackTrace) {
+      offersList.removeWhere((element) => element.id == updatedOffer.id);
+      offersList.insert(index, oldOffer);
+      print("error");
+      notifyListeners();
+    });
+
+    notifyListeners();
   }
 }
