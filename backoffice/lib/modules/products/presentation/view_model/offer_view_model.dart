@@ -13,11 +13,11 @@ import 'package:intl/intl.dart';
 
 class OfferViewModel extends ChangeNotifier {
   final AddOfferUseCase _addOfferUseCase;
-  final DeleteOfferImageUseCase _deleteOfferImageUseCase;
   final DeleteOfferUseCase _deleteOfferUseCase;
   final GetOffersImageUseCase _getOffersImageUseCase;
   final UpdateOfferUseCase _updateOfferUseCase;
   final UploadOfferImageUseCase _uploadOfferImageUseCase;
+  final DeleteOfferImageUseCase _deleteOfferImageUseCase;
   final ActivateOffersUseCase _activateOffersUseCase;
   final DeactivateOffersUseCase _deactivateOffersUseCase;
 
@@ -185,5 +185,28 @@ class OfferViewModel extends ChangeNotifier {
     });
 
     notifyListeners();
+  }
+
+  Future<void> uploadImages(Offer offer, List<Map<String, dynamic>?> images, Function(Offer) onComplete) async {
+    final currentImages = offer.images;
+
+    for (var map in images) {
+      final Uint8List imageData = map?["imageData"];
+      final String imageName = map?["imageName"];
+
+      final input = UploadOfferImageUseCaseInput(offer: offer, imageName: imageName, imageData: imageData);
+      await _uploadOfferImageUseCase.execute(input);
+
+      offer.images.add(imageName);
+    }
+    onComplete(offer);
+  }
+
+  Future<void> deleteImage(Offer offer, String imageName, Function(Offer) onComplete) async {
+    await _deleteOfferImageUseCase.execute(DeleteOfferImageInput(imageName: imageName, offer: offer));
+
+    offer.images.remove(imageName);
+
+    onComplete(offer);
   }
 }

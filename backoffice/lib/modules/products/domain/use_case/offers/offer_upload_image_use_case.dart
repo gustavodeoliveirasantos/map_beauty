@@ -3,13 +3,14 @@ import 'package:backoffice/modules/core/use_case/use_case.dart';
 import 'package:backoffice/modules/products/domain/models/offer_model.dart';
 import 'package:backoffice/modules/products/domain/repository/offer_repository.dart';
 
-abstract class UploadOfferImageUseCase implements InputUseCase<void, Offer> {}
+abstract class UploadOfferImageUseCase implements InputUseCase<void, UploadOfferImageUseCaseInput> {}
 
 class UploadOfferImageUseCaseInput {
   final Offer offer;
+  final String imageName;
   final Uint8List imageData;
 
-  UploadOfferImageUseCaseInput({required this.offer, required this.imageData});
+  UploadOfferImageUseCaseInput({required this.offer, required this.imageName, required this.imageData});
 }
 
 class UploadOfferImageUseCaseImpl implements UploadOfferImageUseCase {
@@ -17,7 +18,7 @@ class UploadOfferImageUseCaseImpl implements UploadOfferImageUseCase {
 
   UploadOfferImageUseCaseImpl(this._repository);
   @override
-  Future<void> execute(Offer input) async {
-    return _repository.addOffer(input);
+  Future<void> execute(UploadOfferImageUseCaseInput input) async {
+    return _repository.uploadOfferImage(input.offer, input.imageName, input.imageData);
   }
 }

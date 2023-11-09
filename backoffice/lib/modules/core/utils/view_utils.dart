@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ViewUtils {
-  static Future<Map<String, dynamic>?> getImageDataFromimagePicker() async {
+  static Future<Map<String, dynamic>?> getImageDataFromImagePicker() async {
     final imagePicker = ImagePicker();
 
     final XFile? pickedImage = await imagePicker.pickImage(source: ImageSource.gallery);
@@ -18,6 +18,25 @@ class ViewUtils {
 
       //  final imageURL = await vm.uploadImageToFirebaseStorage(imageData, pickedImage.name);
       //    print(imageURL);
+    }
+  }
+
+  static Future<List<Map<String, dynamic>?>?> getMultiImagesDataFromImagePicker() async {
+    final imagePicker = ImagePicker();
+
+    final List<XFile>? pickedImages = await imagePicker.pickMultiImage();
+
+    if (pickedImages == null) {
+      return null;
+    } else {
+      List<Map<String, dynamic>> list = [];
+      for (var image in pickedImages) {
+        Uint8List imageData = await image.readAsBytes();
+        final imageName = image.name;
+        final map = {"imageData": imageData, "imageName": imageName};
+        list.add(map);
+      }
+      return list;
     }
   }
 

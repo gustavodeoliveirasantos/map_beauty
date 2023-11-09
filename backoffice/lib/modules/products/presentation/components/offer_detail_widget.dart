@@ -1,9 +1,15 @@
+import 'dart:ui';
+
+import 'package:backoffice/modules/core/presentation/components/brands_dropdown_widget.dart';
+import 'package:backoffice/modules/core/presentation/components/loading_widget.dart';
+import 'package:backoffice/modules/core/utils/view_utils.dart';
 import 'package:backoffice/modules/products/domain/models/offer_model.dart';
-import 'package:flutter/foundation.dart';
+import 'package:backoffice/modules/products/presentation/components/offer_image_widget.dart';
+import 'package:backoffice/modules/products/presentation/view_model/offer_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class OfferDetailWidget extends StatefulWidget {
   final Function() onCloseTapped;
@@ -19,6 +25,9 @@ class OfferDetailWidget extends StatefulWidget {
 }
 
 class _OfferDetailWidgetState extends State<OfferDetailWidget> {
+  Offer? _offer;
+  late OfferViewModel _viewModel;
+  bool _didSaveOffer = false;
   static const _locale = 'pt_BR';
   String _formatNumber(String s) {
     return NumberFormat.decimalPattern(_locale).format(int.parse(s));
@@ -31,6 +40,51 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
   final _urlController = TextEditingController();
   final _oldPriceController = TextEditingController();
   final _discountPriceController = TextEditingController();
+  List<String> images = [];
+  final _scrollController = ScrollController();
+  bool _isImageUploading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _viewModel = Provider.of<OfferViewModel>(context, listen: false);
+    _offer = widget.offer;
+    if (widget.offer != null) {
+      _didSaveOffer = true;
+      _productNameController.text = widget.offer!.productName;
+      _productDescriptionController.text = widget.offer!.productDescription;
+      _urlController.text = widget.offer!.buyUrl;
+      _oldPriceController.text = widget.offer!.oldPrice.toStringAsFixed(2);
+      _discountPriceController.text = widget.offer!.discountPrice.toStringAsFixed(2);
+      images = widget.offer!.images ?? [];
+    }
+  }
+
+  void saveOffer() {}
+
+  void uploadImages() async {
+    setState(() => _isImageUploading = true);
+    if (_offer != null) {
+      final result = await ViewUtils.getMultiImagesDataFromImagePicker();
+
+      await _viewModel.uploadImages(_offer!, result ?? [], (offer) {
+        _offer = offer;
+        setState(() {
+          images = _offer!.images ?? [];
+        });
+      });
+    }
+
+    setState(() => _isImageUploading = false);
+  }
+
+  void onDeleteImage(String imageName) async {
+    if (_offer != null) {
+      await _viewModel.deleteImage(_offer!, imageName, (offer) {
+        setState(() {});
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +98,7 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
           children: [
             Container(
               color: Colors.white,
-              height: screenSize.height / 1.5,
+              height: 650,
               width: screenSize.width / 1.7,
             ),
             Positioned(
@@ -60,8 +114,8 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
               left: 20,
               bottom: 20,
               child: Container(
-                color: Colors.amber,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
@@ -75,17 +129,32 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
                         const SizedBox(width: 40),
                         Flexible(
                           flex: 1,
+                          child: BrandsDropdownWidget(
+                            onChanged: (p0) {},
+                          ),
+                        ),
+                      ],
+                    ),
+                    TextField(
+                      //    maxLines: 2,
+                      controller: _productDescriptionController,
+                      decoration: const InputDecoration(labelText: "Descrição do Produto"),
+                    ),
+                    Row(
+                      children: [
+                        Flexible(
+                          flex: 1,
                           child: TextField(
                             controller: _urlController,
                             decoration: const InputDecoration(labelText: "URL"),
                           ),
+                        ),
+                        const SizedBox(width: 40),
+                        Flexible(
+                          flex: 1,
+                          child: SizedBox(),
                         )
                       ],
-                    ),
-                    TextField(
-                      maxLines: 2,
-                      controller: _productDescriptionController,
-                      decoration: const InputDecoration(labelText: "Descrição do Produto"),
                     ),
                     Row(
                       children: [
@@ -120,6 +189,44 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
                           ),
                         )
                       ],
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      children: [
+                        ElevatedButton(
+                            onPressed: !_didSaveOffer || _isImageUploading ? null : uploadImages,
+                            child: _isImageUploading
+                                ? const LoadingWidget(
+                                    strokeWidth: 2,
+                                    size: Size(20, 20),
+                                  )
+                                : Text("Adicionar Fotos")),
+                        SizedBox(width: 20),
+                        ElevatedButton(onPressed: () {}, child: Text("Salvar")),
+                      ],
+                    ),
+                    Scrollbar(
+                      thumbVisibility: true,
+                      controller: _scrollController,
+                      child: ScrollConfiguration(
+                        behavior: ScrollConfiguration.of(context).copyWith(
+                          dragDevices: {
+                            PointerDeviceKind.touch,
+                            PointerDeviceKind.mouse,
+                          },
+                        ),
+                        child: SingleChildScrollView(
+                          controller: _scrollController,
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: images
+                                .map(
+                                  (e) => OfferImageWidget(imageName: e, onDeleteTapped: onDeleteImage),
+                                )
+                                .toList(),
+                          ),
+                        ),
+                      ),
                     )
                   ],
                 ),

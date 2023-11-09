@@ -1,9 +1,7 @@
 import 'package:backoffice/modules/products/domain/models/offer_model.dart';
 import 'package:backoffice/modules/products/presentation/components/table_separator_widget.dart';
 import 'package:backoffice/modules/products/presentation/view_model/brand_view_model.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -57,7 +55,7 @@ class OffersListWidget extends StatelessWidget {
           String url = offer?.buyUrl ?? "";
 
           return InkWell(
-            onTap: () {},
+            onTap: () => onOfferSelected(offer!),
             child: SizedBox(
               height: rowHeight,
               child: Row(

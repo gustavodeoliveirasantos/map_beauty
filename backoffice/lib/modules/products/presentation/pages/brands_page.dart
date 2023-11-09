@@ -37,7 +37,7 @@ class _BrandsPageState extends State<BrandsPage> {
   }
 
   openImagePicker(Brand brand) async {
-    final result = await ViewUtils.getImageDataFromimagePicker();
+    final result = await ViewUtils.getImageDataFromImagePicker();
     setState(() => isLoading = true);
     await _viewModel.updateBrandImage(brand, result?["imageData"], result?["imageName"]).onError((error, stackTrace) => debugPrint(stackTrace.toString()));
     setState(() => isLoading = false);

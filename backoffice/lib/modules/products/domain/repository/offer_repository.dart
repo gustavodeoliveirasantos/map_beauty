@@ -67,13 +67,16 @@ class OfferRepositoryImpl implements OfferRepository {
   @override
   Future<void> uploadOfferImage(Offer offer, String imageName, Uint8List imageData) async {
     final dto = OfferAdapter().adaptToDTO(offer);
-    _service.uploadOfferImage(dto, imageName);
+    await _service.uploadOfferImage(dto, imageName);
 
-    await _firebaseStorageService.uploadImage(imageData, imageName, ImageFolder.logo);
+    await _firebaseStorageService.uploadImage(imageData, imageName, ImageFolder.offersProducts);
   }
 
   @override
   Future<void> deleteImage(Offer offer, String imageName) async {
+    final dto = OfferAdapter().adaptToDTO(offer);
+    await _service.deleteOfferImage(dto, imageName);
+
     return _firebaseStorageService.deleteImage(imageName, ImageFolder.offersProducts);
   }
 }

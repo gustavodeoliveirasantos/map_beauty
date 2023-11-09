@@ -10,7 +10,7 @@ class Offer {
   final double oldPrice;
   final double discountPrice;
   final String buyUrl;
-  final List<String>? images;
+  final List<String> images;
 
   const Offer({
     required this.id,

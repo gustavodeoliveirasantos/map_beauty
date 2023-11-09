@@ -19,7 +19,7 @@ class OffersPage extends StatefulWidget {
 
 class _OffersPageState extends State<OffersPage> {
   late OfferViewModel _viewModel;
-  bool showOfferDetailModal = true;
+  bool showOfferDetailModal = false;
   Offer? selectedOffer;
 
   @override
@@ -29,7 +29,7 @@ class _OffersPageState extends State<OffersPage> {
   }
 
   void onOfferSelected(Offer offer) {
-    selectedOffer = selectedOffer;
+    selectedOffer = offer;
     showOfferDetail();
   }
 
@@ -176,7 +176,7 @@ class _OffersPageState extends State<OffersPage> {
                             const Divider(height: 0.5),
                             OffersListWidget(
                               offers: offersMap[sortedKeys[index]],
-                              onOfferSelected: (p0) {},
+                              onOfferSelected: onOfferSelected,
                               onDeleteTapped: (offer) => deleteOffer(offer, dateKey),
                               onActivateOrDeactivateTapped: (offer) => activateOrDeactivateOffer(offer, dateKey),
                             ),
@@ -195,6 +195,7 @@ class _OffersPageState extends State<OffersPage> {
         ),
         if (showOfferDetailModal)
           OfferDetailWidget(
+            offer: selectedOffer,
             onCloseTapped: closeOfferDetail,
           ),
       ]),

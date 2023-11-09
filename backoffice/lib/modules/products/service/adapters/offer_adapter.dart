@@ -15,7 +15,7 @@ class OfferAdapter extends Adapter<Offer, OfferDTO> {
       oldPrice: dto.oldPrice,
       discountPrice: dto.discountPrice,
       buyUrl: dto.buyUrl,
-      images: dto.images,
+      images: dto.images ?? [],
       brandName: dto.brandName,
     );
   }

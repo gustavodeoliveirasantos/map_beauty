@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BrandsDropdownWidget extends StatefulWidget {
+  final Brand? initialBrand;
   final Function(Brand) onChanged;
-  const BrandsDropdownWidget({super.key, required this.onChanged});
+  const BrandsDropdownWidget({super.key, required this.onChanged, this.initialBrand});
 
   @override
   State<BrandsDropdownWidget> createState() => _BrandsDropdownWidgetState();
@@ -30,6 +31,7 @@ class _BrandsDropdownWidgetState extends State<BrandsDropdownWidget> {
             .toList();
 
         return DropdownButton(
+          isExpanded: true,
           value: dropdownValue,
           items: dropdownItems,
           onChanged: (value) {

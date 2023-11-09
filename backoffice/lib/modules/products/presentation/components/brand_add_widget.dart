@@ -21,7 +21,7 @@ class _BrandAddWidgetState extends State<BrandAddWidget> {
   final _controller = TextEditingController();
 
   openImagePicker() async {
-    final result = await ViewUtils.getImageDataFromimagePicker();
+    final result = await ViewUtils.getImageDataFromImagePicker();
 
     imageName = result?["imageName"];
     imageData = result?["imageData"];
