@@ -6,7 +6,6 @@ import 'package:backoffice/modules/products/presentation/components/offers_list_
 import 'package:backoffice/modules/products/presentation/components/offers_title_list_widget.dart';
 import 'package:backoffice/modules/products/presentation/view_model/offer_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -87,11 +86,11 @@ class _OffersPageState extends State<OffersPage> {
     ViewUtils.showConfirmAlert(
         context: context,
         title: "Atenção",
-        description: "Tem certeza que disso?",
+        description: "Tem certeza que disso que deseja excluir todas as ofertas desse dia?",
         confirmButtonText: "Sim",
         cancelButtonText: "Não",
         onConfirm: () {
-          //  _viewModel.deactivateOffersByDate(dateKey);
+          _viewModel.deleteOffersByDate(dateKey);
         });
   }
 
@@ -110,27 +109,6 @@ class _OffersPageState extends State<OffersPage> {
     setState(() {
       showOfferDetailModal = true;
     });
-
-    // final service = OfferServiceImpl(database: FirebaseDatabase.instance);
-    // final dto = OfferDTO(
-    //   id: Utils.uuid(),
-    //   date: DateTime.now().add(Duration(days: 0)),
-    //   isActive: false,
-    //   productName: "Product 11",
-    //   productDescription: "TESTE teste teste ",
-    //   brandId: "1699388932652000",
-    //   brandName: "O Boticário",
-    //   oldPrice: 200.00,
-    //   discountPrice: 150.00,
-    //   buyUrl: "https://www.google.com",
-    //   images: ["imagem 1.png", "imagem 2.png"],
-    // );
-
-    // service.addOffer(dto);
-    // // viewModel.getOffers();
-    // setState(() {
-    //   showAddNewOffer = false;
-    // });
   }
 
   @override

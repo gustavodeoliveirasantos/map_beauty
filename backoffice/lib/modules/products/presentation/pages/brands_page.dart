@@ -94,9 +94,6 @@ class _BrandsPageState extends State<BrandsPage> {
                   },
                   child: Text(showAddNewBrand ? "Cancelar" : "+ Novo Produto")),
               const SizedBox(height: 20),
-              BrandsDropdownWidget(
-                onChanged: (p0) {},
-              ),
               if (showSuccesLabel) const Text("Marca Adicionada com sucesso... :)"),
               if (showAddNewBrand) BrandAddWidget(onBrandAdded: onBrandAdded, onAddBrandTapped: onAddBrandTapped),
               if (isLoading)

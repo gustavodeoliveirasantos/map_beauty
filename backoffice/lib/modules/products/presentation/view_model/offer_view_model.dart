@@ -9,7 +9,6 @@ import 'package:backoffice/modules/products/domain/use_case/offers/offer_get_use
 import 'package:backoffice/modules/products/domain/use_case/offers/offer_update_use_case.dart';
 import 'package:backoffice/modules/products/domain/use_case/offers/offer_upload_image_use_case.dart';
 import 'package:flutter/foundation.dart';
-import 'package:intl/intl.dart';
 
 class OfferViewModel extends ChangeNotifier {
   final AddOfferUseCase _addOfferUseCase;
@@ -61,19 +60,25 @@ class OfferViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> addOffer(Offer offer, DateTime dateKey) async {
-    offersMap[dateKey]?.add(offer);
+  Future<void> addOffer(Offer offer) async {
+    final dateKey = offer.date.shortDate();
+
+    if (!offersMap.containsKey(dateKey)) {
+      offersMap[dateKey] = [offer];
+    } else {
+      offersMap[dateKey]?.insert(0, offer);
+    }
 
     _addOfferUseCase.execute(offer).onError((error, stackTrace) {
       offersMap[dateKey]?.remove(offer);
       notifyListeners();
-      //TODO - Apresentar erro aqui
     });
 
     notifyListeners();
   }
 
-  Future<void> updateOffer(Offer updatedOffer, DateTime dateKey) async {
+  Future<void> updateOffer(Offer updatedOffer) async {
+    final dateKey = updatedOffer.date.shortDate();
     final offersList = offersMap[dateKey];
 
     final index = offersList?.indexWhere((element) => element.id == updatedOffer.id);
@@ -101,6 +106,25 @@ class OfferViewModel extends ChangeNotifier {
       offersList?.insert(index!, copyOffer);
     });
 
+    notifyListeners();
+  }
+
+  Future<void> deleteOffersByDate(DateTime dateKey) async {
+    final offersList = offersMap[dateKey];
+    if (offersList == null || offersList.isEmpty) return;
+
+    final List<Offer> offersCopies = [];
+    for (int index = 0; index < offersList.length; index++) {
+      final offer = offersList[index];
+      offersCopies.add(offer);
+
+      // offersList.remove(offer);
+
+      _deleteOfferUseCase.execute(offer).onError((error, stackTrace) {
+        //  offersList.insert(index, copyOffer);
+      });
+    }
+    offersMap.remove(dateKey);
     notifyListeners();
   }
 

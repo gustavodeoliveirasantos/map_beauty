@@ -49,6 +49,13 @@ class BrandViewModel extends ChangeNotifier {
     );
   }
 
+  Brand? getBrandById(String id) {
+    final brands = _brands.where((element) => element.id == id).toList();
+    if (brands.isEmpty) return null;
+
+    return brands.first;
+  }
+
   Future<Brand> addBrandAndUpdateImage(String name, Uint8List imageData, String imageName) async {
     final id = Utils.uuid();
     final finalImageName = "${id}_$imageName";
