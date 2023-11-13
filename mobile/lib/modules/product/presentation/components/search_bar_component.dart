@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class SearchBarWidget extends StatefulWidget {
@@ -19,7 +18,6 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (widget.forceActive) FocusScope.of(context).requestFocus(focusNode);
@@ -28,7 +26,6 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
 
   @override
   void didUpdateWidget(covariant SearchBarWidget oldWidget) {
-    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     if (widget.forceActive) FocusScope.of(context).requestFocus(focusNode);
   }

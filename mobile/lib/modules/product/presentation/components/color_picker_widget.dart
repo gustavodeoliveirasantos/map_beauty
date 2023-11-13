@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mapbeauty/modules/product/domain/models/product.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';

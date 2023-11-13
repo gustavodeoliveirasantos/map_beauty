@@ -7,6 +7,7 @@ import 'package:mapbeauty/modules/product/services/dto/product_dto.dart';
 import 'package:mapbeauty/modules/product/services/dto/product_type_dto.dart';
 
 abstract class ProductStore {
+  List<BrandDTO> _brands = [];
   Future<List<BrandDTO>> loadBrandsAndProducts();
 }
 
@@ -14,6 +15,9 @@ class ProductStoreImpl implements ProductStore {
   Map<String, List<List<dynamic>>> _csvData = {};
   List<ProductTypeDTO> _productTypeList = [];
   List<ColorTypeDTO> _colorTypeList = [];
+
+  @override
+  List<BrandDTO> _brands = [];
 
   @override
   Future<List<BrandDTO>> loadBrandsAndProducts() async {

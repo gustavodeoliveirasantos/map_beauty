@@ -2,7 +2,6 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
 import 'package:mapbeauty/modules/product/services/dto/product_dto.dart';
 
 class BrandDTO {
@@ -46,7 +45,7 @@ class BrandDTO {
     return BrandDTO(
       id: (map["id"] ?? 0) as int,
       name: (map["name"] ?? '') as String,
-      imageName: map['imageName'] != null ? map["imageName"] ?? '' as String : null,
+      imageName: map['imageName'] != null ? map["imageName"] ?? '' : null,
       products: List<ProductDTO>.from(
         ((map['products'] ?? const <ProductDTO>[]) as List).map<ProductDTO>((x) {
           return ProductDTO.fromMap((x ?? Map<String, dynamic>.from({})) as Map<String, dynamic>);

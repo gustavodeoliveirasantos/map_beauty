@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mapbeauty/modules/notifications/pages/notifications_page.dart';
-import 'package:mapbeauty/modules/product/presentation/pages/colors_page.dart';
 import 'package:mapbeauty/modules/product/presentation/pages/product_colors_comparison_result.dart';
-import 'package:mapbeauty/modules/product/presentation/pages/products_page.dart';
 
-import '../../product/domain/models/product.dart';
 import '../../product/presentation/pages/home_page.dart';
 
 class AppRoutes {

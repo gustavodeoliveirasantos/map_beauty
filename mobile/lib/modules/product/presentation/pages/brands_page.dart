@@ -23,7 +23,6 @@ class _BrandsPageState extends State<BrandsPage> with AutomaticKeepAliveClientMi
 
   @override
   void initState() {
-    // TODO: implement initState
     WidgetsBinding.instance.addPostFrameCallback((_) {
       loadBrands();
     });
@@ -38,6 +37,7 @@ class _BrandsPageState extends State<BrandsPage> with AutomaticKeepAliveClientMi
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final size = MediaQuery.of(context).size;
     final imageSize = size.width / 3 - 30;
 

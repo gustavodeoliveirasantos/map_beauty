@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../utils/app_routes.dart';
 import '../../utils/map_beauty_in_app_review.dart';
 import '../../utils/utils.dart';
 

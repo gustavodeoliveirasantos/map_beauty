@@ -37,6 +37,7 @@ class _ProductsPageState extends State<ProductsPage> with AutomaticKeepAliveClie
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final size = MediaQuery.of(context).size;
     final imageSize = size.width / 2 - 20;
 

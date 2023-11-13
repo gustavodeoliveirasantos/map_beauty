@@ -2,7 +2,6 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
 import 'package:mapbeauty/modules/product/services/dto/color_type_dto.dart';
 
 class ProductColorDTO {

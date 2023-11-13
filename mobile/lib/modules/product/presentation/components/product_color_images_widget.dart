@@ -16,7 +16,6 @@ class _ProductColorImagesWidgetState extends State<ProductColorImagesWidget> {
 
   @override
   void didUpdateWidget(covariant ProductColorImagesWidget oldWidget) {
-    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     pageController.jumpToPage(0);
   }

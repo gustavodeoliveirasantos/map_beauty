@@ -19,14 +19,12 @@ class _FirebaseStorageImageWidgetState extends State<FirebaseStorageImageWidget>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getImage();
   }
 
   @override
   void didUpdateWidget(covariant FirebaseStorageImageWidget oldWidget) {
-    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     if (mounted) getImage();
     print("didUpdateWidget");
@@ -42,6 +40,7 @@ class _FirebaseStorageImageWidgetState extends State<FirebaseStorageImageWidget>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return imageUrl == null
         ? SizedBox(
             height: widget.height,
@@ -60,6 +59,5 @@ class _FirebaseStorageImageWidgetState extends State<FirebaseStorageImageWidget>
   }
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 }
