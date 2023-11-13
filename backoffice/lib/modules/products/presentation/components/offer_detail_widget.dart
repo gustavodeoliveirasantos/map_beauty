@@ -1,13 +1,13 @@
 import 'dart:ui';
 import 'package:backoffice/modules/core/presentation/components/brands_dropdown_widget.dart';
 import 'package:backoffice/modules/core/presentation/components/loading_widget.dart';
-import 'package:backoffice/modules/core/utils/utils.dart';
-import 'package:backoffice/modules/core/utils/view_utils.dart';
-import 'package:backoffice/modules/products/domain/models/brand_model.dart';
-import 'package:backoffice/modules/products/domain/models/offer_model.dart';
 import 'package:backoffice/modules/products/presentation/components/offer_image_widget.dart';
 import 'package:backoffice/modules/products/presentation/view_model/brand_view_model.dart';
 import 'package:backoffice/modules/products/presentation/view_model/offer_view_model.dart';
+import 'package:commons/modules/core/utils/utils.dart';
+import 'package:commons/modules/core/utils/view_utils.dart';
+import 'package:commons/modules/products/domain/models/brand_model.dart';
+import 'package:commons/modules/products/domain/models/offer_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';

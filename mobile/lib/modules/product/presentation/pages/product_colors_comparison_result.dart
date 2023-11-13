@@ -1,16 +1,13 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'package:commons/modules/firebase_service/firebase_storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mapbeauty/firebase/firebase_storage_service.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
 import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/product_info_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../domain/models/color_type.dart';
 import '../../domain/models/product.dart';
 
 class ProductsColorComparisonResultArgs {
@@ -118,7 +115,7 @@ class _ProductsColorComparisonResultState extends State<ProductsColorComparisonR
                               borderRadius: BorderRadius.circular(12.0),
                               child: FirebaseStorageImageWidget(
                                 imageName: product.imageUrl,
-                                imageType: ImageType.product,
+                                imageFolder: ImageFolder.product,
                                 height: 80,
                                 width: 60,
                               ),

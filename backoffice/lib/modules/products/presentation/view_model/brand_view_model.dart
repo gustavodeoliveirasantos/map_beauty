@@ -1,11 +1,12 @@
 import 'dart:typed_data';
-import 'package:backoffice/modules/core/utils/utils.dart';
-import 'package:backoffice/modules/products/domain/models/brand_model.dart';
-import 'package:backoffice/modules/products/domain/use_case/brand/brand_add_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/brand/brand_delete_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/brand/brand_get_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/brand/brand_update_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/brand/brand_upload_image_use_case.dart';
+
+import 'package:commons/modules/core/utils/utils.dart';
+import 'package:commons/modules/products/domain/models/brand_model.dart';
+import 'package:commons/modules/products/domain/use_case/brand/brand_add_use_case.dart';
+import 'package:commons/modules/products/domain/use_case/brand/brand_delete_use_case.dart';
+import 'package:commons/modules/products/domain/use_case/brand/brand_get_use_case.dart';
+import 'package:commons/modules/products/domain/use_case/brand/brand_update_use_case.dart';
+import 'package:commons/modules/products/domain/use_case/brand/brand_upload_image_use_case.dart';
 import 'package:flutter/material.dart';
 
 class BrandViewModel extends ChangeNotifier {

@@ -1,13 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:commons/modules/firebase_service/firebase_storage_service.dart';
 import 'package:flutter/material.dart';
-import 'package:mapbeauty/firebase/firebase_storage_service.dart';
+import 'package:get_it/get_it.dart';
 
 class FirebaseStorageImageWidget extends StatefulWidget {
   final String? imageName;
   final double? height;
   final double? width;
-  final ImageType imageType;
-  const FirebaseStorageImageWidget({super.key, required this.imageName, this.height, this.width, required this.imageType});
+  final ImageFolder imageFolder;
+  const FirebaseStorageImageWidget({super.key, required this.imageName, this.height, this.width, required this.imageFolder});
 
   @override
   State<FirebaseStorageImageWidget> createState() => _FirebaseStorageImageWidgetState();
@@ -32,7 +33,8 @@ class _FirebaseStorageImageWidgetState extends State<FirebaseStorageImageWidget>
   }
 
   void getImage() async {
-    imageUrl = await FirebaseStorageService.getImagePath(widget.imageName, widget.imageType);
+    final firebaseStorageService = GetIt.instance<FirebaseStorageService>();
+    imageUrl = await firebaseStorageService.getImagePath(widget.imageName, widget.imageFolder);
     if (mounted) {
       setState(() {});
     }

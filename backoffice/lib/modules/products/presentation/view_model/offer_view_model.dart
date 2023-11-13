@@ -1,15 +1,15 @@
 import 'package:backoffice/main.dart';
-import 'package:backoffice/modules/core/utils/extensions.dart';
-import 'package:backoffice/modules/core/utils/view_utils.dart';
-import 'package:backoffice/modules/products/domain/models/offer_model.dart';
-import 'package:backoffice/modules/products/domain/use_case/offers/offer_activate_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/offers/offer_add_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/offers/offer_deactivate_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/offers/offer_delete_image_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/offers/offer_delete_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/offers/offer_get_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/offers/offer_update_use_case.dart';
-import 'package:backoffice/modules/products/domain/use_case/offers/offer_upload_image_use_case.dart';
+import 'package:commons/modules/core/utils/extensions.dart';
+import 'package:commons/modules/core/utils/view_utils.dart';
+import 'package:commons/modules/products/domain/models/offer_model.dart';
+import 'package:commons/modules/products/domain/use_case/offers/offer_activate_use_case.dart';
+import 'package:commons/modules/products/domain/use_case/offers/offer_add_use_case.dart';
+import 'package:commons/modules/products/domain/use_case/offers/offer_deactivate_use_case.dart';
+import 'package:commons/modules/products/domain/use_case/offers/offer_delete_image_use_case.dart';
+import 'package:commons/modules/products/domain/use_case/offers/offer_delete_use_case.dart';
+import 'package:commons/modules/products/domain/use_case/offers/offer_get_use_case.dart';
+import 'package:commons/modules/products/domain/use_case/offers/offer_update_use_case.dart';
+import 'package:commons/modules/products/domain/use_case/offers/offer_upload_image_use_case.dart';
 import 'package:flutter/foundation.dart';
 
 class OfferViewModel extends ChangeNotifier {

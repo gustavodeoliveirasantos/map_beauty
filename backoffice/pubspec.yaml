@@ -44,6 +44,10 @@ dependencies:
   get_it: ^7.6.4
   intl: ^0.18.1
   url_launcher: ^6.2.1
+
+    # MY LIFE PACKAGES
+  commons:
+    path: ../commons
   
 
   # The following adds the Cupertino Icons font to your application.

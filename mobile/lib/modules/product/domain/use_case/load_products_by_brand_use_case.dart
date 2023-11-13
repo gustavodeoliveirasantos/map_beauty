@@ -8,7 +8,9 @@ abstract class LoadProductsUseCase implements InputUseCase<List<Product>, int> {
 }
 
 class LoadProductsUseCaseImpl implements LoadProductsUseCase {
-  final ProductRepository _repository = ProductRepositoryImpl();
+  final ProductRepository _repository;
+
+  LoadProductsUseCaseImpl({required ProductRepository repository}) : _repository = repository;
 
   @override
   Future<List<Product>> execute(int input) {

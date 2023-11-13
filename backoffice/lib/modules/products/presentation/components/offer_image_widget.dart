@@ -1,5 +1,5 @@
-import 'package:backoffice/modules/firebase_service/firebase_storage_service.dart';
 import 'package:backoffice/modules/products/presentation/components/firebase_storage_image_widget.dart';
+import 'package:commons/modules/firebase_service/firebase_storage_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

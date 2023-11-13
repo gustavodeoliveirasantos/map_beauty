@@ -1,5 +1,5 @@
-import 'package:backoffice/modules/firebase_service/firebase_storage_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:commons/modules/firebase_service/firebase_storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 

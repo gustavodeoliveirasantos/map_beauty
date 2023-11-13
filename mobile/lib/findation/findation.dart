@@ -16,7 +16,6 @@ class Findation {
 
   static void loadBrandIds() async {
     var jsonData = await rootBundle.loadString('assets/brands.json');
-    var brandList1 = (jsonDecode(jsonData) as List);
 
     var brandList = List<BrandModel>.from((jsonDecode(jsonData) as List).map((e) => BrandModel.fromMap(e)));
 

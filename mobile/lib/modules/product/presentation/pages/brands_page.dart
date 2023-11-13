@@ -1,10 +1,8 @@
+import 'package:commons/modules/firebase_service/firebase_storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mapbeauty/firebase/firebase_storage_service.dart';
-import 'package:mapbeauty/modules/core/utils/app_routes.dart';
 import 'package:mapbeauty/modules/product/domain/models/brand.dart';
 import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
-import 'package:mapbeauty/modules/product/presentation/pages/products_page.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -80,7 +78,7 @@ class _BrandsPageState extends State<BrandsPage> with AutomaticKeepAliveClientMi
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.0),
                       child: FirebaseStorageImageWidget(
-                        imageType: ImageType.logo,
+                        imageFolder: ImageFolder.logo,
                         imageName: brand.imageName,
                         height: imageSize,
                         width: imageSize,

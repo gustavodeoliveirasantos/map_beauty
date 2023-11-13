@@ -1,12 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:commons/modules/firebase_service/firebase_storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mapbeauty/firebase/firebase_storage_service.dart';
-import 'package:mapbeauty/modules/core/utils/app_routes.dart';
-
 import 'package:mapbeauty/modules/product/domain/models/product.dart';
 import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
-
 import '../../domain/models/brand.dart';
 
 class ProductsPageArgs {
@@ -91,7 +87,7 @@ class _ProductsPageState extends State<ProductsPage> with AutomaticKeepAliveClie
                             : ClipRRect(
                                 borderRadius: BorderRadius.circular(12.0),
                                 child: FirebaseStorageImageWidget(
-                                  imageType: ImageType.product,
+                                  imageFolder: ImageFolder.product,
                                   imageName: product?.imageUrl,
                                   height: imageSize,
                                   width: imageSize,

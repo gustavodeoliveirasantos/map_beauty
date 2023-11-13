@@ -9,7 +9,9 @@ abstract class LoadBrandsUseCase implements UseCase<List<Brand>> {
 }
 
 class LoadBrandsUseCaseImpl implements LoadBrandsUseCase {
-  final ProductRepository _repository = ProductRepositoryImpl();
+  final ProductRepository _repository;
+
+  LoadBrandsUseCaseImpl({required ProductRepository repository}) : _repository = repository;
 
   @override
   Future<List<Brand>> execute() {

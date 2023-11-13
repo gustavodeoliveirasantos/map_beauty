@@ -1,12 +1,11 @@
 import 'package:backoffice/modules/core/presentation/components/app_bar_widget.dart';
-import 'package:backoffice/modules/core/presentation/components/brands_dropdown_widget.dart';
 import 'package:backoffice/modules/core/presentation/components/loading_widget.dart';
-import 'package:backoffice/modules/core/utils/view_utils.dart';
-import 'package:backoffice/modules/firebase_service/firebase_storage_service.dart';
-import 'package:backoffice/modules/products/domain/models/brand_model.dart';
 import 'package:backoffice/modules/products/presentation/components/brand_add_widget.dart';
 import 'package:backoffice/modules/products/presentation/components/firebase_storage_image_widget.dart';
 import 'package:backoffice/modules/products/presentation/view_model/brand_view_model.dart';
+import 'package:commons/modules/core/utils/view_utils.dart';
+import 'package:commons/modules/firebase_service/firebase_storage_service.dart';
+import 'package:commons/modules/products/domain/models/brand_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

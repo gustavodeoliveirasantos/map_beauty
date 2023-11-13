@@ -1,5 +1,5 @@
+import 'package:commons/modules/firebase_service/firebase_storage_service.dart';
 import 'package:flutter/material.dart';
-import 'package:mapbeauty/firebase/firebase_storage_service.dart';
 import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -45,7 +45,7 @@ class _ProductColorImagesWidgetState extends State<ProductColorImagesWidget> {
                     final imageName = widget.images?[index];
                     return Center(
                       child: FirebaseStorageImageWidget(
-                        imageType: ImageType.product,
+                        imageFolder: ImageFolder.product,
                         imageName: imageName,
                       ),
                     );

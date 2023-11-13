@@ -1,12 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mapbeauty/firebase/firebase_storage_service.dart';
-
 import 'package:mapbeauty/modules/product/domain/models/product.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
 import 'package:mapbeauty/modules/product/presentation/components/color_picker_widget.dart';
-import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/product_color_images_widget.dart';
 
 class ColorsPage extends StatefulWidget {
@@ -30,7 +27,6 @@ class _ColorsPageState extends State<ColorsPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     selectedProductColor = widget.product?.productColors[0];
     print(selectedProductColor?.images?.length);
@@ -56,7 +52,6 @@ class _ColorsPageState extends State<ColorsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: NotificationListener<UserScrollNotification>(

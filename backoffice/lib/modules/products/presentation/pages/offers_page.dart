@@ -1,10 +1,10 @@
 import 'package:backoffice/modules/core/presentation/components/app_bar_widget.dart';
-import 'package:backoffice/modules/core/utils/view_utils.dart';
-import 'package:backoffice/modules/products/domain/models/offer_model.dart';
 import 'package:backoffice/modules/products/presentation/components/offer_detail_widget.dart';
 import 'package:backoffice/modules/products/presentation/components/offers_list_widget.dart';
 import 'package:backoffice/modules/products/presentation/components/offers_title_list_widget.dart';
 import 'package:backoffice/modules/products/presentation/view_model/offer_view_model.dart';
+import 'package:commons/modules/core/utils/view_utils.dart';
+import 'package:commons/modules/products/domain/models/offer_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';

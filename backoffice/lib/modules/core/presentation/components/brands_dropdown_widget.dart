@@ -1,5 +1,5 @@
-import 'package:backoffice/modules/products/domain/models/brand_model.dart';
 import 'package:backoffice/modules/products/presentation/view_model/brand_view_model.dart';
+import 'package:commons/modules/products/domain/models/brand_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

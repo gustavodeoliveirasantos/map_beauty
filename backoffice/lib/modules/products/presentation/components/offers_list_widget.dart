@@ -1,6 +1,6 @@
-import 'package:backoffice/modules/products/domain/models/offer_model.dart';
 import 'package:backoffice/modules/products/presentation/components/table_separator_widget.dart';
 import 'package:backoffice/modules/products/presentation/view_model/brand_view_model.dart';
+import 'package:commons/modules/products/domain/models/offer_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';

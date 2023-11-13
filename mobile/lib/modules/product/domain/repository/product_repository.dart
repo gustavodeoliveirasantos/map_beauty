@@ -14,13 +14,12 @@ abstract class ProductRepository {
 class Products {}
 
 class ProductRepositoryImpl implements ProductRepository {
-  ProductStore _store = ProductStoreImpl.shared;
+  ProductStore _store;
+  ProductRepositoryImpl({required ProductStore store}) : _store = store;
 
   @override
   Future<List<Brand>> loadBrands() async {
     final brandsDTO = await _store.loadBrandsAndProducts();
-    List<Brand> list = [];
-
     return brandsDTO.map((brandDTO) => BrandAdapter().adapt(brandDTO)).toList();
   }
 

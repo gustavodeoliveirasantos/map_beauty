@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
 
@@ -35,7 +36,7 @@ class MapBeautyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => ProductViewModel()),
+        ChangeNotifierProvider(create: (context) => GetIt.instance<ProductViewModel>()),
       ],
       child: MaterialApp(
         title: 'Map Beauty',

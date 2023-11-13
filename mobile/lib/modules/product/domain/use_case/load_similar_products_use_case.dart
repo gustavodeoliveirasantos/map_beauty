@@ -20,7 +20,8 @@ abstract class LoadSimilarProductsUseCase implements InputUseCase<List<Product>,
 }
 
 class LoadSimilarProductsUseCaseImpl implements LoadSimilarProductsUseCase {
-  final ProductRepository _repository = ProductRepositoryImpl();
+  final ProductRepository _repository;
+  LoadSimilarProductsUseCaseImpl({required ProductRepository repository}) : _repository = repository;
 
   @override
   Future<List<Product>> execute(LoadSimilarProductsInput input) {
