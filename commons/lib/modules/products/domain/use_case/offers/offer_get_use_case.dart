@@ -2,12 +2,12 @@ import 'package:commons/modules/core/use_case/use_case.dart';
 import 'package:commons/modules/products/domain/models/offer_model.dart';
 import 'package:commons/modules/products/domain/repository/offer_repository.dart';
 
-abstract class GetOffersImageUseCase implements UseCase<List<Offer>> {}
+abstract class GetOffersUseCase implements UseCase<List<Offer>> {}
 
-class GetOffersImageUseCaseImpl implements GetOffersImageUseCase {
+class GetOffersUseCaseImpl implements GetOffersUseCase {
   final OfferRepository _repository;
 
-  GetOffersImageUseCaseImpl(this._repository);
+  GetOffersUseCaseImpl(this._repository);
 
   @override
   Future<List<Offer>> execute() {

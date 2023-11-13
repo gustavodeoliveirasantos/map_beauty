@@ -45,7 +45,7 @@ class Inject {
     getIt.registerFactory<AddOfferUseCase>(() => AddOfferUseCaseImpl(getIt()));
     getIt.registerFactory<DeleteOfferImageUseCase>(() => DeleteOfferImageUseCaseImpl(getIt()));
     getIt.registerFactory<DeleteOfferUseCase>(() => DeleteOfferUseCaseImpl(getIt()));
-    getIt.registerFactory<GetOffersImageUseCase>(() => GetOffersImageUseCaseImpl(getIt()));
+    getIt.registerFactory<GetOffersUseCase>(() => GetOffersUseCaseImpl(getIt()));
     getIt.registerFactory<UpdateOfferUseCase>(() => UpdateOfferUseCaseImpl(getIt()));
     getIt.registerFactory<UploadOfferImageUseCase>(() => UploadOfferImageUseCaseImpl(getIt()));
     getIt.registerFactory<ActivateOffersUseCase>(() => ActivateOffersUseCaseImpl(getIt()));
@@ -61,7 +61,7 @@ class Inject {
         addOfferUseCase: getIt(),
         deleteOfferImageUseCase: getIt(),
         deleteOfferUseCase: getIt(),
-        getOffersImageUseCase: getIt(),
+        getOffersUseCase: getIt(),
         updateOfferUseCase: getIt(),
         uploadOfferImageUseCase: getIt(),
         activateOffersUseCase: getIt(),

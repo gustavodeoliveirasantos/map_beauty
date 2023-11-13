@@ -15,7 +15,7 @@ import 'package:flutter/foundation.dart';
 class OfferViewModel extends ChangeNotifier {
   final AddOfferUseCase _addOfferUseCase;
   final DeleteOfferUseCase _deleteOfferUseCase;
-  final GetOffersImageUseCase _getOffersImageUseCase;
+  final GetOffersUseCase _getOffersUseCase;
   final UpdateOfferUseCase _updateOfferUseCase;
   final UploadOfferImageUseCase _uploadOfferImageUseCase;
   final DeleteOfferImageUseCase _deleteOfferImageUseCase;
@@ -29,7 +29,7 @@ class OfferViewModel extends ChangeNotifier {
     required AddOfferUseCase addOfferUseCase,
     required DeleteOfferImageUseCase deleteOfferImageUseCase,
     required DeleteOfferUseCase deleteOfferUseCase,
-    required GetOffersImageUseCase getOffersImageUseCase,
+    required GetOffersUseCase getOffersUseCase,
     required UpdateOfferUseCase updateOfferUseCase,
     required UploadOfferImageUseCase uploadOfferImageUseCase,
     required ActivateOffersUseCase activateOffersUseCase,
@@ -37,7 +37,7 @@ class OfferViewModel extends ChangeNotifier {
   })  : _addOfferUseCase = addOfferUseCase,
         _deleteOfferImageUseCase = deleteOfferImageUseCase,
         _deleteOfferUseCase = deleteOfferUseCase,
-        _getOffersImageUseCase = getOffersImageUseCase,
+        _getOffersUseCase = getOffersUseCase,
         _updateOfferUseCase = updateOfferUseCase,
         _uploadOfferImageUseCase = uploadOfferImageUseCase,
         _activateOffersUseCase = activateOffersUseCase,
@@ -46,7 +46,7 @@ class OfferViewModel extends ChangeNotifier {
   }
 
   Future<void> getOffers() async {
-    _offers = await _getOffersImageUseCase.execute();
+    _offers = await _getOffersUseCase.execute();
     loadOffersMap();
 
     notifyListeners();

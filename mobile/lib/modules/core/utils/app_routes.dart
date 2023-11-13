@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mapbeauty/modules/notifications/pages/notifications_page.dart';
 import 'package:mapbeauty/modules/product/presentation/pages/product_colors_comparison_result.dart';
+import 'package:mapbeauty/modules/product/presentation/pages/tab_bar_page.dart';
 
-import '../../product/presentation/pages/home_page.dart';
+import '../../product/presentation/pages/find_products_home_page.dart';
 
 class AppRoutes {
   static const onboarding = 'onboarding';
@@ -20,7 +20,7 @@ class AppRoutes {
     if (initialRouteName.contains(AppRoutes.home)) {
       routes.add(
         MaterialPageRoute(
-          builder: (context) => const HomePage(),
+          builder: (context) => const TabBarPage(initialIndex: 0),
         ),
       );
     }
@@ -33,7 +33,9 @@ class AppRoutes {
 
     if (settings.name == AppRoutes.home) {
       // var args = (settings.arguments ?? true) as bool;
-      page = HomePage();
+      page = TabBarPage(
+        initialIndex: 0,
+      );
     } else if (settings.name == AppRoutes.notifications) {
       page = const NotificationsPage();
       // }

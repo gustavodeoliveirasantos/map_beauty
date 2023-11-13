@@ -14,14 +14,14 @@ import 'package:provider/provider.dart';
 import '../../../core/presentation/components/main_drawer.dart';
 import '../../domain/models/brand.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class FindProductsHomePage extends StatefulWidget {
+  const FindProductsHomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<FindProductsHomePage> createState() => _FindProductsHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _FindProductsHomePageState extends State<FindProductsHomePage> {
   //TODO: https://docs.flutter.dev/cookbook/effects/shimmer-loading
   Brand? selectedBrand;
   List<Product> products = [];
@@ -107,33 +107,33 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // final size = MediaQuery.of(context).size;
 
-    return Scaffold(
-      appBar: AppBar(
-        scrolledUnderElevation: 8,
-        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
-        title: RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: "MAP",
-                style: GoogleFonts.belleza(
-                  fontSize: 30,
-                  color: Colors.black,
-                ),
-              ),
-              TextSpan(
-                  text: " beauty",
-                  style: GoogleFonts.allura(
-                    fontSize: 30,
-                    color: Colors.black,
-                  )),
-            ],
-          ),
-        ),
-      ),
-      drawer: MainDrawerWidget(),
-      body: Column(
+    return SafeArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: RichText(
+              textAlign: TextAlign.start,
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: "MAP",
+                    style: GoogleFonts.belleza(
+                      fontSize: 30,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                      text: " beauty",
+                      style: GoogleFonts.allura(
+                        fontSize: 30,
+                        color: Colors.black,
+                      )),
+                ],
+              ),
+            ),
+          ),
           StepperWidget(
             currentIndex: pageIndex,
             stepsOpened: stepsOpened,
