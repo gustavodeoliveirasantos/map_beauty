@@ -129,10 +129,11 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
       buyUrl: _urlController.text,
       images: [],
     );
-    await _viewModel.addOffer(offer);
-    _offer = offer;
 
-    setState(() => _isEditMode = true);
+    _viewModel.addOffer(offer).then((value) {
+      _offer = offer;
+      setState(() => _isEditMode = true);
+    });
   }
 
   void uploadImages() async {
@@ -143,7 +144,7 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
       await _viewModel.uploadImages(_offer!, result ?? [], (offer) {
         _offer = offer;
         setState(() {
-          _images = _offer!.images ?? [];
+          _images = _offer!.images;
         });
       });
     }
@@ -175,7 +176,7 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
 
   String getPriceMask(String value) {
     RegExp regex = RegExp(r'[a-zA-Z]');
-    final replaced = value.replaceAll(',', '').replaceAll(regex, '');
+    final replaced = value.replaceAll(',', '').replaceAll('.', '').replaceAll(regex, '');
     final doubleValue = double.parse(replaced) / 100;
     return coin.format(doubleValue);
   }

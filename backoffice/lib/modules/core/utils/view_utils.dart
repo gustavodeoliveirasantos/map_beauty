@@ -83,4 +83,43 @@ class ViewUtils {
           );
         });
   }
+
+  static Future<void> showErrorAlert({
+    required BuildContext? context,
+    required String description,
+    // void Function()? onConfirm,
+  }) {
+    if (context == null) return Future(() => null);
+
+    var actions = [
+      TextButton(
+        onPressed: () {
+          Navigator.pop(context, 'Cancel');
+        },
+        child: Text(
+          "Erro",
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Colors.grey),
+        ),
+      ),
+      TextButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        child: Text(
+          'Ok',
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+      ),
+    ];
+
+    return showDialog(
+        context: context,
+        builder: (ctx) {
+          return AlertDialog(
+            title: Text('Erro'),
+            content: Text(description),
+            actions: actions,
+          );
+        });
+  }
 }

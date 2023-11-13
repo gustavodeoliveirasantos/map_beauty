@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 
+GlobalKey<NavigatorState>? globalKey = GlobalKey();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppBootstrap.initializeApp();
@@ -25,7 +26,7 @@ class MapBeautyBackoffice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //  navigatorKey: GlobalKey(),
+      navigatorKey: globalKey,
       title: 'Map Beauty',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

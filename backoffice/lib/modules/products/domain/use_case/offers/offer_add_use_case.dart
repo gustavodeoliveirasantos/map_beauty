@@ -11,6 +11,7 @@ class AddOfferUseCaseImpl implements AddOfferUseCase {
 
   @override
   Future<void> execute(Offer input) async {
+    throw Exception("lalal");
     return _repository.addOffer(input);
   }
 }

@@ -1,4 +1,6 @@
+import 'package:backoffice/main.dart';
 import 'package:backoffice/modules/core/utils/extensions.dart';
+import 'package:backoffice/modules/core/utils/view_utils.dart';
 import 'package:backoffice/modules/products/domain/models/offer_model.dart';
 import 'package:backoffice/modules/products/domain/use_case/offers/offer_activate_use_case.dart';
 import 'package:backoffice/modules/products/domain/use_case/offers/offer_add_use_case.dart';
@@ -69,12 +71,13 @@ class OfferViewModel extends ChangeNotifier {
       offersMap[dateKey]?.insert(0, offer);
     }
 
-    _addOfferUseCase.execute(offer).onError((error, stackTrace) {
+    await _addOfferUseCase.execute(offer).onError((error, stackTrace) {
       offersMap[dateKey]?.remove(offer);
-      notifyListeners();
-    });
 
-    notifyListeners();
+      notifyListeners();
+      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
+      return Future.error("error");
+    }).then((value) => notifyListeners());
   }
 
   Future<void> updateOffer(Offer updatedOffer) async {
@@ -91,6 +94,7 @@ class OfferViewModel extends ChangeNotifier {
       offersList.removeWhere((element) => element.id == updatedOffer.id);
       offersList.insert(index, oldOffer);
       notifyListeners();
+      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
     });
 
     notifyListeners();
@@ -104,12 +108,14 @@ class OfferViewModel extends ChangeNotifier {
 
     _deleteOfferUseCase.execute(offer).onError((error, stackTrace) {
       offersList?.insert(index!, copyOffer);
+      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
     });
 
     notifyListeners();
   }
 
   Future<void> deleteOffersByDate(DateTime dateKey) async {
+    //TODO: Fazer um refactor aqui... Ao excluir todas as offers e se der algum erro, como tratar?
     final offersList = offersMap[dateKey];
     if (offersList == null || offersList.isEmpty) return;
 
@@ -122,6 +128,7 @@ class OfferViewModel extends ChangeNotifier {
 
       _deleteOfferUseCase.execute(offer).onError((error, stackTrace) {
         //  offersList.insert(index, copyOffer);
+        ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
       });
     }
     offersMap.remove(dateKey);
@@ -145,6 +152,7 @@ class OfferViewModel extends ChangeNotifier {
     _activateOffersUseCase.execute(ids).onError((error, stackTrace) {
       offersMap[dateKey] = oldList;
       notifyListeners();
+      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
     });
 
     notifyListeners();
@@ -166,8 +174,9 @@ class OfferViewModel extends ChangeNotifier {
 
     _deactivateOffersUseCase.execute(ids).onError((error, stackTrace) {
       offersMap[dateKey] = oldList;
-      print(error);
+
       notifyListeners();
+      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
     });
 
     notifyListeners();
@@ -187,6 +196,7 @@ class OfferViewModel extends ChangeNotifier {
       offersList.insert(index, oldOffer);
 
       notifyListeners();
+      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
     });
 
     notifyListeners();
@@ -206,6 +216,7 @@ class OfferViewModel extends ChangeNotifier {
       offersList.insert(index, oldOffer);
       print("error");
       notifyListeners();
+      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
     });
 
     notifyListeners();
