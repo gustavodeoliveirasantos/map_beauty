@@ -50,6 +50,7 @@ dependencies:
   cached_network_image: ^3.3.0
   csv: ^5.1.0
   get_it: ^7.6.4
+  intl: ^0.18.1
 
   # MAP BEAUTY PACKAGE
   commons:

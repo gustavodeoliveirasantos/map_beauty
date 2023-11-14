@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:commons/modules/products/service/dto/offer_dto.dart';
 import 'package:firebase_database/firebase_database.dart';
 
@@ -25,7 +27,9 @@ class OfferServiceImpl implements OfferService {
 
     List<OfferDTO> list = [];
     if (snapshot.exists) {
-      final result = snapshot.value as Map<String, dynamic>;
+      Map<Object?, Object?> dataSnapshot = snapshot.value as Map<Object?, Object?>;
+      final result = dataSnapshot.cast<String, dynamic>();
+
       for (final id in result.keys) {
         final DateTime date = DateTime.fromMillisecondsSinceEpoch((result[id]["date"] ?? 0) as int);
 
@@ -34,6 +38,8 @@ class OfferServiceImpl implements OfferService {
         final String productDescription = result[id]["productDescription"];
         final String brandId = result[id]["brandId"];
         final String brandName = result[id]["brandName"];
+        print("COMMONS - ${result[id]["oldPrice"]}");
+        print("COMMONS - ${result[id]["discountPrice"]}");
         final double oldPrice = (result[id]["oldPrice"] ?? 0.0) as double;
         final double discountPrice = (result[id]["discountPrice"] ?? 0.0) as double;
         final String buyUrl = result[id]["buyUrl"];

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
+import 'package:mapbeauty/modules/product/presentation/components/buy_button_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/product_info_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
@@ -148,21 +149,7 @@ class _ProductsColorComparisonResultState extends State<ProductsColorComparisonR
                               "${product.brand.name}",
                               style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: Colors.black),
                             ),
-                            trailing: SizedBox(
-                              height: 30,
-                              child: TextButton(
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.surfaceVariant),
-                                  padding: MaterialStateProperty.all(const EdgeInsets.symmetric(horizontal: 8)),
-                                ),
-                                child: const Text(
-                                  "Comprar",
-                                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
-                                ),
-                                onPressed: () => openProductPage(widget.args.productColor),
-                              ),
-                            ),
-                            //   onTap: () => openProductPage(product),
+                            trailing: BuyButtonWidget(onPressed: () => openProductPage(widget.args.productColor)),
                           );
                         },
                         separatorBuilder: (context, index) {

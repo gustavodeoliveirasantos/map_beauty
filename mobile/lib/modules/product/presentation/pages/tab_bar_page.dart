@@ -30,7 +30,7 @@ class _TabBarPageState extends State<TabBarPage> with WidgetsBindingObserver {
 
   final tabs = [
     'Promoções',
-    'Descubra',
+    'Pesquisar',
   ];
 
   @override
@@ -42,7 +42,6 @@ class _TabBarPageState extends State<TabBarPage> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mapbeauty/modules/core/utils/app_routes.dart';
 import 'package:mapbeauty/modules/product/domain/models/product.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
+import 'package:mapbeauty/modules/product/presentation/components/map_beauty_logo_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/stepper_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/pages/brands_page.dart';
 import 'package:mapbeauty/modules/product/presentation/pages/colors_page.dart';
@@ -113,26 +114,7 @@ class _FindProductsHomePageState extends State<FindProductsHomePage> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: RichText(
-              textAlign: TextAlign.start,
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: "MAP",
-                    style: GoogleFonts.belleza(
-                      fontSize: 30,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextSpan(
-                      text: " beauty",
-                      style: GoogleFonts.allura(
-                        fontSize: 30,
-                        color: Colors.black,
-                      )),
-                ],
-              ),
-            ),
+            child: MapBeautyLogoWidget(),
           ),
           StepperWidget(
             currentIndex: pageIndex,

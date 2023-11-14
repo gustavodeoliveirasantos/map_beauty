@@ -5,15 +5,11 @@ import 'package:mapbeauty/modules/core/utils/app_routes.dart';
 import 'package:mapbeauty/modules/core/utils/injection.dart';
 
 class AppBootstrap {
-  static initializeApp() async {
-    Inject.init();
+  static Future<void> initializeApp() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    // Ideal time to initialize
-// await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-// //...
-// }
+    Inject.init();
   }
 
   static loadFindationData() {
