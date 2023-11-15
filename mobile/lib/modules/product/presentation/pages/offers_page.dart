@@ -58,6 +58,7 @@ class _OffersPageState extends State<OffersPage> {
                 itemCount: offers?.length ?? 0,
                 itemBuilder: (context, index) {
                   final offer = offers?[index];
+                  if (offer == null) return null;
                   return OfferItemWidget(
                     offer: offer,
                     onItemTapped: (Offer offer) {

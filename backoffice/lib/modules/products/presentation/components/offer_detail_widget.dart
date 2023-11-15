@@ -91,13 +91,34 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
     }
   }
 
+  void addOffer() async {
+    final offer = Offer(
+      id: Utils.uuid(),
+      date: DateTime.now(),
+      isActive: false,
+      productName: _productNameController.text,
+      productDescription: _productDescriptionController.text,
+      brandId: _selectedBrand?.id ?? "",
+      brandName: _selectedBrand?.name ?? "",
+      oldPrice: double.parse(_oldPriceController.text.replaceAll(",", "").replaceAll(".", "")) / 100,
+      discountPrice: double.parse(_discountPriceController.text.replaceAll(",", "")) / 100,
+      buyUrl: _urlController.text,
+      images: [],
+    );
+
+    _viewModel.addOffer(offer).then((value) {
+      _offer = offer;
+      setState(() => _isEditMode = true);
+    });
+  }
+
   void editOffer() async {
     final productName = _productNameController.text;
     final productDescription = _productDescriptionController.text;
     final brandId = _selectedBrand?.id ?? "";
     final brandName = _selectedBrand?.name ?? "";
-    final oldPrice = double.parse(_oldPriceController.text.replaceAll(",", "").replaceAll(".", "")) / 10;
-    final discountPrice = double.parse(_discountPriceController.text.replaceAll(",", ".")) / 10;
+    final oldPrice = double.parse(_oldPriceController.text.replaceAll(",", "").replaceAll(".", "")) / 100;
+    final discountPrice = double.parse(_discountPriceController.text.replaceAll(",", "").replaceAll(".", "")) / 100;
     final buyUrl = _urlController.text;
     final images = _images ?? [];
 
@@ -113,27 +134,6 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
     );
 
     _viewModel.updateOffer(offer);
-  }
-
-  void addOffer() async {
-    final offer = Offer(
-      id: Utils.uuid(),
-      date: DateTime.now(),
-      isActive: false,
-      productName: _productNameController.text,
-      productDescription: _productDescriptionController.text,
-      brandId: _selectedBrand?.id ?? "",
-      brandName: _selectedBrand?.name ?? "",
-      oldPrice: double.parse(_oldPriceController.text.replaceAll(",", "").replaceAll(".", "")) / 100,
-      discountPrice: double.parse(_discountPriceController.text.replaceAll(",", ".")) / 100,
-      buyUrl: _urlController.text,
-      images: [],
-    );
-
-    _viewModel.addOffer(offer).then((value) {
-      _offer = offer;
-      setState(() => _isEditMode = true);
-    });
   }
 
   void uploadImages() async {

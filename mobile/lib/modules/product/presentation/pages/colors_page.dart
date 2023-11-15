@@ -73,7 +73,7 @@ class _ColorsPageState extends State<ColorsPage> {
             ),
             const SizedBox(height: 20),
             ProductImagesCarouselWidget(
-              images: selectedProductColor?.images,
+              images: selectedProductColor?.images ?? [],
               height: 300,
               width: 300,
               hasBorder: true,

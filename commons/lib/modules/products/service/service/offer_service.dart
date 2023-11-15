@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:commons/modules/products/service/dto/offer_dto.dart';
 import 'package:firebase_database/firebase_database.dart';
 
@@ -38,10 +36,8 @@ class OfferServiceImpl implements OfferService {
         final String productDescription = result[id]["productDescription"];
         final String brandId = result[id]["brandId"];
         final String brandName = result[id]["brandName"];
-        print("COMMONS - ${result[id]["oldPrice"]}");
-        print("COMMONS - ${result[id]["discountPrice"]}");
-        final double oldPrice = (result[id]["oldPrice"] ?? 0.0) as double;
-        final double discountPrice = (result[id]["discountPrice"] ?? 0.0) as double;
+        final double oldPrice = (convertValuesToDouble(result[id]["oldPrice"]) ?? 0.0);
+        final double discountPrice = (convertValuesToDouble(result[id]["discountPrice"]) ?? 0.0);
         final String buyUrl = result[id]["buyUrl"];
         final images = ((result[id]["images"] ?? const <String>[]) as List<dynamic>).map((e) => e as String).toList();
 
@@ -64,6 +60,15 @@ class OfferServiceImpl implements OfferService {
     } else {
       return Future.error("Erro ao carregar os dados.");
     }
+  }
+
+  double? convertValuesToDouble(dynamic value) {
+    if (value is int) {
+      return value.toDouble();
+    } else if (value is double) {
+      return value;
+    }
+    return null;
   }
 
   @override

@@ -1,16 +1,13 @@
 import 'package:commons/modules/firebase_service/firebase_storage_service.dart';
 import 'package:commons/modules/products/domain/models/offer_model.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:mapbeauty/modules/product/presentation/components/buy_button_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/discount_icon.widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/offer_product_info_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OfferItemWidget extends StatelessWidget {
-  final Offer? offer;
+  final Offer offer;
   final Function(Offer offer) onItemTapped;
   OfferItemWidget({super.key, required this.offer, required this.onItemTapped});
 
@@ -26,8 +23,9 @@ class OfferItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final cardHeigh = size.width * 1.1;
+
     return Hero(
-      tag: offer?.id ?? 1,
+      tag: offer.id,
       child: Container(
         height: cardHeigh,
         // width: ,
@@ -50,7 +48,7 @@ class OfferItemWidget extends StatelessWidget {
                           topRight: Radius.circular(12),
                         ),
                         child: FirebaseStorageImageWidget(
-                          imageName: offer?.images.first ?? "",
+                          imageName: offer.images.isEmpty ? "" : offer.images.first,
                           imageFolder: ImageFolder.offersProducts,
                         ),
                       ),
@@ -59,7 +57,7 @@ class OfferItemWidget extends StatelessWidget {
                       top: 16,
                       right: 0,
                       child: DiscountIconWidget(
-                        discount: offer?.discountPercentage ?? 0,
+                        discount: offer.discountPercentage ?? 0,
                         height: 20,
                         width: 45,
                         fontSize: 12,

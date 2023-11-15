@@ -4,7 +4,7 @@ import 'package:mapbeauty/modules/product/presentation/components/firebase_stora
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductImagesCarouselWidget extends StatefulWidget {
-  final List<String>? images;
+  final List<String> images;
   final double height;
   final double width;
   final bool hasBorder;
@@ -58,20 +58,21 @@ class _ProductImagesCarouselWidgetState extends State<ProductImagesCarouselWidge
           ),
         ),
         const SizedBox(height: 15),
-        SmoothPageIndicator(
-            controller: pageController,
-            count: widget.images?.length ?? 0,
-            effect: ScrollingDotsEffect(
-              dotColor: Theme.of(context).colorScheme.secondary,
-              activeDotColor: Theme.of(context).colorScheme.primary,
-              activeStrokeWidth: 2.6,
-              activeDotScale: 1.3,
-              maxVisibleDots: 5,
-              radius: 3,
-              spacing: 6,
-              dotHeight: 6,
-              dotWidth: 6,
-            )),
+        if (widget.images.isNotEmpty)
+          SmoothPageIndicator(
+              controller: pageController,
+              count: widget.images.length,
+              effect: ScrollingDotsEffect(
+                dotColor: Theme.of(context).colorScheme.secondary,
+                activeDotColor: Theme.of(context).colorScheme.primary,
+                activeStrokeWidth: 2.6,
+                activeDotScale: 1.3,
+                maxVisibleDots: 5,
+                radius: 3,
+                spacing: 6,
+                dotHeight: 6,
+                dotWidth: 6,
+              )),
       ],
     );
   }
