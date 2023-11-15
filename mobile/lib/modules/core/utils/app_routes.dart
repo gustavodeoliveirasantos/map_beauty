@@ -1,5 +1,7 @@
+import 'package:commons/modules/products/domain/models/offer_model.dart';
 import 'package:flutter/material.dart';
 import 'package:mapbeauty/modules/notifications/pages/notifications_page.dart';
+import 'package:mapbeauty/modules/product/presentation/pages/offer_detail_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/pages/product_colors_comparison_result.dart';
 import 'package:mapbeauty/modules/product/presentation/pages/tab_bar_page.dart';
 
@@ -13,6 +15,7 @@ class AppRoutes {
   static const products = "products";
   static const productsColorComparisonResult = "productsColorComparisonResult";
   static const colors = "colors";
+  static const offersDetail = "offersDetail";
 
   static List<Route> generateInitialRoute(String initialRouteName) {
     List<MaterialPageRoute> routes = [];
@@ -49,6 +52,9 @@ class AppRoutes {
     } else if (settings.name == AppRoutes.productsColorComparisonResult) {
       var args = settings.arguments as ProductsColorComparisonResultArgs;
       page = ProductsColorComparisonResult(args: args);
+    } else if (settings.name == AppRoutes.offersDetail) {
+      var args = settings.arguments as Offer;
+      page = OfferDetailPage(offer: args);
     }
     // else if (settings.name == AppRoutes.login) {
     //   page = LoginPage();

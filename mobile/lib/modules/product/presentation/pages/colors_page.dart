@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:mapbeauty/modules/product/domain/models/product.dart';
 import 'package:mapbeauty/modules/product/domain/models/product_colors.dart';
 import 'package:mapbeauty/modules/product/presentation/components/color_picker_widget.dart';
-import 'package:mapbeauty/modules/product/presentation/components/product_color_images_widget.dart';
+import 'package:mapbeauty/modules/product/presentation/components/product_images_carousel_widget.dart';
 
 class ColorsPage extends StatefulWidget {
   // final Brand? brand;
@@ -72,7 +72,12 @@ class _ColorsPageState extends State<ColorsPage> {
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Colors.black),
             ),
             const SizedBox(height: 20),
-            ProductColorImagesWidget(images: selectedProductColor?.images),
+            ProductImagesCarouselWidget(
+              images: selectedProductColor?.images,
+              height: 300,
+              width: 300,
+              hasBorder: true,
+            ),
             const SizedBox(height: 20),
             ColorPickerWidget(
               product: widget.product,

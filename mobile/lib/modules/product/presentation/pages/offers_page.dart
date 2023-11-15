@@ -1,16 +1,10 @@
-import 'dart:io';
-
-import 'package:commons/modules/firebase_service/firebase_storage_service.dart';
 import 'package:commons/modules/products/domain/models/offer_model.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:intl/intl.dart';
-import 'package:mapbeauty/modules/product/presentation/components/buy_button_widget.dart';
-import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
+import 'package:mapbeauty/modules/core/utils/app_routes.dart';
 import 'package:mapbeauty/modules/product/presentation/components/map_beauty_logo_widget.dart';
+import 'package:mapbeauty/modules/product/presentation/pages/offer_detail_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/offer_item_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/offer_view_model.dart';
-import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -64,7 +58,14 @@ class _OffersPageState extends State<OffersPage> {
                 itemCount: offers?.length ?? 0,
                 itemBuilder: (context, index) {
                   final offer = offers?[index];
-                  return OfferItemWidget(offer: offer);
+                  return OfferItemWidget(
+                    offer: offer,
+                    onItemTapped: (Offer offer) {
+                      setState(() {
+                        Navigator.of(context).pushNamed(AppRoutes.offersDetail, arguments: offer);
+                      });
+                    },
+                  );
                 },
               ),
             ),
