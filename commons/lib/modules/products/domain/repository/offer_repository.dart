@@ -15,6 +15,7 @@ abstract class OfferRepository {
   Future<void> deactivateOffers(List<String> ids);
   Future<void> uploadOfferImage(Offer offer, String imageName, Uint8List imageData);
   Future<void> deleteImage(Offer offer, String imageName);
+  Future<void> updateMainImage(Offer offer, String imageName);
 }
 
 class OfferRepositoryImpl implements OfferRepository {
@@ -79,5 +80,11 @@ class OfferRepositoryImpl implements OfferRepository {
     await _service.deleteOfferImage(dto, imageName);
 
     return _firebaseStorageService.deleteImage(imageName, ImageFolder.offersProducts);
+  }
+
+  @override
+  Future<void> updateMainImage(Offer offer, String imageName) {
+    final dto = OfferAdapter().adaptToDTO(offer);
+    return _service.updateMainImage(dto, imageName);
   }
 }

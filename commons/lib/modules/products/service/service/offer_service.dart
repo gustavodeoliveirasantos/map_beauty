@@ -11,6 +11,7 @@ abstract class OfferService {
   Future<void> deactivateOffers(List<String> ids);
   Future<void> uploadOfferImage(OfferDTO dto, String imageName);
   Future<void> deleteOfferImage(OfferDTO dto, String imageName);
+  Future<void> updateMainImage(OfferDTO dto, String imageName);
 }
 
 class OfferServiceImpl implements OfferService {
@@ -39,6 +40,7 @@ class OfferServiceImpl implements OfferService {
         final double oldPrice = (convertValuesToDouble(result[id]["oldPrice"]) ?? 0.0);
         final double discountPrice = (convertValuesToDouble(result[id]["discountPrice"]) ?? 0.0);
         final String buyUrl = result[id]["buyUrl"];
+        final String? mainImage = result[id].containsKey("mainImage") ? result[id]["mainImage"] : null;
         final images = ((result[id]["images"] ?? const <String>[]) as List<dynamic>).map((e) => e as String).toList();
 
         final offerDTO = OfferDTO(
@@ -52,6 +54,7 @@ class OfferServiceImpl implements OfferService {
           oldPrice: oldPrice,
           discountPrice: discountPrice,
           buyUrl: buyUrl,
+          mainImage: mainImage,
           images: images,
         );
         list.add(offerDTO);
@@ -85,6 +88,7 @@ class OfferServiceImpl implements OfferService {
       "oldPrice": dto.oldPrice,
       "discountPrice": dto.discountPrice,
       "buyUrl": dto.buyUrl,
+      "mainImage": dto.mainImage,
       "images": dto.images,
     });
   }
@@ -99,6 +103,11 @@ class OfferServiceImpl implements OfferService {
       "productName": dto.productName,
       "productDescription": dto.productDescription,
       "brandId": dto.brandId,
+      "brandName": dto.brandName,
+      "oldPrice": dto.oldPrice,
+      "discountPrice": dto.discountPrice,
+      "buyUrl": dto.buyUrl,
+      "mainImage": dto.mainImage,
       "images": dto.images,
     });
   }
@@ -155,6 +164,18 @@ class OfferServiceImpl implements OfferService {
     images.removeWhere((element) => element == imageName);
 
     Map<String, Object?> valueToUpdate = {"offers/${dto.id}/images": images};
+    ref.update(valueToUpdate);
+
+    if (dto.mainImage == imageName) {
+      updateMainImage(dto, null);
+    }
+  }
+
+  @override
+  Future<void> updateMainImage(OfferDTO dto, String? imageName) async {
+    DatabaseReference ref = database.ref();
+
+    Map<String, Object?> valueToUpdate = {"offers/${dto.id}/mainImage": imageName};
     ref.update(valueToUpdate);
   }
 }

@@ -84,8 +84,9 @@ class ViewUtils {
         });
   }
 
-  static Future<void> showErrorAlert({
+  static Future<void> showAlert({
     required BuildContext? context,
+    required String title,
     required String description,
     // void Function()? onConfirm,
   }) {
@@ -97,7 +98,7 @@ class ViewUtils {
           Navigator.pop(context, 'Cancel');
         },
         child: Text(
-          "Erro",
+          "Cancelar",
           style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Colors.grey),
         ),
       ),
@@ -116,7 +117,7 @@ class ViewUtils {
         context: context,
         builder: (ctx) {
           return AlertDialog(
-            title: Text('Erro'),
+            title: Text(title),
             content: Text(description),
             actions: actions,
           );

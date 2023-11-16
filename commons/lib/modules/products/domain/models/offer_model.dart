@@ -10,6 +10,7 @@ class Offer {
   final double oldPrice;
   final double discountPrice;
   final String buyUrl;
+  final String? mainImage;
   final List<String> images;
 
   const Offer({
@@ -23,6 +24,7 @@ class Offer {
     required this.oldPrice,
     required this.discountPrice,
     required this.buyUrl,
+    required this.mainImage,
     required this.images,
   });
 
@@ -37,6 +39,7 @@ class Offer {
     double? oldPrice,
     double? discountPrice,
     String? buyUrl,
+    String? mainImage,
     List<String>? images,
   }) {
     return Offer(
@@ -51,6 +54,7 @@ class Offer {
       discountPrice: discountPrice ?? this.discountPrice,
       buyUrl: buyUrl ?? this.buyUrl,
       images: images ?? this.images,
+      mainImage: mainImage ?? this.mainImage,
     );
   }
 

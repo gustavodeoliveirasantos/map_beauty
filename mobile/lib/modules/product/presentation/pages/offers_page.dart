@@ -81,7 +81,7 @@ class _OffersPageState extends State<OffersPage> {
                       ),
                       SizedBox(height: 20),
                       Text(
-                        "As promoções ainda não foram carregadas. Se o problema persistir tente novamente mais tarde.",
+                        "As promoções ainda não foram carregadas. Se o problema persistir, tente novamente mais tarde.",
                         textAlign: TextAlign.center,
                         style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                       ),

@@ -14,6 +14,7 @@ import 'package:commons/modules/products/domain/use_case/offers/offer_deactivate
 import 'package:commons/modules/products/domain/use_case/offers/offer_delete_image_use_case.dart';
 import 'package:commons/modules/products/domain/use_case/offers/offer_delete_use_case.dart';
 import 'package:commons/modules/products/domain/use_case/offers/offer_get_use_case.dart';
+import 'package:commons/modules/products/domain/use_case/offers/offer_update_main_image_use_case.dart';
 import 'package:commons/modules/products/domain/use_case/offers/offer_update_use_case.dart';
 import 'package:commons/modules/products/domain/use_case/offers/offer_upload_image_use_case.dart';
 import 'package:commons/modules/products/service/service/brand_service.dart';
@@ -50,7 +51,7 @@ class Inject {
     getIt.registerFactory<UploadOfferImageUseCase>(() => UploadOfferImageUseCaseImpl(getIt()));
     getIt.registerFactory<ActivateOffersUseCase>(() => ActivateOffersUseCaseImpl(getIt()));
     getIt.registerFactory<DeactivateOffersUseCase>(() => DeactivateOffersUseCaseImpl(getIt()));
-
+    getIt.registerFactory<UpdateMainImageUseCase>(() => UpdateMainImageUseCaseImpl(getIt()));
     //ViewModels
     getIt.registerFactory<BrandViewModel>(
       () => BrandViewModel(getBrandsUseCase: getIt(), addBrandUseCase: getIt(), updateBrandUseCase: getIt(), updateImageBrandUseCase: getIt(), deleteBrandUseCase: getIt()),
@@ -66,6 +67,7 @@ class Inject {
         uploadOfferImageUseCase: getIt(),
         activateOffersUseCase: getIt(),
         deactivateOffersUseCase: getIt(),
+        updateMainImageUseCase: getIt(),
       ),
     );
 

@@ -48,7 +48,7 @@ class OfferItemWidget extends StatelessWidget {
                           topRight: Radius.circular(12),
                         ),
                         child: FirebaseStorageImageWidget(
-                          imageName: offer.images.isEmpty ? "" : offer.images.first,
+                          imageName: offer.mainImage ?? (offer.images.isEmpty ? "" : offer.images.first),
                           imageFolder: ImageFolder.offersProducts,
                         ),
                       ),

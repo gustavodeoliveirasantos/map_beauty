@@ -14,11 +14,13 @@ import 'package:provider/provider.dart';
 
 class OfferDetailWidget extends StatefulWidget {
   final Function() onCloseTapped;
+  final DateTime? dateKey;
   final Offer? offer;
   const OfferDetailWidget({
     required this.onCloseTapped,
     this.offer,
     super.key,
+    this.dateKey,
   });
 
   @override
@@ -73,7 +75,7 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
       _oldPriceController.text = coin.format(widget.offer!.oldPrice);
       _discountPriceController.text = coin.format(widget.offer!.discountPrice);
 
-      _images = widget.offer!.images ?? [];
+      _images = widget.offer!.images;
       _selectedBrand = Provider.of<BrandViewModel>(context, listen: false).getBrandById(widget.offer!.brandId);
     }
   }
@@ -103,6 +105,7 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
       oldPrice: double.parse(_oldPriceController.text.replaceAll(",", "").replaceAll(".", "")) / 100,
       discountPrice: double.parse(_discountPriceController.text.replaceAll(",", "").replaceAll(".", "")) / 100,
       buyUrl: _urlController.text,
+      mainImage: null,
       images: [],
     );
 
@@ -120,7 +123,7 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
     final oldPrice = double.parse(_oldPriceController.text.replaceAll(",", "").replaceAll(".", "")) / 100;
     final discountPrice = double.parse(_discountPriceController.text.replaceAll(",", "").replaceAll(".", "")) / 100;
     final buyUrl = _urlController.text;
-    final images = _images ?? [];
+    final images = _images;
 
     final offer = _offer!.copyWith(
       productName: productName,
@@ -167,7 +170,7 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
 
       _isUrlValid = Utils.isValidUrl(_urlController.text);
       _isOldPriceValid = Utils.isDouble(_oldPriceController.text.replaceAll(",", "").replaceAll(".", ""));
-      _isDiscountPriceValid = Utils.isDouble(_discountPriceController.text.replaceAll(",", "."));
+      _isDiscountPriceValid = Utils.isDouble(_discountPriceController.text.replaceAll(",", "").replaceAll(".", ""));
       _isBrandValid = _selectedBrand != null;
     });
 
@@ -179,6 +182,11 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
     final replaced = value.replaceAll(',', '').replaceAll('.', '').replaceAll(regex, '');
     final doubleValue = double.parse(replaced) / 100;
     return coin.format(doubleValue);
+  }
+
+  void updateMainImage(String imageName) async {
+    _offer = await _viewModel.updateMainImage(_offer!, imageName);
+    setState(() {});
   }
 
   @override
@@ -193,7 +201,7 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
           children: [
             Container(
               color: Colors.white,
-              height: 650,
+              height: 700,
               width: screenSize.width / 1.7,
             ),
             Positioned(
@@ -330,7 +338,12 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
                         child: Row(
                           children: _images
                               .map(
-                                (e) => OfferImageWidget(imageName: e, onDeleteTapped: onDeleteImage),
+                                (e) => OfferImageWidget(
+                                  imageName: e,
+                                  isMainImage: e == _offer?.mainImage,
+                                  onDeleteTapped: onDeleteImage,
+                                  onUpdateMainImageTapped: updateMainImage,
+                                ),
                               )
                               .toList(),
                         ),

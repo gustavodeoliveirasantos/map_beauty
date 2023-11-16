@@ -8,6 +8,7 @@ import 'package:commons/modules/products/domain/use_case/offers/offer_deactivate
 import 'package:commons/modules/products/domain/use_case/offers/offer_delete_image_use_case.dart';
 import 'package:commons/modules/products/domain/use_case/offers/offer_delete_use_case.dart';
 import 'package:commons/modules/products/domain/use_case/offers/offer_get_use_case.dart';
+import 'package:commons/modules/products/domain/use_case/offers/offer_update_main_image_use_case.dart';
 import 'package:commons/modules/products/domain/use_case/offers/offer_update_use_case.dart';
 import 'package:commons/modules/products/domain/use_case/offers/offer_upload_image_use_case.dart';
 import 'package:flutter/foundation.dart';
@@ -21,6 +22,7 @@ class OfferViewModel extends ChangeNotifier {
   final DeleteOfferImageUseCase _deleteOfferImageUseCase;
   final ActivateOffersUseCase _activateOffersUseCase;
   final DeactivateOffersUseCase _deactivateOffersUseCase;
+  final UpdateMainImageUseCase _updateMainImageUseCase;
 
   Map<DateTime, List<Offer>> offersMap = {};
   List<Offer> _offers = [];
@@ -34,6 +36,7 @@ class OfferViewModel extends ChangeNotifier {
     required UploadOfferImageUseCase uploadOfferImageUseCase,
     required ActivateOffersUseCase activateOffersUseCase,
     required DeactivateOffersUseCase deactivateOffersUseCase,
+    required final UpdateMainImageUseCase updateMainImageUseCase,
   })  : _addOfferUseCase = addOfferUseCase,
         _deleteOfferImageUseCase = deleteOfferImageUseCase,
         _deleteOfferUseCase = deleteOfferUseCase,
@@ -41,7 +44,8 @@ class OfferViewModel extends ChangeNotifier {
         _updateOfferUseCase = updateOfferUseCase,
         _uploadOfferImageUseCase = uploadOfferImageUseCase,
         _activateOffersUseCase = activateOffersUseCase,
-        _deactivateOffersUseCase = deactivateOffersUseCase {
+        _deactivateOffersUseCase = deactivateOffersUseCase,
+        _updateMainImageUseCase = updateMainImageUseCase {
     getOffers();
   }
 
@@ -75,7 +79,7 @@ class OfferViewModel extends ChangeNotifier {
       offersMap[dateKey]?.remove(offer);
 
       notifyListeners();
-      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
+      ViewUtils.showAlert(context: globalKey?.currentContext, title: "Erro", description: "Tente novamente mais tarde");
       return Future.error("error");
     }).then((value) => notifyListeners());
   }
@@ -94,10 +98,11 @@ class OfferViewModel extends ChangeNotifier {
       offersList.removeWhere((element) => element.id == updatedOffer.id);
       offersList.insert(index, oldOffer);
       notifyListeners();
-      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
+      ViewUtils.showAlert(context: globalKey?.currentContext, title: "Erro", description: "Tente novamente mais tarde");
+    }).then((value) {
+      ViewUtils.showAlert(context: globalKey?.currentContext, title: "Atenção", description: "Dados alterados com sucesso");
+      notifyListeners();
     });
-
-    notifyListeners();
   }
 
   Future<void> deleteOffer(Offer offer, DateTime dateKey) async {
@@ -108,7 +113,7 @@ class OfferViewModel extends ChangeNotifier {
 
     _deleteOfferUseCase.execute(offer).onError((error, stackTrace) {
       offersList?.insert(index!, copyOffer);
-      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
+      ViewUtils.showAlert(context: globalKey?.currentContext, title: "Erro", description: "Tente novamente mais tarde");
     });
 
     notifyListeners();
@@ -128,7 +133,7 @@ class OfferViewModel extends ChangeNotifier {
 
       _deleteOfferUseCase.execute(offer).onError((error, stackTrace) {
         //  offersList.insert(index, copyOffer);
-        ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
+        ViewUtils.showAlert(context: globalKey?.currentContext, title: "Erro", description: "Tente novamente mais tarde");
       });
     }
     offersMap.remove(dateKey);
@@ -152,7 +157,7 @@ class OfferViewModel extends ChangeNotifier {
     _activateOffersUseCase.execute(ids).onError((error, stackTrace) {
       offersMap[dateKey] = oldList;
       notifyListeners();
-      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
+      ViewUtils.showAlert(context: globalKey?.currentContext, title: "Erro", description: "Tente novamente mais tarde");
     });
 
     notifyListeners();
@@ -176,7 +181,7 @@ class OfferViewModel extends ChangeNotifier {
       offersMap[dateKey] = oldList;
 
       notifyListeners();
-      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
+      ViewUtils.showAlert(context: globalKey?.currentContext, title: "Erro", description: "Tente novamente mais tarde");
     });
 
     notifyListeners();
@@ -196,7 +201,7 @@ class OfferViewModel extends ChangeNotifier {
       offersList.insert(index, oldOffer);
 
       notifyListeners();
-      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
+      ViewUtils.showAlert(context: globalKey?.currentContext, title: "Erro", description: "Tente novamente mais tarde");
     });
 
     notifyListeners();
@@ -216,15 +221,13 @@ class OfferViewModel extends ChangeNotifier {
       offersList.insert(index, oldOffer);
       print("error");
       notifyListeners();
-      ViewUtils.showErrorAlert(context: globalKey?.currentContext, description: "Tente novamente mais tarde");
+      ViewUtils.showAlert(context: globalKey?.currentContext, title: "Erro", description: "Tente novamente mais tarde");
     });
 
     notifyListeners();
   }
 
   Future<void> uploadImages(Offer offer, List<Map<String, dynamic>?> images, Function(Offer) onComplete) async {
-    final currentImages = offer.images;
-
     for (var map in images) {
       final Uint8List imageData = map?["imageData"];
       final String imageName = map?["imageName"];
@@ -243,5 +246,28 @@ class OfferViewModel extends ChangeNotifier {
     offer.images.remove(imageName);
 
     onComplete(offer);
+  }
+
+  Future<Offer?> updateMainImage(Offer offer, imageName) async {
+    final dateKey = offer.date.shortDate();
+    final offersList = offersMap[dateKey];
+
+    final index = offersList?.indexWhere((element) => element.id == offer.id);
+    final oldOffer = offersList![index!];
+    final updatedOffer = oldOffer.copyWith(mainImage: imageName);
+
+    offersList.removeWhere((element) => element.id == updatedOffer.id);
+    offersList.insert(index, updatedOffer);
+
+    final input = UpdateMainImageUseCaseInput(offer: updatedOffer, imageName: imageName);
+    await _updateMainImageUseCase.execute(input).onError((error, stackTrace) {
+      offersList.removeWhere((element) => element.id == updatedOffer.id);
+      offersList.insert(index, oldOffer);
+
+      notifyListeners();
+      ViewUtils.showAlert(context: globalKey?.currentContext, title: "Erro", description: "Tente novamente mais tarde");
+    });
+
+    return updatedOffer;
   }
 }

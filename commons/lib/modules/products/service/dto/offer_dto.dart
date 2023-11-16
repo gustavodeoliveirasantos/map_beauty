@@ -1,7 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 
 class OfferDTO {
   final String id;
@@ -14,6 +11,7 @@ class OfferDTO {
   final double oldPrice;
   final double discountPrice;
   final String buyUrl;
+  final String? mainImage;
   final List<String>? images;
   const OfferDTO({
     required this.id,
@@ -26,6 +24,7 @@ class OfferDTO {
     required this.oldPrice,
     required this.discountPrice,
     required this.buyUrl,
+    required this.mainImage,
     required this.images,
   });
 
@@ -54,6 +53,7 @@ class OfferDTO {
       discountPrice: discountPrice ?? this.discountPrice,
       buyUrl: buyUrl ?? this.buyUrl,
       images: images ?? this.images,
+      mainImage: '',
     );
   }
 
@@ -73,64 +73,8 @@ class OfferDTO {
     };
   }
 
-  factory OfferDTO.fromMap(Map<String, dynamic> map) {
-    return OfferDTO(
-      id: (map["id"] ?? '') as String,
-      date: DateTime.fromMillisecondsSinceEpoch((map["date"] ?? 0) as int),
-      isActive: (map["isActive"] ?? false) as bool,
-      productName: (map["productName"] ?? '') as String,
-      productDescription: (map["productDescription"] ?? '') as String,
-      brandId: (map["brandId"] ?? '') as String,
-      brandName: (map["brandName"] ?? '') as String,
-      oldPrice: (map["oldPrice"] ?? 0.0) as double,
-      discountPrice: (map["discountPrice"] ?? 0.0) as double,
-      buyUrl: (map["buyUrl"] ?? '') as String,
-      images: map['images'] != null
-          ? List<String>.from(
-              ((map['images']) as List<String>),
-            )
-          : null,
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory OfferDTO.fromJson(String source) => OfferDTO.fromMap(json.decode(source) as Map<String, dynamic>);
-
   @override
   String toString() {
     return 'OfferDTO(id: $id, date: $date, isActive: $isActive, productName: $productName, productDescription: $productDescription, brandId: $brandId, brandName: $brandName, oldPrice: $oldPrice, discountPrice: $discountPrice, buyUrl: $buyUrl, images: $images)';
-  }
-
-  @override
-  bool operator ==(covariant OfferDTO other) {
-    if (identical(this, other)) return true;
-
-    return other.id == id &&
-        other.date == date &&
-        other.isActive == isActive &&
-        other.productName == productName &&
-        other.productDescription == productDescription &&
-        other.brandId == brandId &&
-        other.brandName == brandName &&
-        other.oldPrice == oldPrice &&
-        other.discountPrice == discountPrice &&
-        other.buyUrl == buyUrl &&
-        listEquals(other.images, images);
-  }
-
-  @override
-  int get hashCode {
-    return id.hashCode ^
-        date.hashCode ^
-        isActive.hashCode ^
-        productName.hashCode ^
-        productDescription.hashCode ^
-        brandId.hashCode ^
-        brandName.hashCode ^
-        oldPrice.hashCode ^
-        discountPrice.hashCode ^
-        buyUrl.hashCode ^
-        images.hashCode;
   }
 }
