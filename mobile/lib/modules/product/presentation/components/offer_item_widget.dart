@@ -1,7 +1,7 @@
 import 'package:commons/modules/firebase_service/firebase_storage_service.dart';
 import 'package:commons/modules/products/domain/models/offer_model.dart';
 import 'package:flutter/material.dart';
-import 'package:mapbeauty/modules/product/presentation/components/discount_icon.widget.dart';
+import 'package:mapbeauty/modules/product/presentation/components/discount_badge_.widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/firebase_storage_image_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/offer_product_info_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -56,7 +56,7 @@ class OfferItemWidget extends StatelessWidget {
                     Positioned(
                       top: 16,
                       right: 0,
-                      child: DiscountIconWidget(
+                      child: DiscountBadgeWidget(
                         discount: offer.discountPercentage ?? 0,
                         height: 20,
                         width: 45,

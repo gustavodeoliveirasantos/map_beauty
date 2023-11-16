@@ -1,10 +1,8 @@
 import 'package:device_preview/device_preview.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mapbeauty/firebase_options.dart';
-import 'package:mapbeauty/modules/core/utils/injection.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/offer_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
@@ -15,10 +13,6 @@ import 'modules/core/utils/app_routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppBootstrap.initializeApp();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
-  // Inject.init();
 
   String initialRoute = AppBootstrap.getInitialRoute();
 

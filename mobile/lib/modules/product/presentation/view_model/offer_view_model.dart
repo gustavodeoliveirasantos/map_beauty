@@ -6,9 +6,11 @@ class OfferViewModel extends BaseViewModel {
   final GetOffersUseCase _getOffersUseCase;
   OfferViewModel({required GetOffersUseCase getOffersUseCase}) : _getOffersUseCase = getOffersUseCase;
 
-  List<Offer>? offers;
+  late List<Offer> offers;
 
   Future<void> loadOffers() async {
-    offers = await _getOffersUseCase.execute();
+    final unfiltredOffers = await _getOffersUseCase.execute();
+
+    offers = unfiltredOffers.where((element) => element.isActive).toList();
   }
 }

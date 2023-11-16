@@ -1,6 +1,6 @@
 import 'package:commons/modules/products/domain/models/offer_model.dart';
 import 'package:flutter/material.dart';
-import 'package:mapbeauty/modules/product/presentation/components/discount_icon.widget.dart';
+import 'package:mapbeauty/modules/product/presentation/components/discount_badge_.widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/map_beauty_logo_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/offer_product_info_widget.dart';
 import 'package:mapbeauty/modules/product/presentation/components/product_images_carousel_widget.dart';
@@ -58,7 +58,7 @@ class OfferDetailPage extends StatelessWidget {
               Positioned(
                   top: size.width,
                   right: 12,
-                  child: DiscountIconWidget(
+                  child: DiscountBadgeWidget(
                     discount: offer.discountPercentage,
                     height: 30,
                     width: 60,

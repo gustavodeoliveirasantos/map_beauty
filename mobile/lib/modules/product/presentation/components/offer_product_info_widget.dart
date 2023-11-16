@@ -35,10 +35,6 @@ class OfferProductInfoWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(
-              coin.format(offer?.discountPrice),
-              style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: isBig ? 20 : 16, fontWeight: FontWeight.bold),
-            ),
             RichText(
               text: TextSpan(
                 style: TextStyle(color: isBig ? Colors.grey : Colors.white),
@@ -47,6 +43,10 @@ class OfferProductInfoWidget extends StatelessWidget {
                   TextSpan(text: coin.format(offer?.oldPrice), style: TextStyle(decoration: TextDecoration.lineThrough, fontSize: isBig ? 16 : 12)),
                 ],
               ),
+            ),
+            Text(
+              coin.format(offer?.discountPrice),
+              style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: isBig ? 20 : 16, fontWeight: FontWeight.bold),
             ),
           ],
         ),
