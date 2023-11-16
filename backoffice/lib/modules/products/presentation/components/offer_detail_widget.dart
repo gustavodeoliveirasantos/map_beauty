@@ -101,7 +101,7 @@ class _OfferDetailWidgetState extends State<OfferDetailWidget> {
       brandId: _selectedBrand?.id ?? "",
       brandName: _selectedBrand?.name ?? "",
       oldPrice: double.parse(_oldPriceController.text.replaceAll(",", "").replaceAll(".", "")) / 100,
-      discountPrice: double.parse(_discountPriceController.text.replaceAll(",", "")) / 100,
+      discountPrice: double.parse(_discountPriceController.text.replaceAll(",", "").replaceAll(".", "")) / 100,
       buyUrl: _urlController.text,
       images: [],
     );
