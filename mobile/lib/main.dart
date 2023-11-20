@@ -1,4 +1,6 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,8 @@ import 'package:mapbeauty/modules/product/presentation/view_model/product_view_m
 
 import 'modules/core/app_bootstrap.dart';
 import 'modules/core/utils/app_routes.dart';
+
+GlobalKey<NavigatorState>? globalKey = GlobalKey();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +47,7 @@ class MapBeautyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => GetIt.instance<OfferViewModel>()),
       ],
       child: MaterialApp(
+        navigatorKey: globalKey,
         title: 'Map Beauty',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
