@@ -30,16 +30,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
+
+  # Firebase
   firebase_ui_auth: ^1.9.1
   firebase_auth: ^4.11.1
   firebase_core: ^2.22.0
   firebase_storage: ^11.3.1
   firebase_database: ^10.3.1
+  cloud_functions: ^4.5.4
 
-
-
-  google_fonts: 
+  # Utils
   image_picker: ^1.0.4
   path_provider: ^2.1.1
   cached_network_image: ^3.3.0
@@ -48,9 +48,14 @@ dependencies:
   intl: ^0.18.1
   url_launcher: ^6.2.1
 
+  # Fonts
+  google_fonts: 
+  cupertino_icons: ^1.0.2
+  
     # MY LIFE PACKAGES
   commons:
     path: ../commons
+
   
 
   # The following adds the Cupertino Icons font to your application.

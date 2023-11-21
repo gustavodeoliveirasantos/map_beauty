@@ -1,4 +1,8 @@
 PODS:
+  - cloud_functions (4.5.4):
+    - Firebase/Functions (= 10.17.0)
+    - firebase_core
+    - Flutter
   - device_info_plus (0.0.1):
     - Flutter
   - Firebase/CoreOnly (10.17.0):
@@ -6,6 +10,9 @@ PODS:
   - Firebase/Database (10.17.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 10.17.0)
+  - Firebase/Functions (10.17.0):
+    - Firebase/CoreOnly
+    - FirebaseFunctions (~> 10.17.0)
   - Firebase/Messaging (10.17.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 10.17.0)
@@ -42,6 +49,14 @@ PODS:
     - FirebaseCore (~> 10.0)
     - FirebaseSharedSwift (~> 10.0)
     - leveldb-library (~> 1.22)
+  - FirebaseFunctions (10.17.0):
+    - FirebaseAppCheckInterop (~> 10.10)
+    - FirebaseAuthInterop (~> 10.0)
+    - FirebaseCore (~> 10.0)
+    - FirebaseCoreExtension (~> 10.0)
+    - FirebaseMessagingInterop (~> 10.0)
+    - FirebaseSharedSwift (~> 10.0)
+    - GTMSessionFetcher/Core (< 4.0, >= 2.1)
   - FirebaseInstallations (10.17.0):
     - FirebaseCore (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
@@ -56,6 +71,7 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - FirebaseMessagingInterop (10.18.0)
   - FirebaseSharedSwift (10.17.0)
   - FirebaseStorage (10.17.0):
     - FirebaseAppCheckInterop (~> 10.0)
@@ -119,6 +135,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - cloud_functions (from `.symlinks/plugins/cloud_functions/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - Firebase/Messaging
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
@@ -145,8 +162,10 @@ SPEC REPOS:
     - FirebaseCoreExtension
     - FirebaseCoreInternal
     - FirebaseDatabase
+    - FirebaseFunctions
     - FirebaseInstallations
     - FirebaseMessaging
+    - FirebaseMessagingInterop
     - FirebaseSharedSwift
     - FirebaseStorage
     - FMDB
@@ -158,6 +177,8 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
+  cloud_functions:
+    :path: ".symlinks/plugins/cloud_functions/ios"
   device_info_plus:
     :path: ".symlinks/plugins/device_info_plus/ios"
   firebase_core:
@@ -190,6 +211,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
+  cloud_functions: 5a8a98b2037ff2b57cac56155faede7417d24de9
   device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
   Firebase: f4ac0b02927af9253ae094d23deecf0890da7374
   firebase_core: efc9455611b8769fa90fbdae5da182600bd6901c
@@ -202,8 +224,10 @@ SPEC CHECKSUMS:
   FirebaseCoreExtension: 47720bb330d7041047c0935a34a3a4b92f818074
   FirebaseCoreInternal: 2cf9202e226e3f78d2bf6d56c472686b935bfb7f
   FirebaseDatabase: 9a86c80a1a85db15c5c2b52f5829c333391e13fb
+  FirebaseFunctions: c6894e60efe40af356a800c39c501136e6565a51
   FirebaseInstallations: 9387bf15abfc69a714f54e54f74a251264fdb79b
   FirebaseMessaging: 1367b28c0c83a63072af4a711328fcc2e6899902
+  FirebaseMessagingInterop: e4ff7139aad39ab9149ae6462828ed3b8cdaa86c
   FirebaseSharedSwift: e8fe8d63d434266a1b2c7f02807d5b64462e1851
   FirebaseStorage: 4af6f9ea67b6a8e4e3cbd75e006b4776a50e8b12
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854

@@ -102,7 +102,7 @@ class ProductStoreImpl implements ProductStore {
 
       brands.add(BrandDTO(id: id, name: name, imageName: imageName, products: products));
     }
-    print("GOS - Entrou aqui?");
+
     _brands = brands;
     return _brands;
   }

@@ -1,8 +1,8 @@
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:commons/modules/core/utils/view_utils.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:mapbeauty/firebase_options.dart';
 import 'package:mapbeauty/main.dart';
 import 'package:mapbeauty/modules/core/utils/app_routes.dart';
@@ -30,6 +30,31 @@ class AppBootstrap {
     configureNotifications();
     _setupInteractedMessage();
     Inject.init();
+    testFirebaseFunction();
+  }
+
+  static testFirebaseFunction() async {
+    //  try {
+    print("entrou aqui");
+    final result = await FirebaseFunctions.instance.httpsCallable('helloWorld').call();
+    print("1234");
+    print("GOS - ${result.data}");
+    print("lalala");
+    // final lala = result.data as String;
+    //  print(lala);
+    // FirebaseFunctions firebaseFunctions = FirebaseFunctions.instance;
+    // HttpsCallable callable = firebaseFunctions.httpsCallable('helloWorld');
+    // final results = await callable();
+    // final String test = results.data;
+    // print(test);
+    // } on FirebaseFunctionsException catch (e) {
+    //   print(e);
+    //   print(e.message);
+    //   print(e.details);
+    //   print(e.code);
+    // } catch (e) {
+    //   // Do other things that might be thrown that I have overlooked
+    // }
   }
 
   static loadFindationData() {
