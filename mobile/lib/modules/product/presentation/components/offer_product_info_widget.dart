@@ -2,6 +2,7 @@ import 'package:commons/modules/products/domain/models/offer_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mapbeauty/modules/product/presentation/components/discount_badge_.widget.dart';
 
 class OfferProductInfoWidget extends StatelessWidget {
   final Offer? offer;
@@ -31,23 +32,35 @@ class OfferProductInfoWidget extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.normal, fontSize: isBig ? 18 : 14),
           maxLines: 1,
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            RichText(
-              text: TextSpan(
-                style: TextStyle(color: isBig ? Colors.grey : Colors.white),
-                children: [
-                  TextSpan(text: "De: ", style: TextStyle(fontSize: isBig ? 16 : 12)),
-                  TextSpan(text: coin.format(offer?.oldPrice), style: TextStyle(decoration: TextDecoration.lineThrough, fontSize: isBig ? 16 : 12)),
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    style: TextStyle(color: isBig ? Colors.grey : Colors.white),
+                    children: [
+                      TextSpan(text: "De: ", style: TextStyle(fontSize: isBig ? 16 : 12)),
+                      TextSpan(text: coin.format(offer?.oldPrice), style: TextStyle(decoration: TextDecoration.lineThrough, fontSize: isBig ? 16 : 12)),
+                    ],
+                  ),
+                ),
+                Text(
+                  coin.format(offer?.discountPrice),
+                  style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: isBig ? 20 : 16, fontWeight: FontWeight.bold),
+                ),
+              ],
             ),
-            Text(
-              coin.format(offer?.discountPrice),
-              style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: isBig ? 20 : 16, fontWeight: FontWeight.bold),
-            ),
+            if (isBig)
+              DiscountBadgeWidget(
+                discount: offer?.discountPercentage ?? 0,
+                height: 30,
+                width: 60,
+                fontSize: 14,
+              )
           ],
         ),
         SizedBox(height: 10),

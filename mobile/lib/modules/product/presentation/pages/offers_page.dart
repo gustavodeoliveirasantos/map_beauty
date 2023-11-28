@@ -17,7 +17,7 @@ class OffersPage extends StatefulWidget {
 
 class _OffersPageState extends State<OffersPage> {
   List<Offer>? offers;
-  bool showOffersNotLoadedMessage = true;
+  bool showOffersNotLoadedMessage = false;
   late final OfferViewModel _viewModel;
   bool _isLoading = false;
 
@@ -26,10 +26,15 @@ class _OffersPageState extends State<OffersPage> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       _viewModel = Provider.of<OfferViewModel>(context, listen: false);
+      setState(() {
+        _isLoading = true;
+      });
 
       await _viewModel.loadOffers();
-
-      offers = _viewModel.offers;
+      setState(() {
+        offers = _viewModel.offers;
+        _isLoading = false;
+      });
     });
   }
 

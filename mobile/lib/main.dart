@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mapbeauty/modules/core/utils/extensions.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/offer_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:mapbeauty/modules/product/presentation/view_model/product_view_model.dart';
@@ -49,7 +50,7 @@ class MapBeautyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           //   textTheme: GoogleFonts.bellezaTextTheme(),
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
+          colorScheme: ColorScheme.fromSeed(seedColor: HexColor("#C143A6")).copyWith(primary: HexColor("#C143A6")),
           useMaterial3: true,
         ),
         initialRoute: initialRoute,

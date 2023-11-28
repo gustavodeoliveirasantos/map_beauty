@@ -16,10 +16,7 @@ import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb, Tar
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -47,6 +44,17 @@ class DefaultFirebaseOptions {
         );
     }
   }
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDWXby8O7x9m9bKs1k08I9v6MPx0FaTRxA',
+    appId: '1:452881834159:web:f86932952d1f465257b45a',
+    messagingSenderId: '452881834159',
+    projectId: 'map-beauty-f8b01',
+    authDomain: 'map-beauty-f8b01.firebaseapp.com',
+    databaseURL: 'https://map-beauty-f8b01-default-rtdb.firebaseio.com',
+    storageBucket: 'map-beauty-f8b01.appspot.com',
+    measurementId: 'G-ZHPBKQQQ04',
+  );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCLVs5nyorGP-5CBuFe0obCySWm_B1w31Y',

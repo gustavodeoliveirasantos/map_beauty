@@ -17,11 +17,20 @@ class StepperWidget extends StatefulWidget {
 }
 
 class _StepperWidgetState extends State<StepperWidget> with SingleTickerProviderStateMixin {
+  String stepDescription = "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getStepDescription();
+  }
+
   StepState getState(int stepIndex) {
     if (widget.stepsOpened - 1 < stepIndex) {
       return StepState.disabled;
     }
-
+    getStepDescription();
     if (widget.currentIndex == stepIndex) {
       return StepState.editing;
     } else if (widget.currentIndex > stepIndex) {
@@ -31,6 +40,24 @@ class _StepperWidgetState extends State<StepperWidget> with SingleTickerProvider
     } else {
       return StepState.error;
     }
+  }
+
+  void getStepDescription() {
+    setState(() {
+      switch (widget.currentIndex) {
+        case 0:
+          stepDescription = "1. Selecione a marca";
+          break;
+        case 1:
+          stepDescription = "2. Selecione o produto para visualizar as cores";
+          break;
+        case 2:
+          stepDescription = "3. Escolha a cor de sua preferência para encontrar produtos semelhantes e clique em continuar.";
+          break;
+        default:
+          break;
+      }
+    });
   }
 
   notifyOnTapIfNeeded(int index) {
@@ -46,31 +73,44 @@ class _StepperWidgetState extends State<StepperWidget> with SingleTickerProvider
       padding: const EdgeInsets.all(8.0),
       child: AnimatedSize(
         duration: animationDuration,
-        child: SizedBox(
-          height: widget.isHidden ? 0 : 80,
-          child: AnimatedOpacity(
-            duration: animationDuration,
-            opacity: widget.isHidden ? 0 : 1,
-            child: Stack(
-              alignment: AlignmentDirectional.center,
-              children: [
-                const StepperSeparatorWidget(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: widget.isHidden ? 0 : 80,
+              child: AnimatedOpacity(
+                duration: animationDuration,
+                opacity: widget.isHidden ? 0 : 1,
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
                   children: [
-                    StepperItemWidget(step: 1, title: "Marcas", state: getState(0), onTap: () => widget.onTap(0), isHidden: widget.isHidden),
-                    //  const StepperSeparatorWidget(),
-                    StepperItemWidget(step: 2, title: "Produtos", state: getState(1), onTap: () => widget.onTap(1), isHidden: widget.isHidden),
-                    //  const StepperSeparatorWidget(),
-                    StepperItemWidget(step: 3, title: "Cores", state: getState(2), onTap: () => widget.onTap(2), isHidden: widget.isHidden),
-                    // StepperSeparatorWidget(),
-                    // StepperItemWidget(step: 4, title: "Resultado", state: getState(3)),
+                    const StepperSeparatorWidget(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        StepperItemWidget(step: 1, title: "Marcas", state: getState(0), onTap: () => widget.onTap(0), isHidden: widget.isHidden),
+                        //  const StepperSeparatorWidget(),
+                        StepperItemWidget(step: 2, title: "Produtos", state: getState(1), onTap: () => widget.onTap(1), isHidden: widget.isHidden),
+                        //  const StepperSeparatorWidget(),
+                        StepperItemWidget(step: 3, title: "Cores", state: getState(2), onTap: () => widget.onTap(2), isHidden: widget.isHidden),
+                        // StepperSeparatorWidget(),
+                        // StepperItemWidget(step: 4, title: "Resultado", state: getState(3)),
+                      ],
+                    ),
                   ],
                 ),
-              ],
+              ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                stepDescription,
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
+            ),
+          ],
         ),
       ),
     );

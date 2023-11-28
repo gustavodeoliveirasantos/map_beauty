@@ -112,65 +112,68 @@ class _BrandsPageState extends State<BrandsPage> {
                 child: Consumer<BrandViewModel>(
                   builder: (context, viewModel, child) {
                     final brands = viewModel.brands;
-                    return Table(
-                      border: TableBorder.all(width: 0.5),
-                      columnWidths: const {0: FixedColumnWidth(100), 1: FixedColumnWidth(400), 2: FixedColumnWidth(100), 3: IntrinsicColumnWidth()},
-                      children: brands.map((brand) {
-                        int index = brands.indexOf(brand);
-                        bool isEditMode = index == indexInEditMode;
-                        final controller = TextEditingController(text: brand.name);
-                        return TableRow(children: [
-                          TableCell(
-                              child: FirebaseStorageImageWidget(
-                            imageName: brand.image,
-                            height: 100,
-                            width: 50,
-                            imageType: ImageFolder.logo,
-                          )),
-                          TableCell(
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Table(
+                        border: TableBorder.all(width: 0.5),
+                        columnWidths: const {0: FixedColumnWidth(100), 1: FixedColumnWidth(400), 2: FixedColumnWidth(100), 3: IntrinsicColumnWidth()},
+                        children: brands.map((brand) {
+                          int index = brands.indexOf(brand);
+                          bool isEditMode = index == indexInEditMode;
+                          final controller = TextEditingController(text: brand.name);
+                          return TableRow(children: [
+                            TableCell(
+                                child: FirebaseStorageImageWidget(
+                              imageName: brand.image,
+                              height: 100,
+                              width: 50,
+                              imageType: ImageFolder.logo,
+                            )),
+                            TableCell(
+                                verticalAlignment: TableCellVerticalAlignment.middle,
+                                child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: isEditMode
+                                        ? TextField(
+                                            enabled: isEditMode,
+                                            controller: controller,
+                                          )
+                                        : Text(brand.name))),
+                            TableCell(
                               verticalAlignment: TableCellVerticalAlignment.middle,
-                              child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: isEditMode
-                                      ? TextField(
-                                          enabled: isEditMode,
-                                          controller: controller,
-                                        )
-                                      : Text(brand.name))),
-                          TableCell(
-                            verticalAlignment: TableCellVerticalAlignment.middle,
-                            child: IconButton(
-                              onPressed: () => openImagePicker(brand),
-                              icon: const Icon(Icons.add_photo_alternate),
+                              child: IconButton(
+                                onPressed: () => openImagePicker(brand),
+                                icon: const Icon(Icons.add_photo_alternate),
+                              ),
                             ),
-                          ),
-                          TableCell(
-                              verticalAlignment: TableCellVerticalAlignment.middle,
-                              child: SizedBox(
-                                height: 50,
-                                child: Row(
-                                  children: [
-                                    TextButton(
-                                        onPressed: () {
-                                          if (!isEditMode) {
-                                            setState(() {
-                                              indexInEditMode = index;
-                                            });
-                                          } else {
-                                            updateBrand(brand, controller.text);
-                                            setState(() {
-                                              indexInEditMode = -1;
-                                              isEditMode = false;
-                                            });
-                                          }
-                                        },
-                                        child: Text(isEditMode ? "Salvar" : "Editar")),
-                                    TextButton(onPressed: () => delete(brand), child: const Text("Excluir")),
-                                  ],
-                                ),
-                              )),
-                        ]);
-                      }).toList(),
+                            TableCell(
+                                verticalAlignment: TableCellVerticalAlignment.middle,
+                                child: SizedBox(
+                                  height: 50,
+                                  child: Row(
+                                    children: [
+                                      TextButton(
+                                          onPressed: () {
+                                            if (!isEditMode) {
+                                              setState(() {
+                                                indexInEditMode = index;
+                                              });
+                                            } else {
+                                              updateBrand(brand, controller.text);
+                                              setState(() {
+                                                indexInEditMode = -1;
+                                                isEditMode = false;
+                                              });
+                                            }
+                                          },
+                                          child: Text(isEditMode ? "Salvar" : "Editar")),
+                                      TextButton(onPressed: () => delete(brand), child: const Text("Excluir")),
+                                    ],
+                                  ),
+                                )),
+                          ]);
+                        }).toList(),
+                      ),
                     );
                   },
                 ),

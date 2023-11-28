@@ -120,7 +120,7 @@ class _FindProductsHomePageState extends State<FindProductsHomePage> {
             currentIndex: pageIndex,
             stepsOpened: stepsOpened,
             onTap: onStepperSelected,
-            isHidden: isStepBarHidden,
+            isHidden: false, // isStepBarHidden
           ),
           //      const SearchBar(hintText: "Pesquisar", leading: Icon(Icons.search)),
           SizedBox(height: isStepBarHidden ? 0 : 20),

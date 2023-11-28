@@ -56,15 +56,6 @@ class OfferDetailPage extends StatelessWidget {
                 ),
               ),
               Positioned(
-                  top: size.width,
-                  right: 12,
-                  child: DiscountBadgeWidget(
-                    discount: offer.discountPercentage,
-                    height: 30,
-                    width: 60,
-                    fontSize: 14,
-                  )),
-              Positioned(
                 bottom: 0,
                 right: 50,
                 left: 50,
